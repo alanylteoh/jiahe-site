@@ -1,1781 +1,696 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="从零到IPO，企业全生命周期战略合伙人" />
-    <meta name="color-scheme" content="light" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>加禾文化科技 — Jiahe Culture Technology</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
-
+    <meta name="description" content="从零到IPO，企业全生命周期战略合伙人">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-      *,
-      *::before,
-      *::after {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      :root {
-        --black: #0a0a0a;
-        --white: #fff;
-        --off: #f8f8f6;
-
-        --g100: #f0f0ec;
-        --g200: #e0e0dc;
-        --g300: #c8c8c2;
-        --g400: #9a9a94;
-        --g500: #6e6e68;
-        --g600: #4a4a45;
-        --g700: #2c2c28;
-
-        --purple: #5b4fc4;
-        --gold: #9a7d2e;
-
-        --serif: "Noto Serif SC", Georgia, "Times New Roman", serif;
-        --sans: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-        --display: "Playfair Display", Georgia, serif;
-      }
-
-      html {
-        font-size: 16px;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        scroll-behavior: smooth;
-      }
-
-      body {
-        font-family: var(--sans);
-        color: var(--black);
-        background: var(--white);
-        line-height: 1.5;
-        overflow-x: hidden;
-      }
-
-      section[id] {
-        scroll-margin-top: 110px;
-      }
-
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-
-      img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-      }
-
-      ::selection {
-        background: var(--purple);
-        color: #fff;
-      }
-
-      :focus-visible {
-        outline: 2px solid var(--purple);
-        outline-offset: 3px;
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --black:#0a0a0a;--white:#fff;--off:#f8f8f6;
+            --g100:#f0f0ec;--g200:#e0e0dc;--g300:#c8c8c2;--g400:#9a9a94;--g500:#6e6e68;--g600:#4a4a45;--g700:#2c2c28;
+            --purple:#5b4fc4;--gold:#9a7d2e;
+            --serif:'Noto Serif SC',Georgia,'Times New Roman',serif;
+            --sans:'Inter',-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;
+            --display:'Playfair Display',Georgia,serif;
         }
-        *,
-        *::before,
-        *::after {
-          transition: none !important;
-          animation: none !important;
-        }
-      }
+        html{font-size:16px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth}
+        body{font-family:var(--sans);color:var(--black);background:var(--white);line-height:1.5;overflow-x:hidden}
+        a{text-decoration:none;color:inherit}
+        img{max-width:100%;height:auto;display:block}
+        ::selection{background:var(--purple);color:#fff}
 
-      /* ── NAV ── */
-      .nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 200;
-        height: 88px;
-        transition: all 0.4s;
-      }
-      .nav.scrolled {
-        background: rgba(255, 255, 255, 0.97);
-        backdrop-filter: blur(16px);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-      }
-      .nav-in {
-        max-width: 1440px;
-        margin: 0 auto;
-        padding: 0 48px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 100%;
-      }
-      .nav-logo {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-      .nav-logo img {
-        height: 65px;
-      }
-      .nav-brand {
-        font-family: var(--serif);
-        font-weight: 700;
-        font-size: 19px;
-        letter-spacing: 0.5px;
-        color: #fff;
-        transition: color 0.4s;
-      }
-      .nav.scrolled .nav-brand {
-        color: var(--black);
-      }
-      .nav-right {
-        display: flex;
-        align-items: center;
-        gap: 32px;
-      }
-      .nav-link {
-        font-size: 16px;
-        font-weight: 600;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.7);
-        transition: color 0.3s;
-        position: relative;
-      }
-      .nav.scrolled .nav-link {
-        color: var(--g500);
-      }
-      .nav-link:hover {
-        color: #fff;
-      }
-      .nav.scrolled .nav-link:hover {
-        color: var(--black);
-      }
-      .nav-lang {
-        font-size: 15px;
-        font-weight: 700;
-        letter-spacing: 1.5px;
-        padding: 6px 14px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        background: none;
-        cursor: pointer;
-        color: rgba(255, 255, 255, 0.7);
-        transition: all 0.3s;
-      }
-      .nav.scrolled .nav-lang {
-        border-color: var(--g200);
-        color: var(--g500);
-      }
-      .nav-lang:hover {
-        border-color: #fff;
-        color: #fff;
-      }
-      .nav.scrolled .nav-lang:hover {
-        border-color: var(--black);
-        color: var(--black);
-      }
-      .nav-menu-btn {
-        display: none;
-        width: 24px;
-        height: 18px;
-        flex-direction: column;
-        justify-content: space-between;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-      }
-      .nav-menu-btn span {
-        display: block;
-        width: 100%;
-        height: 1.5px;
-        background: #fff;
-        transition: background 0.3s;
-      }
-      .nav.scrolled .nav-menu-btn span {
-        background: var(--black);
-      }
+        /* ── NAV ── */
+        .nav{position:fixed;top:0;left:0;right:0;z-index:200;height:88px;transition:all .4s}
+        .nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,.06)}
+        .nav-in{max-width:1440px;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:100%}
+        .nav-logo{display:flex;align-items:center;gap:12px}
+        .nav-logo img{height:65px}
+        .nav-brand{font-family:var(--serif);font-weight:700;font-size:19px;letter-spacing:.5px;color:#fff;transition:color .4s}
+        .nav.scrolled .nav-brand{color:var(--black)}
+        .nav-right{display:flex;align-items:center;gap:32px}
+        .nav-link{font-size:16px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);transition:color .3s;position:relative}
+        .nav.scrolled .nav-link{color:var(--g500)}
+        .nav-link:hover{color:#fff}
+        .nav.scrolled .nav-link:hover{color:var(--black)}
+        .nav-lang{font-size:15px;font-weight:700;letter-spacing:1.5px;padding:6px 14px;border:1px solid rgba(255,255,255,.3);background:none;cursor:pointer;color:rgba(255,255,255,.7);transition:all .3s}
+        .nav.scrolled .nav-lang{border-color:var(--g200);color:var(--g500)}
+        .nav-lang:hover{border-color:#fff;color:#fff}
+        .nav.scrolled .nav-lang:hover{border-color:var(--black);color:var(--black)}
+        .nav-menu-btn{display:none;width:24px;height:18px;flex-direction:column;justify-content:space-between;background:none;border:none;cursor:pointer;padding:0}
+        .nav-menu-btn span{display:block;width:100%;height:1.5px;background:#fff;transition:background .3s}
+        .nav.scrolled .nav-menu-btn span{background:var(--black)}
 
-      @media (max-width: 1024px) {
-        .nav-link {
-          display: none;
+        @media(max-width:1024px){
+            .nav-link{display:none}
+            .nav-menu-btn{display:flex}
         }
-        .nav-menu-btn {
-          display: flex;
+        @media(max-width:640px){
+            .nav-in{padding:0 24px}
         }
-      }
-      @media (max-width: 640px) {
-        .nav-in {
-          padding: 0 24px;
-        }
-      }
 
-      /* ── HERO ── */
-      .hero {
-        position: relative;
-        min-height: 100vh;
-        display: flex;
-        align-items: flex-end;
-        overflow: hidden;
-      }
-      .hero-bg {
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-      }
-      .hero-bg img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center 40%;
-      }
-      .hero-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          170deg,
-          rgba(10, 10, 10, 0.72) 0%,
-          rgba(10, 10, 10, 0.55) 40%,
-          rgba(10, 10, 10, 0.82) 100%
-        );
-        z-index: 1;
-      }
-      .hero-inner {
-        position: relative;
-        z-index: 2;
-        max-width: 1440px;
-        margin: 0 auto;
-        padding: 200px 48px 100px;
-        width: 100%;
-      }
-      .hero-kicker {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 5px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.5);
-        margin-bottom: 36px;
-      }
-      .hero h1 {
-        font-family: var(--serif);
-        font-size: clamp(42px, 7vw, 88px);
-        font-weight: 900;
-        line-height: 1.06;
-        letter-spacing: -2px;
-        color: #fff;
-        max-width: 880px;
-        margin-bottom: 32px;
-      }
-      .hero h1 em {
-        font-style: normal;
-        color: #a8a3f0;
-      }
-      .hero-body {
-        max-width: 560px;
-        margin-bottom: 48px;
-      }
-      .hero-body p {
-        font-size: 17px;
-        line-height: 1.85;
-        color: rgba(255, 255, 255, 0.7);
-        margin-bottom: 8px;
-      }
-      .hero-body p:last-child {
-        font-size: 15px;
-        color: rgba(255, 255, 255, 0.35);
-        font-style: italic;
-        font-family: var(--display);
-        margin-top: 16px;
-        letter-spacing: 0.3px;
-      }
-      .hero-ctas {
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
-      }
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 15px 32px;
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        cursor: pointer;
-        border: none;
-        transition: all 0.3s;
-      }
-      .btn-fill {
-        background: #fff;
-        color: var(--black);
-      }
-      .btn-fill:hover {
-        background: var(--purple);
-        color: #fff;
-      }
-      .btn-ghost {
-        background: transparent;
-        color: rgba(255, 255, 255, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-      .btn-ghost:hover {
-        border-color: rgba(255, 255, 255, 0.6);
-        color: #fff;
-      }
+        /* ── HERO ── */
+        .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden}
+        .hero-bg{position:absolute;inset:0;z-index:0}
+        .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+        .hero-overlay{position:absolute;inset:0;background:linear-gradient(170deg,rgba(10,10,10,.72) 0%,rgba(10,10,10,.55) 40%,rgba(10,10,10,.82) 100%);z-index:1}
+        .hero-inner{position:relative;z-index:2;max-width:1440px;margin:0 auto;padding:0 48px 100px;width:100%;padding-top:200px}
+        .hero-kicker{font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:36px}
+        .hero h1{font-family:var(--serif);font-size:clamp(42px,7vw,88px);font-weight:900;line-height:1.06;letter-spacing:-2px;color:#fff;max-width:880px;margin-bottom:32px}
+        .hero h1 em{font-style:normal;color:#a8a3f0}
+        .hero-body{max-width:560px;margin-bottom:48px}
+        .hero-body p{font-size:17px;line-height:1.85;color:rgba(255,255,255,.7);margin-bottom:8px}
+        .hero-body p:last-child{font-size:15px;color:rgba(255,255,255,.35);font-style:italic;font-family:var(--display);margin-top:16px;letter-spacing:.3px}
+        .hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:15px 32px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;transition:all .3s}
+        .btn-fill{background:#fff;color:var(--black)}
+        .btn-fill:hover{background:var(--purple);color:#fff}
+        .btn-ghost{background:transparent;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.2)}
+        .btn-ghost:hover{border-color:rgba(255,255,255,.6);color:#fff}
 
-      /* Hero bottom stats bar */
-      .hero-stats-bar {
-        position: relative;
-        z-index: 2;
-        max-width: 1440px;
-        margin: 0 auto;
-        padding: 0 48px;
-      }
-      .hero-stats {
-        display: flex;
-        gap: 24px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      .hero-stat {
-        flex: 1;
-        padding: 32px 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .hero-stat-num {
-        font-size: 36px;
-        font-weight: 900;
-        color: #fff;
-        line-height: 1;
-        font-family: var(--sans);
-        text-align: center;
-      }
-      .hero-stat-num .u {
-        font-size: 18px;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.55);
-      }
-      .hero-stat-num .p {
-        color: #b8b3f5;
-      }
-      .hero-stat-num .g {
-        color: #c9a84c;
-      }
-      .hero-stat-lbl {
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.65);
-        margin-top: 16px;
-        text-align: center;
-        white-space: nowrap;
-      }
+        /* Hero bottom stats bar */
+        .hero-stats-bar{position:relative;z-index:2;max-width:1440px;margin:0 auto;padding:0 48px}
+        .hero-stats{display:flex;gap:24px;border-top:1px solid rgba(255,255,255,.1)}
+        .hero-stat{flex:1;padding:32px 0;display:flex;flex-direction:column;align-items:center}
+        .hero-stat-num{font-size:36px;font-weight:900;color:#fff;line-height:1;font-family:var(--sans);text-align:center}
+        .hero-stat-num .u{font-size:18px;font-weight:600;color:rgba(255,255,255,.55)}
+        .hero-stat-num .p{color:#b8b3f5}
+        .hero-stat-num .g{color:#c9a84c}
+        .hero-stat-lbl{font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:16px;text-align:center;white-space:nowrap}
 
-      @media (max-width: 640px) {
-        .hero-inner {
-          padding: 140px 24px 60px;
+        @media(max-width:640px){
+            .hero-inner{padding:0 24px 60px;padding-top:140px}
+            .hero-stats-bar{padding:0 24px}
+            .hero-stats{flex-wrap:wrap}
+            .hero-stat{flex:1 1 50%;border-bottom:1px solid rgba(255,255,255,.06)}
+            .hero-ctas{flex-direction:column}
         }
-        .hero-stats-bar {
-          padding: 0 24px;
-        }
-        .hero-stats {
-          flex-wrap: wrap;
-        }
-        .hero-stat {
-          flex: 1 1 50%;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
-        .hero-ctas {
-          flex-direction: column;
-        }
-      }
 
-      /* ── SECTION UTIL ── */
-      .sec {
-        padding: 140px 0;
-      }
-      .sec-in {
-        max-width: 1440px;
-        margin: 0 auto;
-        padding: 0 48px;
-      }
-      .sec-in--flush {
-        padding: 0;
-      }
-      .sec-label {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        color: var(--purple);
-        margin-bottom: 20px;
-      }
-      .sec-title {
-        font-family: var(--serif);
-        font-size: clamp(28px, 4vw, 48px);
-        font-weight: 900;
-        line-height: 1.15;
-        letter-spacing: -1px;
-      }
-      .sec-title em {
-        font-style: normal;
-        color: var(--purple);
-      }
-      .rule {
-        width: 40px;
-        height: 2px;
-        background: var(--purple);
-        margin: 28px 0;
-      }
+        /* ── SECTION UTIL ── */
+        .sec{padding:140px 0}
+        .sec-in{max-width:1440px;margin:0 auto;padding:0 48px}
+        .sec-in.narrow{max-width:900px}
+        .sec-label{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--purple);margin-bottom:20px}
+        .sec-title{font-family:var(--serif);font-size:clamp(28px,4vw,48px);font-weight:900;line-height:1.15;letter-spacing:-1px}
+        .sec-title em{font-style:normal;color:var(--purple)}
+        .rule{width:40px;height:2px;background:var(--purple);margin:28px 0}
 
-      @media (max-width: 640px) {
-        .sec {
-          padding: 80px 0;
+        @media(max-width:640px){
+            .sec{padding:80px 0}
+            .sec-in{padding:0 24px}
         }
-        .sec-in {
-          padding: 0 24px;
-        }
-      }
 
-      /* ── ABOUT ── */
-      .about-layout {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0;
-        min-height: 600px;
-      }
-      .about-text-col {
-        padding: 80px 64px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-      .about-lead {
-        font-size: 22px;
-        line-height: 1.85;
-        color: var(--g600);
-        font-family: var(--serif);
-        font-weight: 400;
-        margin-bottom: 32px;
-      }
-      .about-lead em {
-        font-weight: 700;
-        color: var(--purple);
-        font-style: normal;
-      }
-      .about-pull {
-        font-family: var(--display);
-        font-size: 26px;
-        font-weight: 400;
-        font-style: italic;
-        line-height: 1.45;
-        color: var(--g700);
-        margin: 40px 0;
-        padding: 32px 0;
-        border-top: 1px solid var(--g200);
-        border-bottom: 1px solid var(--g200);
-        max-width: 480px;
-      }
-      .about-body {
-        font-size: 16px;
-        line-height: 1.9;
-        color: var(--g500);
-        margin-bottom: 16px;
-      }
-      .about-img-col {
-        position: relative;
-        overflow: hidden;
-      }
-      .about-img-col img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: grayscale(30%) contrast(1.05);
-      }
-      .about-img-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 32px;
-        z-index: 1;
-      }
-      .about-card {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(8px);
-        border: 1px solid var(--g200);
-        max-width: 320px;
-      }
-      .about-card-top {
-        padding: 20px 24px 16px;
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        border-bottom: 1px solid var(--g200);
-      }
-      .about-card-top img {
-        height: 48px;
-      }
-      .about-card-name {
-        font-family: var(--serif);
-        font-weight: 700;
-        font-size: 14px;
-      }
-      .about-card-name-en {
-        font-size: 8px;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: var(--g400);
-      }
-      .about-card-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 11px 24px;
-        font-size: 12px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-      }
-      .about-card-row:last-child {
-        border-bottom: none;
-      }
-      .about-card-row .l {
-        color: var(--g400);
-        font-size: 10px;
-        letter-spacing: 0.5px;
-      }
-      .about-card-row .v {
-        font-weight: 600;
-      }
+        /* ── IMAGE DIVIDER ── */
+        .img-divider{position:relative;height:420px;overflow:hidden}
+        .img-divider img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.1)}
+        .img-divider .caption{position:absolute;bottom:0;left:0;right:0;padding:24px 48px;background:linear-gradient(transparent,rgba(0,0,0,.5));z-index:1}
+        .img-divider .caption span{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4)}
 
-      @media (max-width: 960px) {
-        .about-layout {
-          grid-template-columns: 1fr;
+        @media(max-width:640px){
+            .img-divider{height:260px}
+            .img-divider .caption{padding:16px 24px}
         }
-        .about-img-col {
-          height: 400px;
-          order: -1;
-        }
-        .about-text-col {
-          padding: 48px 0;
-        }
-      }
 
-      /* ── SERVICES ── */
-      .svc-header {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 80px;
-        align-items: end;
-        margin-bottom: 64px;
-      }
-      .svc-header-right {
-        font-size: 16px;
-        color: var(--g500);
-        line-height: 1.8;
-        padding-bottom: 8px;
-      }
-      .svc-list {
-        display: flex;
-        flex-direction: column;
-        border-top: 2px solid var(--black);
-      }
-      .svc-item {
-        display: grid;
-        grid-template-columns: 56px 1fr 1fr;
-        gap: 24px;
-        align-items: start;
-        padding: 40px 0;
-        border-bottom: 1px solid var(--g200);
-        transition: background 0.25s;
-      }
-      .svc-item:hover {
-        background: var(--off);
-      }
-      .svc-num {
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        color: var(--purple);
-        padding-top: 6px;
-      }
-      .svc-name {
-        font-family: var(--serif);
-        font-size: 24px;
-        font-weight: 700;
-        line-height: 1.3;
-      }
-      .svc-name-en {
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 2.5px;
-        text-transform: uppercase;
-        color: var(--g400);
-        margin-top: 6px;
-      }
-      .svc-desc {
-        font-size: 17px;
-        color: var(--g500);
-        line-height: 1.8;
-        max-width: 460px;
-      }
+        /* ── ABOUT ── */
+        .about-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:600px}
+        .about-text-col{padding:80px 64px;display:flex;flex-direction:column;justify-content:center}
+        .about-lead{font-size:22px;line-height:1.85;color:var(--g600);font-family:var(--serif);font-weight:400;margin-bottom:32px}
+        .about-lead em{font-weight:700;color:var(--purple);font-style:normal}
+        .about-pull{font-family:var(--display);font-size:26px;font-weight:400;font-style:italic;line-height:1.45;color:var(--g700);margin:40px 0;padding:32px 0;border-top:1px solid var(--g200);border-bottom:1px solid var(--g200);max-width:480px}
+        .about-body{font-size:16px;line-height:1.9;color:var(--g500);margin-bottom:16px}
+        .about-img-col{position:relative;overflow:hidden}
+        .about-img-col img{width:100%;height:100%;object-fit:cover;filter:grayscale(30%) contrast(1.05)}
+        .about-img-overlay{position:absolute;bottom:0;left:0;right:0;padding:32px;z-index:1}
+        .about-card{background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border:1px solid var(--g200);max-width:320px}
+        .about-card-top{padding:20px 24px 16px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--g200)}
+        .about-card-top img{height:48px}
+        .about-card-name{font-family:var(--serif);font-weight:700;font-size:14px}
+        .about-card-name-en{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--g400)}
+        .about-card-row{display:flex;justify-content:space-between;align-items:center;padding:11px 24px;font-size:12px;border-bottom:1px solid rgba(0,0,0,.04)}
+        .about-card-row:last-child{border-bottom:none}
+        .about-card-row .l{color:var(--g400);font-size:10px;letter-spacing:.5px}
+        .about-card-row .v{font-weight:600}
 
-      @media (max-width: 768px) {
-        .svc-header {
-          grid-template-columns: 1fr;
-          gap: 24px;
+        @media(max-width:960px){
+            .about-layout{grid-template-columns:1fr}
+            .about-img-col{height:400px;order:-1}
+            .about-text-col{padding:48px 0}
         }
-        .svc-item {
-          grid-template-columns: 40px 1fr;
-          gap: 12px;
-        }
-        .svc-desc {
-          grid-column: 2/3;
-        }
-        .svc-name-en {
-          display: none;
-        }
-      }
 
-      /* ── HYPERCORE ── */
-      .hub {
-        background: var(--off);
-        position: relative;
-        overflow: hidden;
-      }
-      .hub-layout {
-        display: grid;
-        grid-template-columns: 5fr 7fr;
-        gap: 80px;
-        align-items: start;
-      }
-      .hub-sticky {
-        position: sticky;
-        top: 120px;
-      }
-      .hub-tag {
-        display: inline-block;
-        padding: 6px 16px;
-        border: 1px solid var(--black);
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        margin-bottom: 24px;
-      }
-      .hub-name {
-        font-family: var(--serif);
-        font-size: clamp(34px, 5vw, 58px);
-        font-weight: 900;
-        line-height: 1.1;
-        letter-spacing: -1px;
-        margin-bottom: 8px;
-      }
-      .hub-name-en {
-        font-size: 14px;
-        font-weight: 500;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: var(--g400);
-        margin-bottom: 32px;
-      }
-      .hub-desc {
-        font-size: 19px;
-        line-height: 1.85;
-        color: var(--g600);
-        margin-bottom: 12px;
-      }
-      .hub-desc-en {
-        font-size: 16px;
-        line-height: 1.75;
-        color: var(--g400);
-        font-style: italic;
-        margin-bottom: 40px;
-        font-family: var(--display);
-      }
-      .hub-img {
-        width: 100%;
-        height: 280px;
-        overflow: hidden;
-        margin-top: 32px;
-      }
-      .hub-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: grayscale(100%) contrast(1.1) brightness(0.7);
-      }
+        /* ── SERVICES ── */
+        .svc-header{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:64px}
+        .svc-header-right{font-size:16px;color:var(--g500);line-height:1.8;padding-bottom:8px}
+        .svc-list{display:flex;flex-direction:column;border-top:2px solid var(--black)}
+        .svc-item{display:grid;grid-template-columns:56px 1fr 1fr;gap:24px;align-items:start;padding:40px 0;border-bottom:1px solid var(--g200);transition:background .25s}
+        .svc-item:hover{background:var(--off)}
+        .svc-num{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--purple);padding-top:6px}
+        .svc-name{font-family:var(--serif);font-size:24px;font-weight:700;line-height:1.3}
+        .svc-name-en{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--g400);margin-top:6px}
+        .svc-desc{font-size:17px;color:var(--g500);line-height:1.8;max-width:460px}
 
-      .feat-list {
-        display: flex;
-        flex-direction: column;
-      }
-      .feat {
-        padding: 32px 0;
-        border-bottom: 1px solid var(--g200);
-        display: grid;
-        grid-template-columns: 48px 1fr;
-        gap: 24px;
-        align-items: start;
-      }
-      .feat:first-child {
-        border-top: 1px solid var(--g200);
-      }
-      .feat-ico {
-        width: 48px;
-        height: 48px;
-        border: 1px solid var(--g200);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #fff;
-      }
-      .feat-ico svg {
-        width: 20px;
-        height: 20px;
-        color: var(--purple);
-      }
-      .feat h4 {
-        font-size: 19px;
-        font-weight: 700;
-        margin-bottom: 2px;
-      }
-      .feat .h4-en {
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: var(--purple);
-        margin-bottom: 8px;
-      }
-      .feat p {
-        font-size: 16px;
-        color: var(--g500);
-        line-height: 1.7;
-      }
+        @media(max-width:768px){
+            .svc-header{grid-template-columns:1fr;gap:24px}
+            .svc-item{grid-template-columns:40px 1fr;gap:12px}
+            .svc-desc{grid-column:2/3}
+            .svc-name-en{display:none}
+        }
 
-      @media (max-width: 960px) {
-        .hub-layout {
-          grid-template-columns: 1fr;
-          gap: 48px;
-        }
-        .hub-sticky {
-          position: static;
-        }
-      }
+        /* ── HYPERCORE ── */
+        .hub{background:var(--off);position:relative;overflow:hidden}
+        .hub-layout{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start}
+        .hub-sticky{position:sticky;top:120px}
+        .hub-tag{display:inline-block;padding:6px 16px;border:1px solid var(--black);font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:24px}
+        .hub-name{font-family:var(--serif);font-size:clamp(34px,5vw,58px);font-weight:900;line-height:1.1;letter-spacing:-1px;margin-bottom:8px}
+        .hub-name-en{font-size:14px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--g400);margin-bottom:32px}
+        .hub-desc{font-size:19px;line-height:1.85;color:var(--g600);margin-bottom:12px}
+        .hub-desc-en{font-size:16px;line-height:1.75;color:var(--g400);font-style:italic;margin-bottom:40px;font-family:var(--display)}
+        .hub-img{width:100%;height:280px;overflow:hidden;margin-top:32px}
+        .hub-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.1) brightness(0.7)}
 
-      /* ── WHY ── */
-      .why-layout {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0;
-        margin-top: 64px;
-        min-height: 600px;
-      }
-      .why-img-col {
-        position: relative;
-        overflow: hidden;
-      }
-      .why-img-col img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: grayscale(60%) contrast(1.05);
-      }
-      .why-content-col {
-        padding: 0 0 0 80px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-      .why-item {
-        padding: 36px 0;
-        border-bottom: 1px solid var(--g200);
-      }
-      .why-item:first-child {
-        border-top: 2px solid var(--black);
-      }
-      .why-num {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        color: var(--purple);
-        margin-bottom: 14px;
-      }
-      .why-item h3 {
-        font-family: var(--serif);
-        font-size: 24px;
-        font-weight: 700;
-        margin-bottom: 4px;
-        line-height: 1.3;
-      }
-      .why-item .h3-en {
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: var(--purple);
-        margin-bottom: 14px;
-      }
-      .why-item p {
-        font-size: 17px;
-        color: var(--g500);
-        line-height: 1.8;
-      }
+        .feat-list{display:flex;flex-direction:column}
+        .feat{padding:32px 0;border-bottom:1px solid var(--g200);display:grid;grid-template-columns:48px 1fr;gap:24px;align-items:start}
+        .feat:first-child{border-top:1px solid var(--g200)}
+        .feat-ico{width:48px;height:48px;border:1px solid var(--g200);display:flex;align-items:center;justify-content:center;background:#fff}
+        .feat-ico svg{width:20px;height:20px;color:var(--purple)}
+        .feat h4{font-size:19px;font-weight:700;margin-bottom:2px}
+        .feat .h4-en{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--purple);margin-bottom:8px}
+        .feat p{font-size:16px;color:var(--g500);line-height:1.7}
 
-      @media (max-width: 960px) {
-        .why-layout {
-          grid-template-columns: 1fr;
+        @media(max-width:960px){
+            .hub-layout{grid-template-columns:1fr;gap:48px}
+            .hub-sticky{position:static}
         }
-        .why-img-col {
-          height: 360px;
-          order: -1;
-        }
-        .why-content-col {
-          padding: 48px 0 0;
-        }
-      }
 
-      /* ── GLOBAL ── */
-      .global {
-        position: relative;
-        overflow: hidden;
-      }
-      .global-bg {
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-      }
-      .global-bg img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0.08;
-        filter: grayscale(100%);
-      }
-      .global-content {
-        position: relative;
-        z-index: 1;
-        background: var(--g700);
-        color: var(--white);
-      }
-      .global .sec-label {
-        color: rgba(255, 255, 255, 0.25);
-        font-size: 18px;
-        letter-spacing: 6px;
-      }
-      .global .sec-title {
-        color: var(--white);
-      }
-      .global .rule {
-        background: rgba(255, 255, 255, 0.15);
-      }
-      .global-intro {
-        font-size: 19px;
-        line-height: 1.85;
-        color: rgba(255, 255, 255, 0.4);
-        max-width: 600px;
-        margin-bottom: 72px;
-      }
-      .global-grid {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-      }
-      .global-item {
-        padding: 44px 32px;
-        border-right: 1px solid rgba(255, 255, 255, 0.06);
-        position: relative;
-        transition: background 0.3s;
-      }
-      .global-item:last-child {
-        border-right: none;
-      }
-      .global-item:hover {
-        background: rgba(255, 255, 255, 0.03);
-      }
-      .global-code {
-        font-size: 48px;
-        font-weight: 900;
-        letter-spacing: 3px;
-        line-height: 1;
-        color: rgba(255, 255, 255, 0.9);
-        margin-bottom: 16px;
-        font-family: var(--sans);
-      }
-      .global-item h3 {
-        font-family: var(--serif);
-        font-size: 20px;
-        font-weight: 700;
-        margin-bottom: 4px;
-        line-height: 1.3;
-      }
-      .global-item .h3-en {
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: 2.5px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.2);
-        margin-bottom: 16px;
-      }
-      .global-item p {
-        font-size: 15px;
-        color: rgba(255, 255, 255, 0.4);
-        line-height: 1.65;
-      }
-      .global-line {
-        width: 24px;
-        height: 2px;
-        background: var(--purple);
-        margin-bottom: 14px;
-        opacity: 0.6;
-      }
+        /* ── WHY ── */
+        .why-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:64px;min-height:600px}
+        .why-img-col{position:relative;overflow:hidden}
+        .why-img-col img{width:100%;height:100%;object-fit:cover;filter:grayscale(60%) contrast(1.05)}
+        .why-content-col{padding:0 0 0 80px;display:flex;flex-direction:column;justify-content:center}
+        .why-item{padding:36px 0;border-bottom:1px solid var(--g200)}
+        .why-item:first-child{border-top:2px solid var(--black)}
+        .why-num{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--purple);margin-bottom:14px}
+        .why-item h3{font-family:var(--serif);font-size:24px;font-weight:700;margin-bottom:4px;line-height:1.3}
+        .why-item .h3-en{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--purple);margin-bottom:14px}
+        .why-item p{font-size:17px;color:var(--g500);line-height:1.8}
 
-      @media (max-width: 1024px) {
-        .global-grid {
-          grid-template-columns: 1fr 1fr;
+        @media(max-width:960px){
+            .why-layout{grid-template-columns:1fr}
+            .why-img-col{height:360px;order:-1}
+            .why-content-col{padding:48px 0 0}
         }
-        .global-item:nth-child(5n) {
-          border-right: 1px solid rgba(255, 255, 255, 0.06);
-        }
-        .global-item:nth-child(2n) {
-          border-right: none;
-        }
-      }
-      @media (max-width: 640px) {
-        .global-grid {
-          grid-template-columns: 1fr;
-        }
-        .global-item {
-          border-right: none !important;
-        }
-      }
 
-      /* ── VISION ── */
-      .vision-layout {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0;
-        min-height: 500px;
-      }
-      .vision-col {
-        padding: 80px 64px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-      .vision-col:first-child {
-        border-right: 1px solid var(--g200);
-      }
-      .vision-col .sec-label {
-        margin-bottom: 24px;
-      }
-      .vision-col h3 {
-        font-family: var(--serif);
-        font-size: clamp(24px, 3vw, 32px);
-        font-weight: 900;
-        line-height: 1.3;
-        margin-bottom: 20px;
-        letter-spacing: -0.5px;
-      }
-      .vision-col p {
-        font-size: 16px;
-        color: var(--g500);
-        line-height: 1.85;
-      }
-      .vision-col .vision-img {
-        margin-top: 32px;
-        height: 180px;
-        overflow: hidden;
-      }
-      .vision-col .vision-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: grayscale(60%) contrast(1.05);
-      }
+        /* ── GLOBAL ── */
+        .global{position:relative;overflow:hidden}
+        .global-bg{position:absolute;inset:0;z-index:0}
+        .global-bg img{width:100%;height:100%;object-fit:cover;opacity:.08;filter:grayscale(100%)}
+        .global-content{position:relative;z-index:1;background:var(--g700);color:var(--white)}
+        .global .sec-label{color:rgba(255,255,255,.25);font-size:18px;letter-spacing:6px}
+        .global .sec-title{color:var(--white)}
+        .global .rule{background:rgba(255,255,255,.15)}
+        .global-intro{font-size:19px;line-height:1.85;color:rgba(255,255,255,.4);max-width:600px;margin-bottom:72px}
+        .global-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:1px solid rgba(255,255,255,.08)}
+        .global-item{padding:44px 32px;border-right:1px solid rgba(255,255,255,.06);position:relative;transition:background .3s}
+        .global-item:last-child{border-right:none}
+        .global-item:hover{background:rgba(255,255,255,.03)}
+        .global-code{font-size:48px;font-weight:900;letter-spacing:3px;line-height:1;color:rgba(255,255,255,.9);margin-bottom:16px;font-family:var(--sans)}
+        .global-item h3{font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:4px;line-height:1.3}
+        .global-item .h3-en{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:16px}
+        .global-item p{font-size:15px;color:rgba(255,255,255,.4);line-height:1.65}
+        .global-line{width:24px;height:2px;background:var(--purple);margin-bottom:14px;opacity:.6}
 
-      @media (max-width: 768px) {
-        .vision-layout {
-          grid-template-columns: 1fr;
-        }
-        .vision-col:first-child {
-          border-right: none;
-          border-bottom: 1px solid var(--g200);
-        }
-        .vision-col {
-          padding: 48px 0;
-        }
-      }
+        @media(max-width:1024px){.global-grid{grid-template-columns:1fr 1fr}.global-item:nth-child(5n){border-right:1px solid rgba(255,255,255,.06)}.global-item:nth-child(2n){border-right:none}}
+        @media(max-width:640px){.global-grid{grid-template-columns:1fr}.global-item{border-right:none!important}}
 
-      /* ── CTA ── */
-      .cta {
-        background: var(--black);
-        color: #fff;
-        padding: 120px 0;
-        text-align: center;
-      }
-      .cta h2 {
-        font-family: var(--serif);
-        font-size: clamp(32px, 5vw, 56px);
-        font-weight: 900;
-        line-height: 1.15;
-        letter-spacing: -1px;
-        margin-bottom: 16px;
-      }
-      .cta h2 em {
-        font-style: normal;
-        color: #a8a3f0;
-      }
-      .cta p {
-        font-size: 16px;
-        color: rgba(255, 255, 255, 0.4);
-        margin-bottom: 40px;
-        max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
-        line-height: 1.7;
-      }
-      .cta .btn-fill {
-        background: var(--purple);
-        color: #fff;
-      }
-      .cta .btn-fill:hover {
-        background: #7c6fe0;
-      }
+        /* ── VISION ── */
+        .vision-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:500px}
+        .vision-col{padding:80px 64px;display:flex;flex-direction:column;justify-content:center}
+        .vision-col:first-child{border-right:1px solid var(--g200)}
+        .vision-col .sec-label{margin-bottom:24px}
+        .vision-col h3{font-family:var(--serif);font-size:clamp(24px,3vw,32px);font-weight:900;line-height:1.3;margin-bottom:20px;letter-spacing:-.5px}
+        .vision-col p{font-size:16px;color:var(--g500);line-height:1.85}
+        .vision-col .vision-img{margin-top:32px;height:180px;overflow:hidden}
+        .vision-col .vision-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(60%) contrast(1.05)}
 
-      /* ── FOOTER ── */
-      .footer {
-        background: var(--black);
-        color: rgba(255, 255, 255, 0.4);
-        padding: 64px 0 0;
-      }
-      .footer-in {
-        max-width: 1440px;
-        margin: 0 auto;
-        padding: 0 48px;
-      }
-      .footer-top {
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-        gap: 48px;
-        margin-bottom: 56px;
-      }
-      .footer-logo {
-        height: 85px;
-        margin-bottom: 14px;
-      }
-      .footer-brand {
-        font-family: var(--serif);
-        font-size: 16px;
-        font-weight: 700;
-        color: rgba(255, 255, 255, 0.8);
-        margin-bottom: 2px;
-      }
-      .footer-brand-en {
-        font-size: 10px;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.35);
-        margin-bottom: 12px;
-      }
-      .footer-top > p {
-        font-size: 15px;
-        line-height: 1.7;
-        color: rgba(255, 255, 255, 0.45);
-        max-width: 260px;
-      }
-      .footer-top h4 {
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 2.5px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.65);
-        margin-bottom: 16px;
-      }
-      .footer-links {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .footer-links a {
-        font-size: 15px;
-        color: rgba(255, 255, 255, 0.45);
-        transition: color 0.2s;
-      }
-      .footer-links a:hover {
-        color: rgba(255, 255, 255, 0.6);
-      }
-      .footer-muted {
-        font-size: 15px;
-        color: rgba(255, 255, 255, 0.45);
-      }
-      .footer-bottom {
-        padding: 28px 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 14px;
-        letter-spacing: 0.5px;
-        color: rgba(255, 255, 255, 0.6);
-      }
+        @media(max-width:768px){
+            .vision-layout{grid-template-columns:1fr}
+            .vision-col:first-child{border-right:none;border-bottom:1px solid var(--g200)}
+            .vision-col{padding:48px 0}
+        }
 
-      @media (max-width: 768px) {
-        .footer-top {
-          grid-template-columns: 1fr 1fr;
-        }
-        .footer-bottom {
-          flex-direction: column;
-          gap: 4px;
-        }
-      }
-      @media (max-width: 480px) {
-        .footer-top {
-          grid-template-columns: 1fr;
-        }
-        .footer-in {
-          padding: 0 24px;
-        }
-      }
+        /* ── CTA ── */
+        .cta{background:var(--black);color:#fff;padding:120px 0;text-align:center}
+        .cta h2{font-family:var(--serif);font-size:clamp(32px,5vw,56px);font-weight:900;line-height:1.15;letter-spacing:-1px;margin-bottom:16px}
+        .cta h2 em{font-style:normal;color:#a8a3f0}
+        .cta p{font-size:16px;color:rgba(255,255,255,.4);margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7}
+        .cta .btn-fill{background:var(--purple);color:#fff}
+        .cta .btn-fill:hover{background:#7c6fe0}
 
-      /* ── MOBILE MENU ── */
-      .mobile-menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: #fff;
-        z-index: 300;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 32px;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s;
-      }
-      .mobile-menu.open {
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .mobile-menu a {
-        font-family: var(--serif);
-        font-size: 28px;
-        font-weight: 700;
-        color: var(--black);
-      }
-      .mobile-menu-close {
-        position: absolute;
-        top: 24px;
-        right: 24px;
-        width: 32px;
-        height: 32px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 24px;
-        color: var(--black);
-      }
+        /* ── FOOTER ── */
+        .footer{background:var(--black);color:rgba(255,255,255,.4);padding:64px 0 0}
+        .footer-in{max-width:1440px;margin:0 auto;padding:0 48px}
+        .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
+        .footer-logo{height:85px;margin-bottom:14px}
+        .footer-brand{font-family:var(--serif);font-size:16px;font-weight:700;color:rgba(255,255,255,.8);margin-bottom:2px}
+        .footer-brand-en{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:12px}
+        .footer-top>p{font-size:15px;line-height:1.7;color:rgba(255,255,255,.45);max-width:260px}
+        .footer-top h4{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:16px}
+        .footer-links{display:flex;flex-direction:column;gap:8px}
+        .footer-links a{font-size:15px;color:rgba(255,255,255,.45);transition:color .2s}
+        .footer-links a:hover{color:rgba(255,255,255,.6)}
+        .footer-bottom{padding:28px 0;border-top:1px solid rgba(255,255,255,.15);display:flex;justify-content:space-between;align-items:center;font-size:14px;letter-spacing:.5px;color:rgba(255,255,255,.6)}
+
+        @media(max-width:768px){.footer-top{grid-template-columns:1fr 1fr}.footer-bottom{flex-direction:column;gap:4px}}
+        @media(max-width:480px){.footer-top{grid-template-columns:1fr}.footer-in{padding:0 24px}}
+
+        /* ── MOBILE MENU ── */
+        .mobile-menu{position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:300;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:32px;opacity:0;pointer-events:none;transition:opacity .3s}
+        .mobile-menu.open{opacity:1;pointer-events:auto}
+        .mobile-menu a{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--black)}
+        .mobile-menu-close{position:absolute;top:24px;right:24px;width:32px;height:32px;background:none;border:none;cursor:pointer;font-size:24px;color:var(--black)}
     </style>
-  </head>
+</head>
+<body id="top">
 
-  <body id="top">
     <!-- NAV -->
-    <nav class="nav" id="mainNav" aria-label="主导航">
-      <div class="nav-in">
-        <a href="#top" class="nav-logo" aria-label="返回顶部">
-          <img src="./assets/logo.png" alt="Jiahe" />
-          <span class="nav-brand">加禾文化科技</span>
-        </a>
-        <div class="nav-right">
-          <a href="#about" class="nav-link" data-zh="关于" data-en="About">关于</a>
-          <a href="#services" class="nav-link" data-zh="服务" data-en="Services">服务</a>
-          <a href="#hub" class="nav-link" data-zh="平台" data-en="Platform">平台</a>
-          <a href="#global" class="nav-link" data-zh="布局" data-en="Global">布局</a>
-          <a href="#vision" class="nav-link" data-zh="愿景" data-en="Vision">愿景</a>
-          <button class="nav-lang" id="langToggleBtn" type="button">EN</button>
+    <nav class="nav" id="mainNav">
+        <div class="nav-in">
+            <a href="#top" class="nav-logo" aria-label="返回顶部">
+                <img src="assets/logo.png" alt="Jiahe">
+                <span class="nav-brand">加禾文化科技</span>
+            </a>
+            <div class="nav-right">
+                <a href="#about" class="nav-link" data-zh="关于" data-en="About">关于</a>
+                <a href="#services" class="nav-link" data-zh="服务" data-en="Services">服务</a>
+                <a href="#hub" class="nav-link" data-zh="平台" data-en="Platform">平台</a>
+                <a href="#global" class="nav-link" data-zh="布局" data-en="Global">布局</a>
+                <a href="#vision" class="nav-link" data-zh="愿景" data-en="Vision">愿景</a>
+                <button class="nav-lang" onclick="toggleLang()">EN</button>
+            </div>
+            <button class="nav-menu-btn" onclick="openMenu()" aria-label="打开菜单"><span></span><span></span><span></span></button>
         </div>
-        <button
-          class="nav-menu-btn"
-          id="menuOpenBtn"
-          type="button"
-          aria-label="打开菜单"
-          aria-controls="mobileMenu"
-          aria-expanded="false"
-        >
-          <span></span><span></span><span></span>
-        </button>
-      </div>
     </nav>
 
     <!-- MOBILE MENU -->
-    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-      <button class="mobile-menu-close" id="menuCloseBtn" type="button" aria-label="关闭菜单">
-        ✕
-      </button>
-      <a href="#about" data-zh="关于加禾" data-en="About Jiahe">关于加禾</a>
-      <a href="#services" data-zh="服务体系" data-en="Services">服务体系</a>
-      <a href="#hub" data-zh="HyperCore平台" data-en="HyperCore">HyperCore平台</a>
-      <a href="#global" data-zh="全球布局" data-en="Global">全球布局</a>
-      <a href="#vision" data-zh="愿景使命" data-en="Vision">愿景使命</a>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="closeMenu()" aria-label="关闭菜单">✕</button>
+        <a href="#about" onclick="closeMenu()" data-zh="关于加禾" data-en="About Jiahe">关于加禾</a>
+        <a href="#services" onclick="closeMenu()" data-zh="服务体系" data-en="Services">服务体系</a>
+        <a href="#hub" onclick="closeMenu()" data-zh="HyperCore平台" data-en="HyperCore">HyperCore平台</a>
+        <a href="#global" onclick="closeMenu()" data-zh="全球布局" data-en="Global">全球布局</a>
+        <a href="#vision" onclick="closeMenu()" data-zh="愿景使命" data-en="Vision">愿景使命</a>
     </div>
 
     <!-- HERO -->
-    <section class="hero" aria-label="首页横幅">
-      <div class="hero-bg">
-        <img src="https://s.coze.cn/image/WMODAR1sVHQ/" alt="Hong Kong Victoria Harbour" />
-        <div class="hero-overlay"></div>
-      </div>
-      <div class="hero-inner">
-        <div class="hero-kicker" data-zh="企业全生命周期战略合伙人" data-en="STRATEGIC PARTNER FOR THE FULL BUSINESS LIFECYCLE">
-          企业全生命周期战略合伙人
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="https://s.coze.cn/image/WMODAR1sVHQ/" alt="Hong Kong Victoria Harbour">
+            <div class="hero-overlay"></div>
         </div>
-        <h1 data-zh="从零到IPO，<br><em>加禾</em>始终在场" data-en="From Zero to IPO,<br><em>Jiahe</em> Is Always There">
-          从零到IPO，<br /><em>加禾</em>始终在场
-        </h1>
-        <div class="hero-body">
-          <p
-            data-zh="加禾文化科技有限公司，2021年成立于香港。以AI技术为核心驱动力，以专业智囊团为全程伙伴——让创业者以一人公司的轻盈，拥有企业级的全球竞争力。"
-            data-en="Jiahe Culture Technology Co., Limited, established in Hong Kong, 2021. AI-powered, expert-guided — enterprise-grade global competitiveness with one-person company agility."
-          >
-            加禾文化科技有限公司，2021年成立于香港。以AI技术为核心驱动力，以专业智囊团为全程伙伴——让创业者以一人公司的轻盈，拥有企业级的全球竞争力。
-          </p>
-          <p data-zh="一个人，也是一支队伍。" data-en="From zero to IPO, we walk with you.">From zero to IPO, we walk with you.</p>
+        <div class="hero-inner">
+            <div class="hero-kicker" data-zh="企业全生命周期战略合伙人" data-en="STRATEGIC PARTNER FOR THE FULL BUSINESS LIFECYCLE">企业全生命周期战略合伙人</div>
+            <h1 data-zh="从零到IPO，<br><em>加禾</em>始终在场" data-en="From Zero to IPO,<br><em>Jiahe</em> Is Always There">从零到IPO，<br><em>加禾</em>始终在场</h1>
+            <div class="hero-body">
+                <p data-zh="加禾文化科技有限公司，2021年成立于香港。以AI技术为核心驱动力，以专业智囊团为全程伙伴——让创业者以一人公司的轻盈，拥有企业级的全球竞争力。" data-en="Jiahe Culture Technology Co., Limited, established in Hong Kong, 2021. AI-powered, expert-guided — enterprise-grade global competitiveness with one-person company agility.">加禾文化科技有限公司，2021年成立于香港。以AI技术为核心驱动力，以专业智囊团为全程伙伴——让创业者以一人公司的轻盈，拥有企业级的全球竞争力。</p>
+                <p data-zh="一个人，也是一支队伍。" data-en="From zero to IPO, we walk with you.">From zero to IPO, we walk with you.</p>
+            </div>
+            <div class="hero-ctas">
+                <a href="#services" class="btn btn-fill" data-zh="探索服务 →" data-en="EXPLORE SERVICES →">探索服务 →</a>
+                <a href="#hub" class="btn btn-ghost" data-zh="HyperCore OPC Hub" data-en="HYPERCORE OPC HUB">HyperCore OPC Hub</a>
+            </div>
         </div>
-        <div class="hero-ctas">
-          <a href="#services" class="btn btn-fill" data-zh="探索服务 →" data-en="EXPLORE SERVICES →">探索服务 →</a>
-          <a href="#hub" class="btn btn-ghost" data-zh="HyperCore OPC Hub" data-en="HYPERCORE OPC HUB">HyperCore OPC Hub</a>
+        <div class="hero-stats-bar">
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-num"><span class="p">6</span></div>
+                    <div class="hero-stat-lbl" data-zh="服务板块" data-en="Service Pillars">服务板块</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num"><span class="p">5</span></div>
+                    <div class="hero-stat-lbl" data-zh="注册地覆盖" data-en="Jurisdictions">注册地覆盖</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num"><span class="g">7</span><span class="u">+</span></div>
+                    <div class="hero-stat-lbl" data-zh="语言支持" data-en="Languages Supported">语言支持</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num"><span class="g">100</span><span class="u">%</span></div>
+                    <div class="hero-stat-lbl" data-zh="AI驱动" data-en="AI-Powered">AI驱动</div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="hero-stats-bar">
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <div class="hero-stat-num"><span class="p">6</span></div>
-            <div class="hero-stat-lbl" data-zh="服务板块" data-en="Service Pillars">服务板块</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-num"><span class="p">5</span></div>
-            <div class="hero-stat-lbl" data-zh="注册地覆盖" data-en="Jurisdictions">注册地覆盖</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-num"><span class="g">7</span><span class="u">+</span></div>
-            <div class="hero-stat-lbl" data-zh="语言支持" data-en="Languages Supported">语言支持</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-num"><span class="g">100</span><span class="u">%</span></div>
-            <div class="hero-stat-lbl" data-zh="AI驱动" data-en="AI-Powered">AI驱动</div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- ABOUT -->
     <section class="sec" id="about">
-      <div class="sec-in sec-in--flush">
-        <div class="about-layout">
-          <div class="about-text-col">
-            <div class="sec-label" data-zh="关于加禾" data-en="About Jiahe">关于加禾</div>
-            <div class="sec-title" data-zh="不是服务提供商，<br>是<em>战略级伙伴</em>" data-en="Not a service provider.<br>A <em>strategic partner.</em>">
-              不是服务提供商，<br />是<em>战略级伙伴</em>
-            </div>
-            <div class="rule"></div>
-            <p
-              class="about-lead"
-              data-zh="加禾文化科技有限公司2021年成立于香港，是一家以<em>AI技术</em>为核心驱动的企业服务集团。从公司注册的第一份文件，到全球化扩张的每一步，再到IPO钟声敲响的那一刻——加禾始终在场。"
-              data-en="Jiahe Culture Technology Co., Limited, established in Hong Kong in 2021, is an <em>AI-powered</em> enterprise services group. From the first incorporation document, through every step of global expansion, to the moment the IPO bell rings — Jiahe is always there."
-            >
-              加禾文化科技有限公司2021年成立于香港，是一家以<em>AI技术</em>为核心驱动的企业服务集团。从公司注册的第一份文件，到全球化扩张的每一步，再到IPO钟声敲响的那一刻——加禾始终在场。
-            </p>
-            <div class="about-pull" data-zh="在AI重塑商业范式的时代，一个人也能拥有企业级的战斗力。" data-en="In the era where AI reshapes business paradigms, one person can command enterprise-grade capabilities.">
-              在AI重塑商业范式的时代，一个人也能拥有企业级的战斗力。
-            </div>
-            <p
-              class="about-body"
-              data-zh="这正是我们构建 HyperCore OPC Hub 的初衷——让一人公司（OPC, One Person Company）创业者不再孤军奋战。我们提供的不只是单点服务，而是贯穿企业全生命周期的系统性支持。"
-              data-en="This is precisely why we built HyperCore OPC Hub — so that One Person Company (OPC) entrepreneurs never fight alone. We don't offer point-in-time services — we provide systematic, end-to-end support across the full business lifecycle."
-            >
-              这正是我们构建 HyperCore OPC Hub 的初衷——让一人公司（OPC, One Person Company）创业者不再孤军奋战。我们提供的不只是单点服务，而是贯穿企业全生命周期的系统性支持。
-            </p>
-          </div>
-          <div class="about-img-col">
-            <img src="https://s.coze.cn/image/xY416Slw7uw/" alt="Professional Workspace" loading="lazy" decoding="async" />
-            <div class="about-img-overlay">
-              <div class="about-card">
-                <div class="about-card-top">
-                  <img src="./assets/logo.png" alt="Jiahe" loading="lazy" decoding="async" />
-                  <div>
-                    <div class="about-card-name">加禾文化科技</div>
-                    <div class="about-card-name-en">JIAHE CULTURE TECHNOLOGY</div>
-                  </div>
+        <div class="sec-in" style="padding:0;max-width:1440px">
+            <div class="about-layout">
+                <div class="about-text-col">
+                    <div class="sec-label" data-zh="关于加禾" data-en="About Jiahe">关于加禾</div>
+                    <div class="sec-title" data-zh="不是服务提供商，<br>是<em>战略级伙伴</em>" data-en="Not a service provider.<br>A <em>strategic partner.</em>">不是服务提供商，<br>是<em>战略级伙伴</em></div>
+                    <div class="rule"></div>
+                    <p class="about-lead" data-zh="加禾文化科技有限公司2021年成立于香港，是一家以<em>AI技术</em>为核心驱动的企业服务集团。从公司注册的第一份文件，到全球化扩张的每一步，再到IPO钟声敲响的那一刻——加禾始终在场。" data-en="Jiahe Culture Technology Co., Limited, established in Hong Kong in 2021, is an <em>AI-powered</em> enterprise services group. From the first incorporation document, through every step of global expansion, to the moment the IPO bell rings — Jiahe is always there.">加禾文化科技有限公司2021年成立于香港，是一家以<em>AI技术</em>为核心驱动的企业服务集团。从公司注册的第一份文件，到全球化扩张的每一步，再到IPO钟声敲响的那一刻——加禾始终在场。</p>
+                    <div class="about-pull" data-zh="在AI重塑商业范式的时代，一个人也能拥有企业级的战斗力。" data-en="In the era where AI reshapes business paradigms, one person can command enterprise-grade capabilities.">在AI重塑商业范式的时代，一个人也能拥有企业级的战斗力。</div>
+                    <p class="about-body" data-zh="这正是我们构建 HyperCore OPC Hub 的初衷——让一人公司（OPC, One Person Company）创业者不再孤军奋战。我们提供的不只是单点服务，而是贯穿企业全生命周期的系统性支持。" data-en="This is precisely why we built HyperCore OPC Hub — so that One Person Company (OPC) entrepreneurs never fight alone. We don't offer point-in-time services — we provide systematic, end-to-end support across the full business lifecycle.">这正是我们构建 HyperCore OPC Hub 的初衷——让一人公司（OPC, One Person Company）创业者不再孤军奋战。我们提供的不只是单点服务，而是贯穿企业全生命周期的系统性支持。</p>
                 </div>
-                <div class="about-card-row"><span class="l">Registration</span><span class="v">CR No. 3095181</span></div>
-                <div class="about-card-row"><span class="l" data-zh="成立" data-en="Established">成立</span><span class="v" data-zh="2021.10.21" data-en="Oct 21, 2021">2021.10.21</span></div>
-                <div class="about-card-row"><span class="l" data-zh="注册地" data-en="Jurisdiction">注册地</span><span class="v" data-zh="中国香港" data-en="Hong Kong, China">中国香港</span></div>
-                <div class="about-card-row"><span class="l">Website</span><span class="v">www.jh8.ai</span></div>
-                <div class="about-card-row"><span class="l">WeChat</span><span class="v">HKDoubleA</span></div>
-              </div>
+                <div class="about-img-col">
+                    <img src="https://s.coze.cn/image/xY416Slw7uw/" alt="Professional Workspace">
+                    <div class="about-img-overlay">
+                        <div class="about-card">
+                            <div class="about-card-top">
+                                <img src="assets/logo.png" alt="Jiahe" loading="lazy" decoding="async">
+                                <div>
+                                    <div class="about-card-name">加禾文化科技</div>
+                                    <div class="about-card-name-en">JIAHE CULTURE TECHNOLOGY</div>
+                                </div>
+                            </div>
+                            <div class="about-card-row"><span class="l">Registration</span><span class="v">CR No. 3095181</span></div>
+                            <div class="about-card-row"><span class="l" data-zh="成立" data-en="Established">成立</span><span class="v" data-zh="2021.10.21" data-en="Oct 21, 2021">2021.10.21</span></div>
+                            <div class="about-card-row"><span class="l" data-zh="注册地" data-en="Jurisdiction">注册地</span><span class="v" data-zh="中国香港" data-en="Hong Kong, China">中国香港</span></div>
+                            <div class="about-card-row"><span class="l">Website</span><span class="v">www.jh8.ai</span></div>
+                            <div class="about-card-row"><span class="l">WeChat</span><span class="v">HKDoubleA</span></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
 
     <!-- SERVICES -->
-    <section class="sec" id="services" style="background: var(--off)">
-      <div class="sec-in">
-        <div class="svc-header">
-          <div>
-            <div class="sec-label" data-zh="服务体系" data-en="Services">服务体系</div>
-            <div class="sec-title" data-zh="六大板块，<em>全生命周期</em>覆盖" data-en="Six Pillars, <em>Full Lifecycle</em> Coverage">六大板块，<em>全生命周期</em>覆盖</div>
-            <div class="rule"></div>
-          </div>
-          <div
-            class="svc-header-right"
-            data-zh="从注册到上市，从合规到融资——加禾的服务体系不是菜单式单选，而是贯穿企业每一个关键阶段的系统化支持。"
-            data-en="From incorporation to IPO, from compliance to capital — Jiahe's service system is not an à la carte menu, but systematic support across every critical stage."
-          >
-            从注册到上市，从合规到融资——加禾的服务体系不是菜单式单选，而是贯穿企业每一个关键阶段的系统化支持。
-          </div>
+    <section class="sec" id="services" style="background:var(--off)">
+        <div class="sec-in">
+            <div class="svc-header">
+                <div>
+                    <div class="sec-label" data-zh="服务体系" data-en="Services">服务体系</div>
+                    <div class="sec-title" data-zh="六大板块，<em>全生命周期</em>覆盖" data-en="Six Pillars, <em>Full Lifecycle</em> Coverage">六大板块，<em>全生命周期</em>覆盖</div>
+                    <div class="rule"></div>
+                </div>
+                <div class="svc-header-right" data-zh="从注册到上市，从合规到融资——加禾的服务体系不是菜单式单选，而是贯穿企业每一个关键阶段的系统化支持。" data-en="From incorporation to IPO, from compliance to capital — Jiahe's service system is not an à la carte menu, but systematic support across every critical stage.">从注册到上市，从合规到融资——加禾的服务体系不是菜单式单选，而是贯穿企业每一个关键阶段的系统化支持。</div>
+            </div>
+            <div class="svc-list">
+                <div class="svc-item">
+                    <div class="svc-num">01</div>
+                    <div><div class="svc-name" data-zh="工商注册" data-en="Company Incorporation">工商注册</div><div class="svc-name-en">COMPANY INCORPORATION</div></div>
+                    <div class="svc-desc" data-zh="全球注册地智能匹配，专业完成跨境公司设立。覆盖香港、新加坡、BVI、开曼等主流注册地。" data-en="Intelligent jurisdiction matching, professional cross-border incorporation across Hong Kong, Singapore, BVI, Cayman and beyond.">全球注册地智能匹配，专业完成跨境公司设立。覆盖香港、新加坡、BVI、开曼等主流注册地。</div>
+                </div>
+                <div class="svc-item">
+                    <div class="svc-num">02</div>
+                    <div><div class="svc-name" data-zh="财税规划" data-en="Tax & Financial Planning">财税规划</div><div class="svc-name-en">TAX & FINANCIAL PLANNING</div></div>
+                    <div class="svc-desc" data-zh="跨境架构设计，合规税务优化。帮助企业构建最优的跨境资金与税务架构。" data-en="Cross-border structure design, compliant tax optimization for optimal financial architecture.">跨境架构设计，合规税务优化。帮助企业构建最优的跨境资金与税务架构。</div>
+                </div>
+                <div class="svc-item">
+                    <div class="svc-num">03</div>
+                    <div><div class="svc-name" data-zh="法律合规" data-en="Legal Compliance">法律合规</div><div class="svc-name-en">LEGAL COMPLIANCE</div></div>
+                    <div class="svc-desc" data-zh="全链路法务支持，从合同到监管。确保企业每个环节都在合规框架内运行。" data-en="End-to-end legal support, from contracts to regulatory compliance.">全链路法务支持，从合同到监管。确保企业每个环节都在合规框架内运行。</div>
+                </div>
+                <div class="svc-item">
+                    <div class="svc-num">04</div>
+                    <div><div class="svc-name" data-zh="融资并购" data-en="Financing & M&A Advisory">融资并购</div><div class="svc-name-en">FINANCING & M&A ADVISORY</div></div>
+                    <div class="svc-desc" data-zh="资本对接与并购策略，助力企业跨越式增长。连接全球资本网络与战略投资者。" data-en="Capital matching and M&A strategy for leapfrog growth, connecting global capital networks with strategic investors.">资本对接与并购策略，助力企业跨越式增长。连接全球资本网络与战略投资者。</div>
+                </div>
+                <div class="svc-item">
+                    <div class="svc-num">05</div>
+                    <div><div class="svc-name" data-zh="战略咨询" data-en="Strategic Consulting">战略咨询</div><div class="svc-name-en">STRATEGIC CONSULTING</div></div>
+                    <div class="svc-desc" data-zh="从商业模式到出海落地，提供可执行的战略蓝图。帮助企业找到增长的最优路径。" data-en="From business model to global expansion — actionable strategic blueprints for optimal growth.">从商业模式到出海落地，提供可执行的战略蓝图。帮助企业找到增长的最优路径。</div>
+                </div>
+                <div class="svc-item">
+                    <div class="svc-num">06</div>
+                    <div><div class="svc-name" data-zh="技术赋能" data-en="Technology Enablement">技术赋能</div><div class="svc-name-en">TECHNOLOGY ENABLEMENT</div></div>
+                    <div class="svc-desc" data-zh="AI工具与数字化系统，显著降低运营成本，大幅提升业务效率。用技术重新定义企业服务的效率边界。" data-en="AI tools and digital systems — significantly reducing operational costs and substantially boosting business efficiency. Redefining the efficiency frontier.">AI工具与数字化系统，显著降低运营成本，大幅提升业务效率。用技术重新定义企业服务的效率边界。</div>
+                </div>
+            </div>
         </div>
-        <div class="svc-list">
-          <div class="svc-item">
-            <div class="svc-num">01</div>
-            <div>
-              <div class="svc-name" data-zh="工商注册" data-en="Company Incorporation">工商注册</div>
-              <div class="svc-name-en">COMPANY INCORPORATION</div>
-            </div>
-            <div
-              class="svc-desc"
-              data-zh="全球注册地智能匹配，专业完成跨境公司设立。覆盖香港、新加坡、BVI、开曼等主流注册地。"
-              data-en="Intelligent jurisdiction matching, professional cross-border incorporation across Hong Kong, Singapore, BVI, Cayman and beyond."
-            >
-              全球注册地智能匹配，专业完成跨境公司设立。覆盖香港、新加坡、BVI、开曼等主流注册地。
-            </div>
-          </div>
-          <div class="svc-item">
-            <div class="svc-num">02</div>
-            <div>
-              <div class="svc-name" data-zh="财税规划" data-en="Tax & Financial Planning">财税规划</div>
-              <div class="svc-name-en">TAX &amp; FINANCIAL PLANNING</div>
-            </div>
-            <div class="svc-desc" data-zh="跨境架构设计，合规税务优化。帮助企业构建最优的跨境资金与税务架构。" data-en="Cross-border structure design, compliant tax optimization for optimal financial architecture.">
-              跨境架构设计，合规税务优化。帮助企业构建最优的跨境资金与税务架构。
-            </div>
-          </div>
-          <div class="svc-item">
-            <div class="svc-num">03</div>
-            <div>
-              <div class="svc-name" data-zh="法律合规" data-en="Legal Compliance">法律合规</div>
-              <div class="svc-name-en">LEGAL COMPLIANCE</div>
-            </div>
-            <div class="svc-desc" data-zh="全链路法务支持，从合同到监管。确保企业每个环节都在合规框架内运行。" data-en="End-to-end legal support, from contracts to regulatory compliance.">
-              全链路法务支持，从合同到监管。确保企业每个环节都在合规框架内运行。
-            </div>
-          </div>
-          <div class="svc-item">
-            <div class="svc-num">04</div>
-            <div>
-              <div class="svc-name" data-zh="融资并购" data-en="Financing & M&A Advisory">融资并购</div>
-              <div class="svc-name-en">FINANCING &amp; M&amp;A ADVISORY</div>
-            </div>
-            <div class="svc-desc" data-zh="资本对接与并购策略，助力企业跨越式增长。连接全球资本网络与战略投资者。" data-en="Capital matching and M&A strategy for leapfrog growth, connecting global capital networks with strategic investors.">
-              资本对接与并购策略，助力企业跨越式增长。连接全球资本网络与战略投资者。
-            </div>
-          </div>
-          <div class="svc-item">
-            <div class="svc-num">05</div>
-            <div>
-              <div class="svc-name" data-zh="战略咨询" data-en="Strategic Consulting">战略咨询</div>
-              <div class="svc-name-en">STRATEGIC CONSULTING</div>
-            </div>
-            <div class="svc-desc" data-zh="从商业模式到出海落地，提供可执行的战略蓝图。帮助企业找到增长的最优路径。" data-en="From business model to global expansion — actionable strategic blueprints for optimal growth.">
-              从商业模式到出海落地，提供可执行的战略蓝图。帮助企业找到增长的最优路径。
-            </div>
-          </div>
-          <div class="svc-item">
-            <div class="svc-num">06</div>
-            <div>
-              <div class="svc-name" data-zh="技术赋能" data-en="Technology Enablement">技术赋能</div>
-              <div class="svc-name-en">TECHNOLOGY ENABLEMENT</div>
-            </div>
-            <div class="svc-desc" data-zh="AI工具与数字化系统，显著降低运营成本，大幅提升业务效率。用技术重新定义企业服务的效率边界。" data-en="AI tools and digital systems — significantly reducing operational costs and substantially boosting business efficiency. Redefining the efficiency frontier.">
-              AI工具与数字化系统，显著降低运营成本，大幅提升业务效率。用技术重新定义企业服务的效率边界。
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- HYPERCORE -->
     <section class="sec hub" id="hub">
-      <div class="sec-in">
-        <div class="hub-layout">
-          <div class="hub-sticky">
-            <div class="hub-tag">PLATFORM</div>
-            <div class="hub-name" data-zh="HyperCore<br>OPC Hub" data-en="HyperCore<br>OPC Hub">HyperCore<br />OPC Hub</div>
-            <div class="hub-name-en">ONE-STOP TECHNOLOGY PLATFORM FOR OPC</div>
-            <p class="hub-desc" data-zh="加禾自主研发的一站式OPC技术平台，专为一人公司创业者打造。" data-en="Jiahe's proprietary one-stop OPC technology platform, purpose-built for One Person Company entrepreneurs.">
-              加禾自主研发的一站式OPC技术平台，专为一人公司创业者打造。
-            </p>
-            <p class="hub-desc-en" data-zh="无需编程、无需组建团队，即可拥有企业级运营系统。" data-en="No code. No team. Enterprise-grade systems from day one.">
-              No code. No team. Enterprise-grade systems from day one.
-            </p>
-            <div class="hub-img">
-              <img src="https://s.coze.cn/image/uo5PQ5cBNTY/" alt="Global Network" loading="lazy" decoding="async" />
+        <div class="sec-in">
+            <div class="hub-layout">
+                <div class="hub-sticky">
+                    <div class="hub-tag">PLATFORM</div>
+                    <div class="hub-name" data-zh="HyperCore<br>OPC Hub" data-en="HyperCore<br>OPC Hub">HyperCore<br>OPC Hub</div>
+                    <div class="hub-name-en">ONE-STOP TECHNOLOGY PLATFORM FOR OPC</div>
+                    <p class="hub-desc" data-zh="加禾自主研发的一站式OPC技术平台，专为一人公司创业者打造。" data-en="Jiahe's proprietary one-stop OPC technology platform, purpose-built for One Person Company entrepreneurs.">加禾自主研发的一站式OPC技术平台，专为一人公司创业者打造。</p>
+                    <p class="hub-desc-en" data-zh="无需编程、无需组建团队，即可拥有企业级运营系统。" data-en="No code. No team. Enterprise-grade systems from day one.">No code. No team. Enterprise-grade systems from day one.</p>
+                    <div class="hub-img">
+                        <img src="https://s.coze.cn/image/uo5PQ5cBNTY/" alt="Global Network">
+                    </div>
+                </div>
+                <div>
+                    <div class="feat-list">
+                        <div class="feat">
+                            <div class="feat-ico"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6z"/></svg></div>
+                            <div>
+                                <h4 data-zh="零代码模块组装" data-en="Zero-code Module Assembly">零代码模块组装</h4>
+                                <div class="h4-en">ZERO-CODE MODULE ASSEMBLY</div>
+                                <p data-zh="无需编程，拖拽式搭建业务系统" data-en="Build business systems without programming, drag-and-drop">无需编程，拖拽式搭建业务系统</p>
+                            </div>
+                        </div>
+                        <div class="feat">
+                            <div class="feat-ico"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5m14.8.8"/></svg></div>
+                            <div>
+                                <h4 data-zh="AI智能配置" data-en="AI-powered Configuration">AI智能配置</h4>
+                                <div class="h4-en">AI-POWERED CONFIGURATION</div>
+                                <p data-zh="根据行业和地区自动推荐最优方案" data-en="Automatically recommending optimal solutions by industry and jurisdiction">根据行业和地区自动推荐最优方案</p>
+                            </div>
+                        </div>
+                        <div class="feat">
+                            <div class="feat-ico"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg></div>
+                            <div>
+                                <h4 data-zh="全球园区网络" data-en="Global Hub Network">全球园区网络</h4>
+                                <div class="h4-en">GLOBAL HUB NETWORK</div>
+                                <p data-zh="连接中国大陆、香港、新加坡、马来西亚、BVI等注册地与产业园区" data-en="Connecting jurisdictions and business hubs across China, Hong Kong, Singapore, Malaysia, BVI and beyond">连接中国大陆、香港、新加坡、马来西亚、BVI等注册地与产业园区</p>
+                            </div>
+                        </div>
+                        <div class="feat">
+                            <div class="feat-ico"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802"/></svg></div>
+                            <div>
+                                <h4 data-zh="多语言翻译引擎" data-en="Multilingual Engine">多语言翻译引擎</h4>
+                                <div class="h4-en">MULTILINGUAL ENGINE</div>
+                                <p data-zh="支持中文、英文、日语、韩语、马来语、泰语、越南语等" data-en="Chinese, English, Japanese, Korean, Malay, Thai, Vietnamese and more">支持中文、英文、日语、韩语、马来语、泰语、越南语等</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div>
-            <div class="feat-list">
-              <div class="feat">
-                <div class="feat-ico">
-                  <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6z" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 data-zh="零代码模块组装" data-en="Zero-code Module Assembly">零代码模块组装</h4>
-                  <div class="h4-en">ZERO-CODE MODULE ASSEMBLY</div>
-                  <p data-zh="无需编程，拖拽式搭建业务系统" data-en="Build business systems without programming, drag-and-drop">无需编程，拖拽式搭建业务系统</p>
-                </div>
-              </div>
-              <div class="feat">
-                <div class="feat-ico">
-                  <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 data-zh="AI智能配置" data-en="AI-powered Configuration">AI智能配置</h4>
-                  <div class="h4-en">AI-POWERED CONFIGURATION</div>
-                  <p data-zh="根据行业和地区自动推荐最优方案" data-en="Automatically recommending optimal solutions by industry and jurisdiction">根据行业和地区自动推荐最优方案</p>
-                </div>
-              </div>
-              <div class="feat">
-                <div class="feat-ico">
-                  <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 data-zh="全球园区网络" data-en="Global Hub Network">全球园区网络</h4>
-                  <div class="h4-en">GLOBAL HUB NETWORK</div>
-                  <p
-                    data-zh="连接中国大陆、香港、新加坡、马来西亚、BVI等注册地与产业园区"
-                    data-en="Connecting jurisdictions and business hubs across China, Hong Kong, Singapore, Malaysia, BVI and beyond"
-                  >
-                    连接中国大陆、香港、新加坡、马来西亚、BVI等注册地与产业园区
-                  </p>
-                </div>
-              </div>
-              <div class="feat">
-                <div class="feat-ico">
-                  <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 data-zh="多语言翻译引擎" data-en="Multilingual Engine">多语言翻译引擎</h4>
-                  <div class="h4-en">MULTILINGUAL ENGINE</div>
-                  <p data-zh="支持中文、英文、日语、韩语、马来语、泰语、越南语等" data-en="Chinese, English, Japanese, Korean, Malay, Thai, Vietnamese and more">
-                    支持中文、英文、日语、韩语、马来语、泰语、越南语等
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </section>
 
     <!-- WHY -->
     <section class="sec" id="why">
-      <div class="sec-in sec-in--flush">
-        <div style="padding: 0 48px 64px">
-          <div class="sec-label" data-zh="核心优势" data-en="Why Jiahe">核心优势</div>
-          <div class="sec-title" data-zh="不只是服务，<br>是<em>战略级陪伴</em>" data-en="Not just services.<br><em>Strategic partnership.</em>">
-            不只是服务，<br />是<em>战略级陪伴</em>
-          </div>
-          <div class="rule"></div>
+        <div class="sec-in" style="padding:0;max-width:1440px">
+            <div style="padding:0 48px 64px">
+                <div class="sec-label" data-zh="核心优势" data-en="Why Jiahe">核心优势</div>
+                <div class="sec-title" data-zh="不只是服务，<br>是<em>战略级陪伴</em>" data-en="Not just services.<br><em>Strategic partnership.</em>">不只是服务，<br>是<em>战略级陪伴</em></div>
+                <div class="rule"></div>
+            </div>
+            <div class="why-layout">
+                <div class="why-img-col">
+                    <img src="https://s.coze.cn/image/LHT1PBCqfKs/" alt="Business Partnership">
+                </div>
+                <div class="why-content-col">
+                    <div class="why-item">
+                        <div class="why-num">01</div>
+                        <h3 data-zh="全周期覆盖" data-en="Full-Lifecycle Coverage">全周期覆盖</h3>
+                        <div class="h3-en">FULL-LIFECYCLE COVERAGE</div>
+                        <p data-zh="从初创期的基础搭建，到成长期的资本运作，再到成熟期的上市规划——贯穿始终的系统性支持，而非碎片化的单点服务。" data-en="From foundational setup at inception, to capital operations during growth, to IPO planning at maturity — systematic, end-to-end support, not fragmented services.">从初创期的基础搭建，到成长期的资本运作，再到成熟期的上市规划——贯穿始终的系统性支持，而非碎片化的单点服务。</p>
+                    </div>
+                    <div class="why-item">
+                        <div class="why-num">02</div>
+                        <h3 data-zh="AI原生思维" data-en="AI-native Thinking">AI原生思维</h3>
+                        <div class="h3-en">AI-NATIVE THINKING</div>
+                        <p data-zh="加禾不是在传统服务上“加一层AI”，而是以AI为起点重新设计服务流程。更快的响应、更精准的匹配、更低的试错成本。" data-en="Jiahe doesn't simply &quot;add AI&quot; on top of traditional services — we redesign workflows with AI as the starting point. Faster response, more precise matching, lower trial-and-error cost.">加禾不是在传统服务上“加一层AI”，而是以AI为起点重新设计服务流程。更快的响应、更精准的匹配、更低的试错成本。</p>
+                    </div>
+                    <div class="why-item">
+                        <div class="why-num">03</div>
+                        <h3 data-zh="全球视野，本地深耕" data-en="Global Vision, Local Depth">全球视野，本地深耕</h3>
+                        <div class="h3-en">GLOBAL VISION, LOCAL DEPTH</div>
+                        <p data-zh="服务网络覆盖5大注册地，同时在马来西亚槟城、中国粤港澳大湾区深度布局产业园区与AI算力中心。" data-en="Service network spanning 5 key jurisdictions, with deep operational presence in Penang and the Greater Bay Area — AI computing centers and industrial parks.">服务网络覆盖5大注册地，同时在马来西亚槟城、中国粤港澳大湾区深度布局产业园区与AI算力中心。</p>
+                    </div>
+                    <div class="why-item">
+                        <div class="why-num">04</div>
+                        <h3 data-zh="专注OPC赛道" data-en="OPC Ecosystem Leadership">专注OPC赛道</h3>
+                        <div class="h3-en">OPC ECOSYSTEM LEADERSHIP</div>
+                        <p data-zh="不只是帮助注册一人公司，更在构建整个OPC产业的基础设施——从教育培训到技术平台，从产业孵化到资本对接。" data-en="We don't just help register one-person companies — we are building the infrastructure for the entire OPC industry.">不只是帮助注册一人公司，更在构建整个OPC产业的基础设施——从教育培训到技术平台，从产业孵化到资本对接。</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="why-layout">
-          <div class="why-img-col">
-            <img src="https://s.coze.cn/image/LHT1PBCqfKs/" alt="Business Partnership" loading="lazy" decoding="async" />
-          </div>
-          <div class="why-content-col">
-            <div class="why-item">
-              <div class="why-num">01</div>
-              <h3 data-zh="全周期覆盖" data-en="Full-Lifecycle Coverage">全周期覆盖</h3>
-              <div class="h3-en">FULL-LIFECYCLE COVERAGE</div>
-              <p
-                data-zh="从初创期的基础搭建，到成长期的资本运作，再到成熟期的上市规划——贯穿始终的系统性支持，而非碎片化的单点服务。"
-                data-en="From foundational setup at inception, to capital operations during growth, to IPO planning at maturity — systematic, end-to-end support, not fragmented services."
-              >
-                从初创期的基础搭建，到成长期的资本运作，再到成熟期的上市规划——贯穿始终的系统性支持，而非碎片化的单点服务。
-              </p>
-            </div>
-            <div class="why-item">
-              <div class="why-num">02</div>
-              <h3 data-zh="AI原生思维" data-en="AI-native Thinking">AI原生思维</h3>
-              <div class="h3-en">AI-NATIVE THINKING</div>
-              <p
-                data-zh="加禾不是在传统服务上“加一层AI”，而是以AI为起点重新设计服务流程。更快的响应、更精准的匹配、更低的试错成本。"
-                data-en="Jiahe doesn't simply &quot;add AI&quot; on top of traditional services — we redesign workflows with AI as the starting point. Faster response, more precise matching, lower trial-and-error cost."
-              >
-                加禾不是在传统服务上“加一层AI”，而是以AI为起点重新设计服务流程。更快的响应、更精准的匹配、更低的试错成本。
-              </p>
-            </div>
-            <div class="why-item">
-              <div class="why-num">03</div>
-              <h3 data-zh="全球视野，本地深耕" data-en="Global Vision, Local Depth">全球视野，本地深耕</h3>
-              <div class="h3-en">GLOBAL VISION, LOCAL DEPTH</div>
-              <p
-                data-zh="服务网络覆盖5大注册地，同时在马来西亚槟城、中国粤港澳大湾区深度布局产业园区与AI算力中心。"
-                data-en="Service network spanning 5 key jurisdictions, with deep operational presence in Penang and the Greater Bay Area — AI computing centers and industrial parks."
-              >
-                服务网络覆盖5大注册地，同时在马来西亚槟城、中国粤港澳大湾区深度布局产业园区与AI算力中心。
-              </p>
-            </div>
-            <div class="why-item">
-              <div class="why-num">04</div>
-              <h3 data-zh="专注OPC赛道" data-en="OPC Ecosystem Leadership">专注OPC赛道</h3>
-              <div class="h3-en">OPC ECOSYSTEM LEADERSHIP</div>
-              <p data-zh="不只是帮助注册一人公司，更在构建整个OPC产业的基础设施——从教育培训到技术平台，从产业孵化到资本对接。" data-en="We don't just help register one-person companies — we are building the infrastructure for the entire OPC industry.">
-                不只是帮助注册一人公司，更在构建整个OPC产业的基础设施——从教育培训到技术平台，从产业孵化到资本对接。
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- GLOBAL -->
     <section class="sec global" id="global">
-      <div class="global-bg">
-        <img src="https://s.coze.cn/image/uo5PQ5cBNTY/" alt="Global Network" loading="lazy" decoding="async" />
-      </div>
-      <div class="global-content">
-        <div class="sec-in">
-          <div class="sec-label" data-zh="全球布局" data-en="Global Footprint">全球布局</div>
-          <div class="sec-title" data-zh="立足香港，服务全球" data-en="Based in Hong Kong,<br>Serving the World">立足香港，服务全球</div>
-          <div class="rule"></div>
-          <p
-            class="global-intro"
-            data-zh="加禾以香港为集团总部，辐射中国大陆、东南亚及全球主要离岸注册地，构建覆盖企业全生命周期的全球服务网络。"
-            data-en="Headquartered in Hong Kong, Jiahe spans across Mainland China, Southeast Asia and major offshore jurisdictions, building a global service network covering the full business lifecycle."
-          >
-            加禾以香港为集团总部，辐射中国大陆、东南亚及全球主要离岸注册地，构建覆盖企业全生命周期的全球服务网络。
-          </p>
-          <div class="global-grid">
-            <div class="global-item">
-              <div class="global-code">HK</div>
-              <div class="global-line"></div>
-              <h3 data-zh="中国香港" data-en="Hong Kong">中国香港</h3>
-              <div class="h3-en">HONG KONG</div>
-              <p data-zh="集团总部，全球运营中心" data-en="Group HQ, global operations center">集团总部，全球运营中心</p>
-            </div>
-            <div class="global-item">
-              <div class="global-code">CN</div>
-              <div class="global-line"></div>
-              <h3 data-zh="中国大陆" data-en="Mainland China">中国大陆</h3>
-              <div class="h3-en">MAINLAND CHINA</div>
-              <p data-zh="粤港澳大湾区产业园区" data-en="Greater Bay Area industrial parks">粤港澳大湾区产业园区</p>
-            </div>
-            <div class="global-item">
-              <div class="global-code">MY</div>
-              <div class="global-line"></div>
-              <h3 data-zh="马来西亚" data-en="Malaysia">马来西亚</h3>
-              <div class="h3-en">MALAYSIA</div>
-              <p data-zh="槟城AI算力中心、OPC孵化园区" data-en="Penang AI Computing Center, OPC incubation park">槟城AI算力中心、OPC孵化园区</p>
-            </div>
-            <div class="global-item">
-              <div class="global-code">SG</div>
-              <div class="global-line"></div>
-              <h3 data-zh="新加坡" data-en="Singapore">新加坡</h3>
-              <div class="h3-en">SINGAPORE</div>
-              <p data-zh="东南亚金融枢纽节点" data-en="Southeast Asian financial hub node">东南亚金融枢纽节点</p>
-            </div>
-            <div class="global-item">
-              <div class="global-code">BVI</div>
-              <div class="global-line"></div>
-              <h3 data-zh="BVI / 开曼" data-en="BVI / Cayman">BVI / 开曼</h3>
-              <div class="h3-en">BVI / CAYMAN</div>
-              <p data-zh="离岸架构与注册服务" data-en="Offshore structure & incorporation">离岸架构与注册服务</p>
-            </div>
-          </div>
+        <div class="global-bg">
+            <img src="https://s.coze.cn/image/uo5PQ5cBNTY/" alt="Global Network">
         </div>
-      </div>
+        <div class="global-content">
+            <div class="sec-in">
+                <div class="sec-label" data-zh="全球布局" data-en="Global Footprint">全球布局</div>
+                <div class="sec-title" data-zh="立足香港，服务全球" data-en="Based in Hong Kong,<br>Serving the World">立足香港，服务全球</div>
+                <div class="rule"></div>
+                <p class="global-intro" data-zh="加禾以香港为集团总部，辐射中国大陆、东南亚及全球主要离岸注册地，构建覆盖企业全生命周期的全球服务网络。" data-en="Headquartered in Hong Kong, Jiahe spans across Mainland China, Southeast Asia and major offshore jurisdictions, building a global service network covering the full business lifecycle.">加禾以香港为集团总部，辐射中国大陆、东南亚及全球主要离岸注册地，构建覆盖企业全生命周期的全球服务网络。</p>
+                <div class="global-grid">
+                    <div class="global-item">
+                        <div class="global-code">HK</div>
+                        <div class="global-line"></div>
+                        <h3 data-zh="中国香港" data-en="Hong Kong">中国香港</h3>
+                        <div class="h3-en">HONG KONG</div>
+                        <p data-zh="集团总部，全球运营中心" data-en="Group HQ, global operations center">集团总部，全球运营中心</p>
+                    </div>
+                    <div class="global-item">
+                        <div class="global-code">CN</div>
+                        <div class="global-line"></div>
+                        <h3 data-zh="中国大陆" data-en="Mainland China">中国大陆</h3>
+                        <div class="h3-en">MAINLAND CHINA</div>
+                        <p data-zh="粤港澳大湾区产业园区" data-en="Greater Bay Area industrial parks">粤港澳大湾区产业园区</p>
+                    </div>
+                    <div class="global-item">
+                        <div class="global-code">MY</div>
+                        <div class="global-line"></div>
+                        <h3 data-zh="马来西亚" data-en="Malaysia">马来西亚</h3>
+                        <div class="h3-en">MALAYSIA</div>
+                        <p data-zh="槟城AI算力中心、OPC孵化园区" data-en="Penang AI Computing Center, OPC incubation park">槟城AI算力中心、OPC孵化园区</p>
+                    </div>
+                    <div class="global-item">
+                        <div class="global-code">SG</div>
+                        <div class="global-line"></div>
+                        <h3 data-zh="新加坡" data-en="Singapore">新加坡</h3>
+                        <div class="h3-en">SINGAPORE</div>
+                        <p data-zh="东南亚金融枢纽节点" data-en="Southeast Asian financial hub node">东南亚金融枢纽节点</p>
+                    </div>
+                    <div class="global-item">
+                        <div class="global-code">BVI</div>
+                        <div class="global-line"></div>
+                        <h3 data-zh="BVI / 开曼" data-en="BVI / Cayman">BVI / 开曼</h3>
+                        <div class="h3-en">BVI / CAYMAN</div>
+                        <p data-zh="离岸架构与注册服务" data-en="Offshore structure & incorporation">离岸架构与注册服务</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- VISION -->
     <section class="sec" id="vision">
-      <div class="sec-in sec-in--flush">
-        <div class="vision-layout">
-          <div class="vision-col">
-            <div class="sec-label" data-zh="愿景" data-en="Vision">愿景</div>
-            <h3 data-zh="成为全球OPC生态的<br>基础设施建设者" data-en="Infrastructure builder<br>of the global OPC ecosystem">成为全球OPC生态的<br />基础设施建设者</h3>
-            <p data-zh="让每一个创业者都能借助AI的力量，以一人公司的轻盈姿态，拥有企业级的全球竞争力。" data-en="Empowering every entrepreneur, through AI, to wield enterprise-grade global competitiveness with one-person company agility.">
-              让每一个创业者都能借助AI的力量，以一人公司的轻盈姿态，拥有企业级的全球竞争力。
-            </p>
-            <div class="vision-img">
-              <img src="https://s.coze.cn/image/8vVSN0nAhR0/" alt="Strategy Meeting" loading="lazy" decoding="async" />
+        <div class="sec-in" style="padding:0;max-width:1440px">
+            <div class="vision-layout">
+                <div class="vision-col">
+                    <div class="sec-label" data-zh="愿景" data-en="Vision">愿景</div>
+                    <h3 data-zh="成为全球OPC生态的<br>基础设施建设者" data-en="Infrastructure builder<br>of the global OPC ecosystem">成为全球OPC生态的<br>基础设施建设者</h3>
+                    <p data-zh="让每一个创业者都能借助AI的力量，以一人公司的轻盈姿态，拥有企业级的全球竞争力。" data-en="Empowering every entrepreneur, through AI, to wield enterprise-grade global competitiveness with one-person company agility.">让每一个创业者都能借助AI的力量，以一人公司的轻盈姿态，拥有企业级的全球竞争力。</p>
+                    <div class="vision-img">
+                        <img src="https://s.coze.cn/image/8vVSN0nAhR0/" alt="Strategy Meeting">
+                    </div>
+                </div>
+                <div class="vision-col">
+                    <div class="sec-label" data-zh="使命" data-en="Mission">使命</div>
+                    <h3 data-zh="用AI+专业智囊团<br>赋能创业者" data-en="Empowering entrepreneurs with<br>AI and expert advisory">用AI+专业智囊团<br>赋能创业者</h3>
+                    <p data-zh="消除信息差和资源壁垒，让“一个人也是一支队伍”从口号变成现实。" data-en="Eliminating information asymmetry and resource barriers — making &quot;one person is a team&quot; a reality.">消除信息差和资源壁垒，让“一个人也是一支队伍”从口号变成现实。</p>
+                    <div class="vision-img">
+                        <img src="https://s.coze.cn/image/hkRjdElQXVo/" alt="Hong Kong Cityscape">
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="vision-col">
-            <div class="sec-label" data-zh="使命" data-en="Mission">使命</div>
-            <h3 data-zh="用AI+专业智囊团<br>赋能创业者" data-en="Empowering entrepreneurs with<br>AI and expert advisory">用AI+专业智囊团<br />赋能创业者</h3>
-            <p
-              data-zh="消除信息差和资源壁垒，让“一个人也是一支队伍”从口号变成现实。"
-              data-en="Eliminating information asymmetry and resource barriers — making &quot;one person is a team&quot; a reality."
-            >
-              消除信息差和资源壁垒，让“一个人也是一支队伍”从口号变成现实。
-            </p>
-            <div class="vision-img">
-              <img src="https://s.coze.cn/image/hkRjdElQXVo/" alt="Hong Kong Cityscape" loading="lazy" decoding="async" />
-            </div>
-          </div>
         </div>
-      </div>
     </section>
 
     <!-- CTA -->
     <section class="cta">
-      <div class="sec-in" style="text-align: center">
-        <h2 data-zh="准备好与<em>加禾</em><br>并肩了吗？" data-en="Ready to partner<br>with <em>Jiahe</em>?">准备好与<em>加禾</em><br />并肩了吗？</h2>
-        <p data-zh="从零到IPO，每一步都有加禾在场。" data-en="From zero to IPO, Jiahe is there at every step.">从零到IPO，每一步都有加禾在场。</p>
-        <a href="mailto:teohyeeloon@gmail.com" class="btn btn-fill" data-zh="联系我们 →" data-en="GET IN TOUCH →">联系我们 →</a>
-      </div>
+        <div class="sec-in" style="text-align:center">
+            <h2 data-zh="准备好与<em>加禾</em><br>并肩了吗？" data-en="Ready to partner<br>with <em>Jiahe</em>?">准备好与<em>加禾</em><br>并肩了吗？</h2>
+            <p data-zh="从零到IPO，每一步都有加禾在场。" data-en="From zero to IPO, Jiahe is there at every step.">从零到IPO，每一步都有加禾在场。</p>
+            <a href="mailto:teohyeeloon@gmail.com" class="btn btn-fill" data-zh="联系我们 →" data-en="GET IN TOUCH →">联系我们 →</a>
+        </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="footer" aria-label="页脚">
-      <div class="footer-in">
-        <div class="footer-top">
-          <div>
-            <img src="./assets/logo.png" alt="Jiahe" class="footer-logo" loading="lazy" decoding="async" />
-            <div class="footer-brand">加禾文化科技</div>
-            <div class="footer-brand-en">JIAHE CULTURE TECHNOLOGY</div>
-            <p data-zh="从零到IPO，企业全生命周期战略合伙人。" data-en="From zero to IPO — your strategic partner across the full business lifecycle.">从零到IPO，企业全生命周期战略合伙人。</p>
-          </div>
-          <div>
-            <h4 data-zh="服务" data-en="Services">服务</h4>
-            <div class="footer-links">
-              <a href="#services" data-zh="工商注册" data-en="Company Incorporation">工商注册</a>
-              <a href="#services" data-zh="财税规划" data-en="Tax & Financial Planning">财税规划</a>
-              <a href="#services" data-zh="法律合规" data-en="Legal Compliance">法律合规</a>
-              <a href="#services" data-zh="融资并购" data-en="Financing & M&A">融资并购</a>
-              <a href="#services" data-zh="战略咨询" data-en="Strategic Consulting">战略咨询</a>
-              <a href="#services" data-zh="技术赋能" data-en="Technology Enablement">技术赋能</a>
+    <footer class="footer">
+        <div class="footer-in">
+            <div class="footer-top">
+                <div>
+                    <img src="assets/logo.png" alt="Jiahe" class="footer-logo" loading="lazy" decoding="async">
+                    <div class="footer-brand">加禾文化科技</div>
+                    <div class="footer-brand-en">JIAHE CULTURE TECHNOLOGY</div>
+                    <p data-zh="从零到IPO，企业全生命周期战略合伙人。" data-en="From zero to IPO — your strategic partner across the full business lifecycle.">从零到IPO，企业全生命周期战略合伙人。</p>
+                </div>
+                <div>
+                    <h4 data-zh="服务" data-en="Services">服务</h4>
+                    <div class="footer-links">
+                        <a href="#services" data-zh="工商注册" data-en="Company Incorporation">工商注册</a>
+                        <a href="#services" data-zh="财税规划" data-en="Tax & Financial Planning">财税规划</a>
+                        <a href="#services" data-zh="法律合规" data-en="Legal Compliance">法律合规</a>
+                        <a href="#services" data-zh="融资并购" data-en="Financing & M&A">融资并购</a>
+                        <a href="#services" data-zh="战略咨询" data-en="Strategic Consulting">战略咨询</a>
+                        <a href="#services" data-zh="技术赋能" data-en="Technology Enablement">技术赋能</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 data-zh="关于" data-en="About">关于</h4>
+                    <div class="footer-links">
+                        <a href="#about" data-zh="公司介绍" data-en="Company">公司介绍</a>
+                        <a href="#hub">HyperCore</a>
+                        <a href="#global" data-zh="全球布局" data-en="Global Footprint">全球布局</a>
+                        <a href="#vision" data-zh="愿景使命" data-en="Vision & Mission">愿景使命</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 data-zh="联系" data-en="Contact">联系</h4>
+                    <div class="footer-links">
+                        <a href="https://www.jh8.ai" target="_blank" rel="noopener noreferrer">www.jh8.ai</a>
+                        <a href="mailto:teohyeeloon@gmail.com">teohyeeloon@gmail.com</a>
+                        <span>WeChat: HKDoubleA</span>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div>
-            <h4 data-zh="关于" data-en="About">关于</h4>
-            <div class="footer-links">
-              <a href="#about" data-zh="公司介绍" data-en="Company">公司介绍</a>
-              <a href="#hub">HyperCore</a>
-              <a href="#global" data-zh="全球布局" data-en="Global Footprint">全球布局</a>
-              <a href="#vision" data-zh="愿景使命" data-en="Vision & Mission">愿景使命</a>
+            <div class="footer-bottom">
+                <span>© 2021–2026 加禾文化科技有限公司 Jiahe Culture Technology Co., Limited · 版权所有 All Rights Reserved</span>
+                <span>CR No. 3095181 · Hong Kong</span>
             </div>
-          </div>
-          <div>
-            <h4 data-zh="联系" data-en="Contact">联系</h4>
-            <div class="footer-links">
-              <a href="https://www.jh8.ai" target="_blank" rel="noopener noreferrer">www.jh8.ai</a>
-              <a href="mailto:teohyeeloon@gmail.com">teohyeeloon@gmail.com</a>
-              <span class="footer-muted">WeChat: HKDoubleA</span>
-            </div>
-          </div>
         </div>
-        <div class="footer-bottom">
-          <span>© 2021–2026 加禾文化科技有限公司 Jiahe Culture Technology Co., Limited · 版权所有 All Rights Reserved</span>
-          <span>CR No. 3095181 · Hong Kong</span>
-        </div>
-      </div>
     </footer>
 
     <script>
-      (() => {
-        "use strict";
-
-        // ---- i18n ----
-        let lang = "zh";
-        const langToggleBtn = document.getElementById("langToggleBtn");
-        const i18nNodes = document.querySelectorAll("[data-zh][data-en]");
-
-        function applyLang(nextLang) {
-          lang = nextLang;
-          i18nNodes.forEach((el) => {
-            const t = el.getAttribute("data-" + lang);
-            if (!t) return;
-            // Use innerHTML to preserve tags like <br>, <em>, and entities like &quot;
-            el.innerHTML = t;
-          });
-          if (langToggleBtn) langToggleBtn.textContent = lang === "zh" ? "EN" : "中文";
-          document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+        // Language toggle
+        let lang='zh';
+        function toggleLang(){
+            lang=lang==='zh'?'en':'zh';
+            document.querySelectorAll('[data-zh][data-en]').forEach(el=>{
+                const t=el.getAttribute('data-'+lang);
+                if(!t) return;
+                // Always use innerHTML to preserve HTML tags like <br>, <em>
+                // and HTML entities like &quot;
+                el.innerHTML=t;
+            });
+            document.querySelector('.nav-lang').textContent=lang==='zh'?'EN':'中文';
+            document.documentElement.lang=lang==='zh'?'zh-CN':'en';
         }
 
-        if (langToggleBtn) {
-          langToggleBtn.addEventListener("click", () => applyLang(lang === "zh" ? "en" : "zh"));
-        }
-
-        // ---- nav scroll effect ----
-        const nav = document.getElementById("mainNav");
-        const setNavState = () => {
-          if (!nav) return;
-          if (window.scrollY > 80) nav.classList.add("scrolled");
-          else nav.classList.remove("scrolled");
-        };
-        window.addEventListener("scroll", setNavState, { passive: true });
-        setNavState();
-
-        // ---- mobile menu ----
-        const menu = document.getElementById("mobileMenu");
-        const menuOpenBtn = document.getElementById("menuOpenBtn");
-        const menuCloseBtn = document.getElementById("menuCloseBtn");
-
-        function openMenu() {
-          if (!menu) return;
-          menu.classList.add("open");
-          menu.setAttribute("aria-hidden", "false");
-          if (menuOpenBtn) menuOpenBtn.setAttribute("aria-expanded", "true");
-          document.body.style.overflow = "hidden";
-        }
-
-        function closeMenu() {
-          if (!menu) return;
-          menu.classList.remove("open");
-          menu.setAttribute("aria-hidden", "true");
-          if (menuOpenBtn) menuOpenBtn.setAttribute("aria-expanded", "false");
-          document.body.style.overflow = "";
-        }
-
-        if (menuOpenBtn) menuOpenBtn.addEventListener("click", openMenu);
-        if (menuCloseBtn) menuCloseBtn.addEventListener("click", closeMenu);
-
-        if (menu) {
-          menu.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener("click", closeMenu));
-        }
-
-        window.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") closeMenu();
+        // Smooth scroll (ignore href="#")
+        document.querySelectorAll('a[href^="#"]').forEach(a=>{
+            a.addEventListener('click',e=>{
+                const href=a.getAttribute('href');
+                if(!href || href==='#') return;
+                const t=document.querySelector(href);
+                if(!t) return;
+                e.preventDefault();
+                t.scrollIntoView({behavior:'smooth',block:'start'});
+            });
         });
-      })();
+
+        // Nav scroll effect
+        const nav=document.getElementById('mainNav');
+        window.addEventListener('scroll',()=>{
+            if(window.scrollY>80)nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        },{passive:true});
+
+        // Mobile menu
+        function openMenu(){document.getElementById('mobileMenu').classList.add('open')}
+        function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
     </script>
-  </body>
+</body>
 </html>
+
