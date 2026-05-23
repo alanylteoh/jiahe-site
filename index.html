@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>加禾文化科技 — Jiahe Culture Technology</title>
     <meta name="description" content="从零到IPO，企业全生命周期战略合伙人">
+    <meta name="theme-color" content="#0a0a0a">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -20,9 +21,16 @@
         }
         html{font-size:16px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth}
         body{font-family:var(--sans);color:var(--black);background:var(--white);line-height:1.5;overflow-x:hidden}
+        body.menu-open{overflow:hidden}
+        section[id]{scroll-margin-top:110px}
         a{text-decoration:none;color:inherit}
         img{max-width:100%;height:auto;display:block}
         ::selection{background:var(--purple);color:#fff}
+
+        @media (prefers-reduced-motion: reduce){
+            html{scroll-behavior:auto}
+            *,*::before,*::after{transition:none!important;animation:none!important}
+        }
 
         /* ── NAV ── */
         .nav{position:fixed;top:0;left:0;right:0;z-index:200;height:88px;transition:all .4s}
@@ -51,6 +59,12 @@
         }
         @media(max-width:640px){
             .nav-in{padding:0 24px}
+        }
+        @media(max-width:480px){
+            .nav{height:72px}
+            .nav-logo img{height:52px}
+            .nav-right{gap:16px}
+            .nav-lang{padding:6px 10px;font-size:14px}
         }
 
         /* ── HERO ── */
@@ -88,6 +102,14 @@
             .hero-stats{flex-wrap:wrap}
             .hero-stat{flex:1 1 50%;border-bottom:1px solid rgba(255,255,255,.06)}
             .hero-ctas{flex-direction:column}
+        }
+        @media(max-width:480px){
+            .hero-inner{padding-top:120px}
+            .hero h1{letter-spacing:-1px}
+            .hero-body p{font-size:16px}
+            .hero-stat{padding:24px 0}
+            .hero-stat-num{font-size:32px}
+            .hero-stat-lbl{white-space:normal;letter-spacing:2px;font-size:12px}
         }
 
         /* ── SECTION UTIL ── */
@@ -138,7 +160,10 @@
         @media(max-width:960px){
             .about-layout{grid-template-columns:1fr}
             .about-img-col{height:400px;order:-1}
-            .about-text-col{padding:48px 0}
+            .about-text-col{padding:48px 24px}
+        }
+        @media(max-width:640px){
+            .about-img-overlay{padding:16px}
         }
 
         /* ── SERVICES ── */
@@ -200,7 +225,11 @@
         @media(max-width:960px){
             .why-layout{grid-template-columns:1fr}
             .why-img-col{height:360px;order:-1}
-            .why-content-col{padding:48px 0 0}
+            .why-content-col{padding:48px 24px 0}
+        }
+        @media(max-width:640px){
+            .why-layout{margin-top:32px}
+            .why-head{padding:0 24px 48px!important}
         }
 
         /* ── GLOBAL ── */
@@ -238,7 +267,7 @@
         @media(max-width:768px){
             .vision-layout{grid-template-columns:1fr}
             .vision-col:first-child{border-right:none;border-bottom:1px solid var(--g200)}
-            .vision-col{padding:48px 0}
+            .vision-col{padding:48px 24px}
         }
 
         /* ── CTA ── */
@@ -271,6 +300,10 @@
         .mobile-menu.open{opacity:1;pointer-events:auto}
         .mobile-menu a{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--black)}
         .mobile-menu-close{position:absolute;top:24px;right:24px;width:32px;height:32px;background:none;border:none;cursor:pointer;font-size:24px;color:var(--black)}
+        @media(max-width:480px){
+            .mobile-menu{gap:22px}
+            .mobile-menu a{font-size:22px}
+        }
     </style>
 </head>
 <body id="top">
@@ -370,7 +403,7 @@
                             <div class="about-card-row"><span class="l">Registration</span><span class="v">CR No. 3095181</span></div>
                             <div class="about-card-row"><span class="l" data-zh="成立" data-en="Established">成立</span><span class="v" data-zh="2021.10.21" data-en="Oct 21, 2021">2021.10.21</span></div>
                             <div class="about-card-row"><span class="l" data-zh="注册地" data-en="Jurisdiction">注册地</span><span class="v" data-zh="中国香港" data-en="Hong Kong, China">中国香港</span></div>
-                            <div class="about-card-row"><span class="l">Website</span><span class="v">www.jh8.ai</span></div>
+                            <div class="about-card-row"><span class="l">Website</span><span class="v">www.jiahe-ai.cc</span></div>
                             <div class="about-card-row"><span class="l">WeChat</span><span class="v">HKDoubleA</span></div>
                         </div>
                     </div>
@@ -482,7 +515,7 @@
     <!-- WHY -->
     <section class="sec" id="why">
         <div class="sec-in" style="padding:0;max-width:1440px">
-            <div style="padding:0 48px 64px">
+            <div class="why-head" style="padding:0 48px 64px">
                 <div class="sec-label" data-zh="核心优势" data-en="Why Jiahe">核心优势</div>
                 <div class="sec-title" data-zh="不只是服务，<br>是<em>战略级陪伴</em>" data-en="Not just services.<br><em>Strategic partnership.</em>">不只是服务，<br>是<em>战略级陪伴</em></div>
                 <div class="rule"></div>
@@ -639,7 +672,7 @@
                 <div>
                     <h4 data-zh="联系" data-en="Contact">联系</h4>
                     <div class="footer-links">
-                        <a href="https://www.jh8.ai" target="_blank" rel="noopener noreferrer">www.jh8.ai</a>
+                        <a href="https://www.jiahe-ai.cc" target="_blank" rel="noopener noreferrer">www.jiahe-ai.cc</a>
                         <a href="mailto:teohyeeloon@gmail.com">teohyeeloon@gmail.com</a>
                         <span>WeChat: HKDoubleA</span>
                     </div>
@@ -688,9 +721,21 @@
         },{passive:true});
 
         // Mobile menu
-        function openMenu(){document.getElementById('mobileMenu').classList.add('open')}
-        function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
+        function openMenu(){
+            const m=document.getElementById('mobileMenu');
+            if(!m) return;
+            m.classList.add('open');
+            document.body.classList.add('menu-open');
+        }
+        function closeMenu(){
+            const m=document.getElementById('mobileMenu');
+            if(!m) return;
+            m.classList.remove('open');
+            document.body.classList.remove('menu-open');
+        }
+        document.addEventListener('keydown',e=>{
+            if(e.key==='Escape') closeMenu();
+        });
     </script>
 </body>
 </html>
-
