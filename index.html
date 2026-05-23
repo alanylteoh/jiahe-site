@@ -45,10 +45,23 @@
         .nav.scrolled .nav-link{color:var(--g500)}
         .nav-link:hover{color:#fff}
         .nav.scrolled .nav-link:hover{color:var(--black)}
-        .nav-lang{font-size:15px;font-weight:700;letter-spacing:1.5px;padding:6px 14px;border:1px solid rgba(255,255,255,.3);background:none;cursor:pointer;color:rgba(255,255,255,.7);transition:all .3s}
-        .nav.scrolled .nav-lang{border-color:var(--g200);color:var(--g500)}
+        .nav-lang{font-size:15px;font-weight:700;letter-spacing:1.5px;padding:6px 34px 6px 14px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.06);cursor:pointer;color:rgba(255,255,255,.92);transition:all .3s;border-radius:2px}
+        /* 关键：下拉展开的选项文字颜色（避免白底白字看不见） */
+        .nav-lang option{color:#111;background:#fff}
+        .nav.scrolled .nav-lang{border-color:var(--g200);color:var(--black)}
         .nav-lang:hover{border-color:#fff;color:#fff}
         .nav.scrolled .nav-lang:hover{border-color:var(--black);color:var(--black)}
+        .nav-lang{-webkit-appearance:none;-moz-appearance:none;appearance:none}
+        .nav-lang{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23ffffff' stroke-width='2' d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:14px 14px}
+        .nav.scrolled .nav-lang{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%230a0a0a' stroke-width='2' d='M6 9l6 6 6-6'/%3E%3C/svg%3E")}
+
+        /* Mobile menu 是白底：确保选择器文字/箭头清晰可见 */
+        .mobile-menu .nav-lang{
+            color:var(--black);
+            border-color:var(--g200);
+            background:#fff;
+            background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%230a0a0a' stroke-width='2' d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+        }
         .nav-menu-btn{display:none;width:24px;height:18px;flex-direction:column;justify-content:space-between;background:none;border:none;cursor:pointer;padding:0}
         .nav-menu-btn span{display:block;width:100%;height:1.5px;background:#fff;transition:background .3s}
         .nav.scrolled .nav-menu-btn span{background:var(--black)}
@@ -64,7 +77,7 @@
             .nav{height:72px}
             .nav-logo img{height:52px}
             .nav-right{gap:16px}
-            .nav-lang{padding:6px 10px;font-size:14px}
+            .nav-lang{padding:6px 30px 6px 10px;font-size:14px}
         }
 
         /* ── HERO ── */
@@ -300,6 +313,10 @@
         .mobile-menu.open{opacity:1;pointer-events:auto}
         .mobile-menu a{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--black)}
         .mobile-menu-close{position:absolute;top:24px;right:24px;width:32px;height:32px;background:none;border:none;cursor:pointer;font-size:24px;color:var(--black)}
+        .mobile-lang-wrap{position:absolute;top:24px;left:24px;display:flex;align-items:center;gap:10px}
+        .mobile-lang-label{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g500)}
+        .mobile-lang{font-size:14px;font-weight:700;letter-spacing:1px;padding:8px 34px 8px 12px;border:1px solid var(--g200);background:var(--off);color:var(--black);border-radius:2px;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none}
+        .mobile-lang{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%230a0a0a' stroke-width='2' d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:14px 14px}
         @media(max-width:480px){
             .mobile-menu{gap:22px}
             .mobile-menu a{font-size:22px}
@@ -316,12 +333,22 @@
                 <span class="nav-brand">加禾文化科技</span>
             </a>
             <div class="nav-right">
-                <a href="#about" class="nav-link" data-zh="关于" data-en="About">关于</a>
-                <a href="#services" class="nav-link" data-zh="服务" data-en="Services">服务</a>
-                <a href="#hub" class="nav-link" data-zh="平台" data-en="Platform">平台</a>
-                <a href="#global" class="nav-link" data-zh="布局" data-en="Global">布局</a>
-                <a href="#vision" class="nav-link" data-zh="愿景" data-en="Vision">愿景</a>
-                <button class="nav-lang" onclick="toggleLang()">EN</button>
+                <a href="#about" class="nav-link" data-zh="关于" data-zh-hant="關於" data-en="About" data-ms="Mengenai" data-th="เกี่ยวกับ" data-id="Tentang" data-ja="会社概要" data-ko="소개" data-ru="О нас">关于</a>
+                <a href="#services" class="nav-link" data-zh="服务" data-zh-hant="服務" data-en="Services" data-ms="Perkhidmatan" data-th="บริการ" data-id="Layanan" data-ja="サービス" data-ko="서비스" data-ru="Услуги">服务</a>
+                <a href="#hub" class="nav-link" data-zh="平台" data-zh-hant="平台" data-en="Platform" data-ms="Platform" data-th="แพลตฟอร์ม" data-id="Platform" data-ja="プラットフォーム" data-ko="플랫폼" data-ru="Платформа">平台</a>
+                <a href="#global" class="nav-link" data-zh="布局" data-zh-hant="佈局" data-en="Global" data-ms="Global" data-th="ทั่วโลก" data-id="Global" data-ja="グローバル" data-ko="글로벌" data-ru="Глобально">布局</a>
+                <a href="#vision" class="nav-link" data-zh="愿景" data-zh-hant="願景" data-en="Vision" data-ms="Visi" data-th="วิสัยทัศน์" data-id="Visi" data-ja="ビジョン" data-ko="비전" data-ru="Видение">愿景</a>
+                <select class="nav-lang" id="langSelect" aria-label="Language">
+                    <option value="zh">中文(简体)</option>
+                    <option value="zh-hant">中文(繁體)</option>
+                    <option value="en">English</option>
+                    <option value="ms">Bahasa Melayu</option>
+                    <option value="th">ไทย</option>
+                    <option value="id">Bahasa Indonesia</option>
+                    <option value="ja">日本語</option>
+                    <option value="ko">한국어</option>
+                    <option value="ru">Русский</option>
+                </select>
             </div>
             <button class="nav-menu-btn" onclick="openMenu()" aria-label="打开菜单"><span></span><span></span><span></span></button>
         </div>
@@ -329,12 +356,26 @@
 
     <!-- MOBILE MENU -->
     <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-lang-wrap">
+            <span class="mobile-lang-label" data-zh="语言" data-zh-hant="語言" data-en="Language" data-ms="Bahasa" data-th="ภาษา" data-id="Bahasa" data-ja="言語" data-ko="언어" data-ru="Язык">语言</span>
+            <select class="mobile-lang" id="mobileLangSelect" aria-label="Language">
+                <option value="zh">中文(简体)</option>
+                <option value="zh-hant">中文(繁體)</option>
+                <option value="en">English</option>
+                <option value="ms">Bahasa Melayu</option>
+                <option value="th">ไทย</option>
+                <option value="id">Bahasa Indonesia</option>
+                <option value="ja">日本語</option>
+                <option value="ko">한국어</option>
+                <option value="ru">Русский</option>
+            </select>
+        </div>
         <button class="mobile-menu-close" onclick="closeMenu()" aria-label="关闭菜单">✕</button>
-        <a href="#about" onclick="closeMenu()" data-zh="关于加禾" data-en="About Jiahe">关于加禾</a>
-        <a href="#services" onclick="closeMenu()" data-zh="服务体系" data-en="Services">服务体系</a>
-        <a href="#hub" onclick="closeMenu()" data-zh="HyperCore平台" data-en="HyperCore">HyperCore平台</a>
-        <a href="#global" onclick="closeMenu()" data-zh="全球布局" data-en="Global">全球布局</a>
-        <a href="#vision" onclick="closeMenu()" data-zh="愿景使命" data-en="Vision">愿景使命</a>
+        <a href="#about" onclick="closeMenu()" data-zh="关于加禾" data-zh-hant="關於加禾" data-en="About Jiahe" data-ms="Mengenai Jiahe" data-th="เกี่ยวกับ Jiahe" data-id="Tentang Jiahe" data-ja="Jiaheについて" data-ko="Jiahe 소개" data-ru="О Jiahe">关于加禾</a>
+        <a href="#services" onclick="closeMenu()" data-zh="服务体系" data-zh-hant="服務體系" data-en="Services" data-ms="Perkhidmatan" data-th="บริการ" data-id="Layanan" data-ja="サービス" data-ko="서비스" data-ru="Услуги">服务体系</a>
+        <a href="#hub" onclick="closeMenu()" data-zh="HyperCore平台" data-zh-hant="HyperCore平台" data-en="HyperCore" data-ms="HyperCore" data-th="HyperCore" data-id="HyperCore" data-ja="HyperCore" data-ko="HyperCore" data-ru="HyperCore">HyperCore平台</a>
+        <a href="#global" onclick="closeMenu()" data-zh="全球布局" data-zh-hant="全球佈局" data-en="Global" data-ms="Global" data-th="ทั่วโลก" data-id="Global" data-ja="グローバル" data-ko="글로벌" data-ru="Глобально">全球布局</a>
+        <a href="#vision" onclick="closeMenu()" data-zh="愿景使命" data-zh-hant="願景使命" data-en="Vision" data-ms="Visi & Misi" data-th="วิสัยทัศน์และพันธกิจ" data-id="Visi & Misi" data-ja="ビジョンとミッション" data-ko="비전과 미션" data-ru="Видение и миссия">愿景使命</a>
     </div>
 
     <!-- HERO -->
@@ -344,34 +385,34 @@
             <div class="hero-overlay"></div>
         </div>
         <div class="hero-inner">
-            <div class="hero-kicker" data-zh="企业全生命周期战略合伙人" data-en="STRATEGIC PARTNER FOR THE FULL BUSINESS LIFECYCLE">企业全生命周期战略合伙人</div>
-            <h1 data-zh="从零到IPO，<br><em>加禾</em>始终在场" data-en="From Zero to IPO,<br><em>Jiahe</em> Is Always There">从零到IPO，<br><em>加禾</em>始终在场</h1>
+            <div class="hero-kicker" data-zh="企业全生命周期战略合伙人" data-zh-hant="企業全生命週期戰略合夥人" data-en="STRATEGIC PARTNER FOR THE FULL BUSINESS LIFECYCLE" data-ms="RAKAN STRATEGIK UNTUK KITAR HAYAT PERNIAGAAN SEPENUHNYA" data-th="พันธมิตรเชิงกลยุทธ์ตลอดวงจรชีวิตธุรกิจ" data-id="MITRA STRATEGIS UNTUK SELURUH SIKLUS HIDUP BISNIS" data-ja="企業ライフサイクル全体の戦略パートナー" data-ko="기업 전 생애주기 전략 파트너" data-ru="СТРАТЕГИЧЕСКИЙ ПАРТНЕР НА ВСЕМ ЖИЗНЕННОМ ЦИКЛЕ БИЗНЕСА">企业全生命周期战略合伙人</div>
+            <h1 data-zh="从零到IPO，<br><em>加禾</em>始终在场" data-zh-hant="從零到IPO，<br><em>加禾</em>始終在場" data-en="From Zero to IPO,<br><em>Jiahe</em> Is Always There" data-ms="Dari sifar ke IPO,<br><em>Jiahe</em> sentiasa bersama anda" data-th="จากศูนย์สู่ IPO,<br><em>Jiahe</em> อยู่เคียงข้างเสมอ" data-id="Dari nol hingga IPO,<br><em>Jiahe</em> selalu ada" data-ja="ゼロからIPOまで、<br><em>Jiahe</em>は常にそばに" data-ko="제로에서 IPO까지,<br><em>Jiahe</em>는 언제나 함께합니다" data-ru="От нуля до IPO,<br><em>Jiahe</em> всегда рядом">从零到IPO，<br><em>加禾</em>始终在场</h1>
             <div class="hero-body">
-                <p data-zh="加禾文化科技有限公司，2021年成立于香港。以AI技术为核心驱动力，以专业智囊团为全程伙伴——让创业者以一人公司的轻盈，拥有企业级的全球竞争力。" data-en="Jiahe Culture Technology Co., Limited, established in Hong Kong, 2021. AI-powered, expert-guided — enterprise-grade global competitiveness with one-person company agility.">加禾文化科技有限公司，2021年成立于香港。以AI技术为核心驱动力，以专业智囊团为全程伙伴——让创业者以一人公司的轻盈，拥有企业级的全球竞争力。</p>
-                <p data-zh="一个人，也是一支队伍。" data-en="From zero to IPO, we walk with you.">From zero to IPO, we walk with you.</p>
+                <p data-zh="加禾文化科技有限公司，2021年成立于香港。以AI技术为核心驱动力，以专业智囊团为全程伙伴——让创业者以一人公司的轻盈，拥有企业级的全球竞争力。" data-zh-hant="加禾文化科技有限公司，2021年成立於香港。以AI技術為核心驅動力，以專業智囊團為全程夥伴——讓創業者以一人公司的輕盈，擁有企業級的全球競爭力。" data-en="Jiahe Culture Technology Co., Limited, established in Hong Kong, 2021. AI-powered, expert-guided — enterprise-grade global competitiveness with one-person company agility." data-ms="Jiahe Culture Technology Co., Limited ditubuhkan di Hong Kong pada 2021. Dipacu AI, dipandu pakar — daya saing global bertaraf perusahaan dengan kelincahan syarikat satu orang." data-th="Jiahe Culture Technology Co., Limited ก่อตั้งที่ฮ่องกงในปี 2021 ขับเคลื่อนด้วย AI และทีมที่ปรึกษามืออาชีพ—มอบความสามารถแข่งขันระดับโลกแบบองค์กร ด้วยความคล่องตัวของบริษัทคนเดียว" data-id="Jiahe Culture Technology Co., Limited didirikan di Hong Kong pada 2021. Didukung AI dan para ahli—daya saing global kelas perusahaan dengan kelincahan perusahaan satu orang." data-ja="Jiahe Culture Technology Co., Limitedは2021年に香港で設立。AIを中核に、専門家チームが伴走—一人会社の軽さで、企業級のグローバル競争力を。" data-ko="Jiahe Culture Technology Co., Limited는 2021년 홍콩에서 설립되었습니다. AI를 핵심 동력으로, 전문 자문단이 전 과정에서 함께—1인 회사의 민첩함으로 기업급 글로벌 경쟁력을 제공합니다." data-ru="Jiahe Culture Technology Co., Limited основана в Гонконге в 2021 году. Драйвер — AI, партнер — команда экспертов: корпоративная глобальная конкурентоспособность с легкостью компании одного человека.">加禾文化科技有限公司，2021年成立于香港。以AI技术为核心驱动力，以专业智囊团为全程伙伴——让创业者以一人公司的轻盈，拥有企业级的全球竞争力。</p>
+                <p data-zh="一个人，也是一支队伍。" data-zh-hant="一個人，也是一支隊伍。" data-en="One person is a team." data-ms="Seorang juga sebuah pasukan." data-th="คนเดียวก็เป็นทีมได้" data-id="Satu orang pun adalah sebuah tim." data-ja="一人でも、チームになれる。" data-ko="한 사람도 하나의 팀입니다." data-ru="Один человек — тоже команда.">一个人，也是一支队伍。</p>
             </div>
             <div class="hero-ctas">
-                <a href="#services" class="btn btn-fill" data-zh="探索服务 →" data-en="EXPLORE SERVICES →">探索服务 →</a>
-                <a href="#hub" class="btn btn-ghost" data-zh="HyperCore OPC Hub" data-en="HYPERCORE OPC HUB">HyperCore OPC Hub</a>
+                <a href="#services" class="btn btn-fill" data-zh="探索服务 →" data-zh-hant="探索服務 →" data-en="EXPLORE SERVICES →" data-ms="TEROKAI PERKHIDMATAN →" data-th="สำรวจบริการ →" data-id="JELAJAHI LAYANAN →" data-ja="サービスを見る →" data-ko="서비스 살펴보기 →" data-ru="ПОСМОТРЕТЬ УСЛУГИ →">探索服务 →</a>
+                <a href="#hub" class="btn btn-ghost" data-zh="HyperCore OPC Hub" data-zh-hant="HyperCore OPC Hub" data-en="HYPERCORE OPC HUB" data-ms="HYPERCORE OPC HUB" data-th="HYPERCORE OPC HUB" data-id="HYPERCORE OPC HUB" data-ja="HYPERCORE OPC HUB" data-ko="HYPERCORE OPC HUB" data-ru="HYPERCORE OPC HUB">HyperCore OPC Hub</a>
             </div>
         </div>
         <div class="hero-stats-bar">
             <div class="hero-stats">
                 <div class="hero-stat">
                     <div class="hero-stat-num"><span class="p">6</span></div>
-                    <div class="hero-stat-lbl" data-zh="服务板块" data-en="Service Pillars">服务板块</div>
+                    <div class="hero-stat-lbl" data-zh="服务板块" data-zh-hant="服務板塊" data-en="Service Pillars" data-ms="Bidang Perkhidmatan" data-th="เสาหลักบริการ" data-id="Pilar Layanan" data-ja="サービス領域" data-ko="서비스 영역" data-ru="Направления услуг">服务板块</div>
                 </div>
                 <div class="hero-stat">
                     <div class="hero-stat-num"><span class="p">5</span></div>
-                    <div class="hero-stat-lbl" data-zh="注册地覆盖" data-en="Jurisdictions">注册地覆盖</div>
+                    <div class="hero-stat-lbl" data-zh="注册地覆盖" data-zh-hant="註冊地覆蓋" data-en="Jurisdictions" data-ms="Liputan Bidang Kuasa" data-th="ครอบคลุมเขตอำนาจ" data-id="Cakupan Yuridiksi" data-ja="対応地域" data-ko="관할 지역" data-ru="Юрисдикции">注册地覆盖</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-num"><span class="g">7</span><span class="u">+</span></div>
-                    <div class="hero-stat-lbl" data-zh="语言支持" data-en="Languages Supported">语言支持</div>
+                    <div class="hero-stat-num"><span class="g">9</span><span class="u">+</span></div>
+                    <div class="hero-stat-lbl" data-zh="语言支持" data-zh-hant="語言支援" data-en="Languages Supported" data-ms="Bahasa Disokong" data-th="รองรับภาษา" data-id="Bahasa Didukung" data-ja="対応言語" data-ko="지원 언어" data-ru="Поддерживаемые языки">语言支持</div>
                 </div>
                 <div class="hero-stat">
                     <div class="hero-stat-num"><span class="g">100</span><span class="u">%</span></div>
-                    <div class="hero-stat-lbl" data-zh="AI驱动" data-en="AI-Powered">AI驱动</div>
+                    <div class="hero-stat-lbl" data-zh="AI驱动" data-zh-hant="AI驅動" data-en="AI-Powered" data-ms="Dikuasakan AI" data-th="ขับเคลื่อนด้วย AI" data-id="Didukung AI" data-ja="AI駆動" data-ko="AI 기반" data-ru="На базе ИИ">AI驱动</div>
                 </div>
             </div>
         </div>
@@ -382,12 +423,12 @@
         <div class="sec-in" style="padding:0;max-width:1440px">
             <div class="about-layout">
                 <div class="about-text-col">
-                    <div class="sec-label" data-zh="关于加禾" data-en="About Jiahe">关于加禾</div>
-                    <div class="sec-title" data-zh="不是服务提供商，<br>是<em>战略级伙伴</em>" data-en="Not a service provider.<br>A <em>strategic partner.</em>">不是服务提供商，<br>是<em>战略级伙伴</em></div>
+                    <div class="sec-label" data-zh="关于加禾" data-zh-hant="關於加禾" data-en="About Jiahe" data-ms="Mengenai Jiahe" data-th="เกี่ยวกับ Jiahe" data-id="Tentang Jiahe" data-ja="Jiaheについて" data-ko="Jiahe 소개" data-ru="О Jiahe">关于加禾</div>
+                    <div class="sec-title" data-zh="不是服务提供商，<br>是<em>战略级伙伴</em>" data-zh-hant="不是服務提供商，<br>是<em>戰略級夥伴</em>" data-en="Not a service provider.<br>A <em>strategic partner.</em>" data-ms="Bukan sekadar penyedia perkhidmatan.<br>Namun <em>rakan strategik</em>." data-th="ไม่ใช่ผู้ให้บริการเพียงอย่างเดียว<br>แต่คือ <em>พันธมิตรเชิงกลยุทธ์</em>" data-id="Bukan sekadar penyedia layanan.<br>Melainkan <em>mitra strategis</em>." data-ja="サービス提供者ではなく、<br><em>戦略的パートナー</em>。" data-ko="단순한 서비스 제공자가 아니라<br><em>전략 파트너</em>입니다." data-ru="Не поставщик услуг.<br><em>Стратегический партнер.</em>">不是服务提供商，<br>是<em>战略级伙伴</em></div>
                     <div class="rule"></div>
-                    <p class="about-lead" data-zh="加禾文化科技有限公司2021年成立于香港，是一家以<em>AI技术</em>为核心驱动的企业服务集团。从公司注册的第一份文件，到全球化扩张的每一步，再到IPO钟声敲响的那一刻——加禾始终在场。" data-en="Jiahe Culture Technology Co., Limited, established in Hong Kong in 2021, is an <em>AI-powered</em> enterprise services group. From the first incorporation document, through every step of global expansion, to the moment the IPO bell rings — Jiahe is always there.">加禾文化科技有限公司2021年成立于香港，是一家以<em>AI技术</em>为核心驱动的企业服务集团。从公司注册的第一份文件，到全球化扩张的每一步，再到IPO钟声敲响的那一刻——加禾始终在场。</p>
-                    <div class="about-pull" data-zh="在AI重塑商业范式的时代，一个人也能拥有企业级的战斗力。" data-en="In the era where AI reshapes business paradigms, one person can command enterprise-grade capabilities.">在AI重塑商业范式的时代，一个人也能拥有企业级的战斗力。</div>
-                    <p class="about-body" data-zh="这正是我们构建 HyperCore OPC Hub 的初衷——让一人公司（OPC, One Person Company）创业者不再孤军奋战。我们提供的不只是单点服务，而是贯穿企业全生命周期的系统性支持。" data-en="This is precisely why we built HyperCore OPC Hub — so that One Person Company (OPC) entrepreneurs never fight alone. We don't offer point-in-time services — we provide systematic, end-to-end support across the full business lifecycle.">这正是我们构建 HyperCore OPC Hub 的初衷——让一人公司（OPC, One Person Company）创业者不再孤军奋战。我们提供的不只是单点服务，而是贯穿企业全生命周期的系统性支持。</p>
+                    <p class="about-lead" data-zh="加禾文化科技有限公司2021年成立于香港，是一家以<em>AI技术</em>为核心驱动的企业服务集团。从公司注册的第一份文件，到全球化扩张的每一步，再到IPO钟声敲响的那一刻——加禾始终在场。" data-zh-hant="加禾文化科技有限公司2021年成立於香港，是一家以<em>AI技術</em>為核心驅動的企業服務集團。從公司註冊的第一份文件，到全球化擴張的每一步，再到IPO鐘聲敲響的那一刻——加禾始終在場。" data-en="Jiahe Culture Technology Co., Limited, established in Hong Kong in 2021, is an <em>AI-powered</em> enterprise services group. From the first incorporation document, through every step of global expansion, to the moment the IPO bell rings — Jiahe is always there." data-ms="Jiahe Culture Technology Co., Limited ditubuhkan di Hong Kong pada 2021, ialah kumpulan perkhidmatan perusahaan yang dipacu <em>AI</em>. Dari dokumen penubuhan pertama, setiap langkah pengembangan global, hingga saat loceng IPO berbunyi — Jiahe sentiasa bersama anda." data-th="Jiahe Culture Technology Co., Limited ก่อตั้งที่ฮ่องกงในปี 2021 เป็นกลุ่มบริการองค์กรที่ขับเคลื่อนด้วย<em>เทคโนโลยี AI</em> ตั้งแต่เอกสารจดทะเบียนฉบับแรก ทุกก้าวของการขยายตัวสู่สากล จนถึงวินาทีที่ระฆัง IPO ดังขึ้น — Jiahe อยู่เคียงข้างเสมอ" data-id="Jiahe Culture Technology Co., Limited didirikan di Hong Kong pada 2021, adalah grup layanan perusahaan yang digerakkan oleh <em>AI</em>. Dari dokumen pendirian pertama, setiap langkah ekspansi global, hingga saat bel IPO berbunyi — Jiahe selalu ada." data-ja="Jiahe Culture Technology Co., Limitedは2021年に香港で設立。<em>AI技術</em>を中核にした企業サービスグループです。設立の最初の書類から、グローバル拡大の一歩一歩、そしてIPOの鐘が鳴る瞬間まで—Jiaheは常にそばに。" data-ko="Jiahe Culture Technology Co., Limited는 2021년 홍콩에서 설립된 <em>AI 기술</em> 기반 기업 서비스 그룹입니다. 설립 첫 문서부터 글로벌 확장의 매 단계, IPO의 종이 울리는 순간까지 — Jiahe는 언제나 함께합니다." data-ru="Jiahe Culture Technology Co., Limited основана в Гонконге в 2021 году и является группой корпоративных сервисов, движимой <em>AI</em>. От первого учредительного документа до каждого шага глобальной экспансии и момента, когда звучит колокол IPO — Jiahe всегда рядом.">加禾文化科技有限公司2021年成立于香港，是一家以<em>AI技术</em>为核心驱动的企业服务集团。从公司注册的第一份文件，到全球化扩张的每一步，再到IPO钟声敲响的那一刻——加禾始终在场。</p>
+                    <div class="about-pull" data-zh="在AI重塑商业范式的时代，一个人也能拥有企业级的战斗力。" data-zh-hant="在AI重塑商業範式的時代，一個人也能擁有企業級的戰鬥力。" data-en="In the era where AI reshapes business paradigms, one person can command enterprise-grade capabilities." data-ms="Dalam era AI membentuk semula paradigma perniagaan, seorang juga boleh memiliki keupayaan bertaraf perusahaan." data-th="ในยุคที่ AI พลิกโฉมรูปแบบธุรกิจ คนเดียวก็มีศักยภาพระดับองค์กรได้" data-id="Di era ketika AI membentuk ulang paradigma bisnis, satu orang pun dapat memiliki kapabilitas kelas perusahaan." data-ja="AIがビジネスの常識を塗り替える時代、一人でも企業級の戦闘力を持てる。" data-ko="AI가 비즈니스 패러다임을 재편하는 시대, 한 사람도 기업급 역량을 가질 수 있습니다." data-ru="В эпоху, когда ИИ меняет бизнес-парадигмы, один человек может обладать возможностями корпоративного уровня.">在AI重塑商业范式的时代，一个人也能拥有企业级的战斗力。</div>
+                    <p class="about-body" data-zh="这正是我们构建 HyperCore OPC Hub 的初衷——让一人公司（OPC, One Person Company）创业者不再孤军奋战。我们提供的不只是单点服务，而是贯穿企业全生命周期的系统性支持。" data-zh-hant="這正是我們構建 HyperCore OPC Hub 的初衷——讓一人公司（OPC, One Person Company）創業者不再孤軍奮戰。我們提供的不只是單點服務，而是貫穿企業全生命週期的系統性支援。" data-en="This is precisely why we built HyperCore OPC Hub — so that One Person Company (OPC) entrepreneurs never fight alone. We don't offer point-in-time services — we provide systematic, end-to-end support across the full business lifecycle." data-ms="Inilah sebabnya kami membina HyperCore OPC Hub — agar usahawan One Person Company (OPC) tidak lagi berjuang sendirian. Kami bukan menawarkan perkhidmatan titik demi titik, tetapi sokongan sistematik merentasi keseluruhan kitar hayat perniagaan." data-th="นี่คือเหตุผลที่เราสร้าง HyperCore OPC Hub — เพื่อให้ผู้ประกอบการบริษัทคนเดียว (OPC) ไม่ต้องสู้ลำพัง เราไม่ได้ให้บริการแบบจุดเดียว แต่เป็นการสนับสนุนอย่างเป็นระบบตลอดวงจรชีวิตธุรกิจ" data-id="Inilah alasan kami membangun HyperCore OPC Hub — agar pengusaha One Person Company (OPC) tidak berjuang sendirian. Kami tidak menawarkan layanan satu titik, melainkan dukungan sistematis end-to-end sepanjang siklus hidup bisnis." data-ja="それがHyperCore OPC Hubを構築した理由です—OPC（One Person Company）の起業家が一人で戦わないために。単発のサービスではなく、企業ライフサイクル全体を貫く体系的な支援を提供します。" data-ko="이것이 우리가 HyperCore OPC Hub를 만든 이유입니다 — OPC(1인 회사) 창업자가 혼자 싸우지 않도록. 단발성 서비스가 아니라 기업 전 생애주기를 관통하는 체계적인 지원을 제공합니다." data-ru="Именно поэтому мы создали HyperCore OPC Hub — чтобы предприниматели OPC (One Person Company) не оставались один на один. Мы предлагаем не точечные услуги, а системную поддержку на всем жизненном цикле бизнеса.">这正是我们构建 HyperCore OPC Hub 的初衷——让一人公司（OPC, One Person Company）创业者不再孤军奋战。我们提供的不只是单点服务，而是贯穿企业全生命周期的系统性支持。</p>
                 </div>
                 <div class="about-img-col">
                     <img src="https://s.coze.cn/image/xY416Slw7uw/" alt="Professional Workspace">
@@ -401,8 +442,8 @@
                                 </div>
                             </div>
                             <div class="about-card-row"><span class="l">Registration</span><span class="v">CR No. 3095181</span></div>
-                            <div class="about-card-row"><span class="l" data-zh="成立" data-en="Established">成立</span><span class="v" data-zh="2021.10.21" data-en="Oct 21, 2021">2021.10.21</span></div>
-                            <div class="about-card-row"><span class="l" data-zh="注册地" data-en="Jurisdiction">注册地</span><span class="v" data-zh="中国香港" data-en="Hong Kong, China">中国香港</span></div>
+                            <div class="about-card-row"><span class="l" data-zh="成立" data-zh-hant="成立" data-en="Established" data-ms="Ditubuhkan" data-th="ก่อตั้ง" data-id="Didirikan" data-ja="設立" data-ko="설립" data-ru="Основана">成立</span><span class="v" data-zh="2021.10.21" data-zh-hant="2021.10.21" data-en="Oct 21, 2021" data-ms="21 Okt 2021" data-th="21 ต.ค. 2021" data-id="21 Okt 2021" data-ja="2021年10月21日" data-ko="2021년 10월 21일" data-ru="21 окт 2021">2021.10.21</span></div>
+                            <div class="about-card-row"><span class="l" data-zh="注册地" data-zh-hant="註冊地" data-en="Jurisdiction" data-ms="Bidang Kuasa" data-th="เขตอำนาจ" data-id="Yurisdiksi" data-ja="登記地" data-ko="등록지" data-ru="Юрисдикция">注册地</span><span class="v" data-zh="中国香港" data-zh-hant="中國香港" data-en="Hong Kong, China" data-ms="Hong Kong, China" data-th="ฮ่องกง, จีน" data-id="Hong Kong, Tiongkok" data-ja="香港（中国）" data-ko="홍콩(중국)" data-ru="Гонконг, Китай">中国香港</span></div>
                             <div class="about-card-row"><span class="l">Website</span><span class="v">www.jiahe-ai.cc</span></div>
                             <div class="about-card-row"><span class="l">WeChat</span><span class="v">HKDoubleA</span></div>
                         </div>
@@ -417,42 +458,42 @@
         <div class="sec-in">
             <div class="svc-header">
                 <div>
-                    <div class="sec-label" data-zh="服务体系" data-en="Services">服务体系</div>
-                    <div class="sec-title" data-zh="六大板块，<em>全生命周期</em>覆盖" data-en="Six Pillars, <em>Full Lifecycle</em> Coverage">六大板块，<em>全生命周期</em>覆盖</div>
+                    <div class="sec-label" data-zh="服务体系" data-zh-hant="服務體系" data-en="Services" data-ms="Perkhidmatan" data-th="บริการ" data-id="Layanan" data-ja="サービス" data-ko="서비스" data-ru="Услуги">服务体系</div>
+                    <div class="sec-title" data-zh="六大板块，<em>全生命周期</em>覆盖" data-zh-hant="六大板塊，<em>全生命週期</em>覆蓋" data-en="Six Pillars, <em>Full Lifecycle</em> Coverage" data-ms="Enam Tonggak, liputan <em>kitar hayat penuh</em>" data-th="หกเสาหลัก ครอบคลุม <em>ตลอดวงจรชีวิต</em>" data-id="Enam pilar, cakupan <em>siklus hidup penuh</em>" data-ja="6つの柱で<em>全ライフサイクル</em>をカバー" data-ko="6대 영역으로 <em>전 생애주기</em> 커버" data-ru="Шесть направлений — <em>полный жизненный цикл</em>">六大板块，<em>全生命周期</em>覆盖</div>
                     <div class="rule"></div>
                 </div>
-                <div class="svc-header-right" data-zh="从注册到上市，从合规到融资——加禾的服务体系不是菜单式单选，而是贯穿企业每一个关键阶段的系统化支持。" data-en="From incorporation to IPO, from compliance to capital — Jiahe's service system is not an à la carte menu, but systematic support across every critical stage.">从注册到上市，从合规到融资——加禾的服务体系不是菜单式单选，而是贯穿企业每一个关键阶段的系统化支持。</div>
+                <div class="svc-header-right" data-zh="从注册到上市，从合规到融资——加禾的服务体系不是菜单式单选，而是贯穿企业每一个关键阶段的系统化支持。" data-zh-hant="從註冊到上市，從合規到融資——加禾的服務體系不是菜單式單選，而是貫穿企業每一個關鍵階段的系統化支援。" data-en="From incorporation to IPO, from compliance to capital — Jiahe's service system is not an à la carte menu, but systematic support across every critical stage." data-ms="Dari penubuhan hingga IPO, dari pematuhan hingga pembiayaan — sistem perkhidmatan Jiahe bukan menu pilihan satu-satu, tetapi sokongan sistematik di setiap fasa kritikal." data-th="ตั้งแต่จดทะเบียนจนถึง IPO ตั้งแต่การปฏิบัติตามกฎจนถึงการระดมทุน—ระบบบริการของ Jiahe ไม่ใช่เมนูเลือกอย่างเดียว แต่คือการสนับสนุนอย่างเป็นระบบในทุกช่วงสำคัญ" data-id="Dari pendirian hingga IPO, dari kepatuhan hingga pendanaan — sistem layanan Jiahe bukan menu pilihan satuan, melainkan dukungan sistematis di setiap tahap krusial." data-ja="設立からIPO、コンプライアンスから資金調達まで—Jiaheのサービスは“メニューから一品選ぶ”ものではなく、重要なフェーズを貫く体系的支援です。" data-ko="설립부터 IPO, 컴플라이언스부터 자금조달까지 — Jiahe의 서비스는 메뉴식 단일 선택이 아니라 모든 핵심 단계에 걸친 체계적 지원입니다." data-ru="От регистрации до IPO, от комплаенса до привлечения капитала — система Jiahe не “меню на выбор”, а системная поддержка на каждом ключевом этапе.">从注册到上市，从合规到融资——加禾的服务体系不是菜单式单选，而是贯穿企业每一个关键阶段的系统化支持。</div>
             </div>
             <div class="svc-list">
                 <div class="svc-item">
                     <div class="svc-num">01</div>
-                    <div><div class="svc-name" data-zh="工商注册" data-en="Company Incorporation">工商注册</div><div class="svc-name-en">COMPANY INCORPORATION</div></div>
-                    <div class="svc-desc" data-zh="全球注册地智能匹配，专业完成跨境公司设立。覆盖香港、新加坡、BVI、开曼等主流注册地。" data-en="Intelligent jurisdiction matching, professional cross-border incorporation across Hong Kong, Singapore, BVI, Cayman and beyond.">全球注册地智能匹配，专业完成跨境公司设立。覆盖香港、新加坡、BVI、开曼等主流注册地。</div>
+                    <div><div class="svc-name" data-zh="工商注册" data-zh-hant="工商註冊" data-en="Company Incorporation" data-ms="Pemerbadanan Syarikat" data-th="จดทะเบียนบริษัท" data-id="Pendirian Perusahaan" data-ja="会社設立" data-ko="회사 설립" data-ru="Регистрация компании">工商注册</div><div class="svc-name-en">COMPANY INCORPORATION</div></div>
+                    <div class="svc-desc" data-zh="全球注册地智能匹配，专业完成跨境公司设立。覆盖香港、新加坡、BVI、开曼等主流注册地。" data-zh-hant="全球註冊地智慧匹配，專業完成跨境公司設立。覆蓋香港、新加坡、BVI、開曼等主流註冊地。" data-en="Intelligent jurisdiction matching, professional cross-border incorporation across Hong Kong, Singapore, BVI, Cayman and beyond." data-ms="Padanan bidang kuasa global secara pintar, penubuhan syarikat rentas sempadan secara profesional. Meliputi Hong Kong, Singapura, BVI, Cayman dan lain-lain." data-th="จับคู่เขตอำนาจทั่วโลกอย่างชาญฉลาด จัดตั้งบริษัทข้ามพรมแดนอย่างมืออาชีพ ครอบคลุมฮ่องกง สิงคโปร์ BVI เคย์แมน และอื่นๆ" data-id="Pencocokan yurisdiksi global secara cerdas, pendirian perusahaan lintas negara secara profesional. Mencakup Hong Kong, Singapura, BVI, Cayman, dan lainnya." data-ja="世界各地の登記地をインテリジェントにマッチングし、クロスボーダー設立をプロが完遂。香港・シンガポール・BVI・ケイマンなど主要地域に対応。" data-ko="글로벌 관할지 스마트 매칭으로 해외 법인 설립을 전문적으로 수행합니다. 홍콩, 싱가포르, BVI, 케이맨 등 주요 지역을 포괄." data-ru="Умный подбор юрисдикции и профессиональная регистрация компаний за рубежом. Гонконг, Сингапур, BVI, Кайманы и другие.">全球注册地智能匹配，专业完成跨境公司设立。覆盖香港、新加坡、BVI、开曼等主流注册地。</div>
                 </div>
                 <div class="svc-item">
                     <div class="svc-num">02</div>
-                    <div><div class="svc-name" data-zh="财税规划" data-en="Tax & Financial Planning">财税规划</div><div class="svc-name-en">TAX & FINANCIAL PLANNING</div></div>
-                    <div class="svc-desc" data-zh="跨境架构设计，合规税务优化。帮助企业构建最优的跨境资金与税务架构。" data-en="Cross-border structure design, compliant tax optimization for optimal financial architecture.">跨境架构设计，合规税务优化。帮助企业构建最优的跨境资金与税务架构。</div>
+                    <div><div class="svc-name" data-zh="财税规划" data-zh-hant="財稅規劃" data-en="Tax & Financial Planning" data-ms="Perancangan Cukai & Kewangan" data-th="วางแผนภาษีและการเงิน" data-id="Perencanaan Pajak & Keuangan" data-ja="税務・財務計画" data-ko="세무·재무 기획" data-ru="Налоговое и финансовое планирование">财税规划</div><div class="svc-name-en">TAX & FINANCIAL PLANNING</div></div>
+                    <div class="svc-desc" data-zh="跨境架构设计，合规税务优化。帮助企业构建最优的跨境资金与税务架构。" data-zh-hant="跨境架構設計，合規稅務優化。協助企業構建最優的跨境資金與稅務架構。" data-en="Cross-border structure design, compliant tax optimization for optimal financial architecture." data-ms="Reka bentuk struktur rentas sempadan, pengoptimuman cukai yang patuh. Membantu membina struktur dana & cukai rentas sempadan yang optimum." data-th="ออกแบบโครงสร้างข้ามพรมแดน และเพิ่มประสิทธิภาพภาษีอย่างถูกต้องตามกฎหมาย ช่วยสร้างโครงสร้างเงินทุนและภาษีที่เหมาะสมที่สุด" data-id="Desain struktur lintas negara, optimasi pajak yang patuh. Membantu membangun struktur dana dan pajak lintas negara yang optimal." data-ja="クロスボーダー構造設計とコンプライアンスに沿った税務最適化。最適な資金・税務スキームを構築します。" data-ko="크로스보더 구조 설계와 합법적 세무 최적화. 최적의 해외 자금·세무 구조를 구축합니다." data-ru="Проектирование трансграничной структуры и налоговая оптимизация в рамках комплаенса. Помогаем выстроить оптимальную финансово-налоговую архитектуру.">跨境架构设计，合规税务优化。帮助企业构建最优的跨境资金与税务架构。</div>
                 </div>
                 <div class="svc-item">
                     <div class="svc-num">03</div>
-                    <div><div class="svc-name" data-zh="法律合规" data-en="Legal Compliance">法律合规</div><div class="svc-name-en">LEGAL COMPLIANCE</div></div>
-                    <div class="svc-desc" data-zh="全链路法务支持，从合同到监管。确保企业每个环节都在合规框架内运行。" data-en="End-to-end legal support, from contracts to regulatory compliance.">全链路法务支持，从合同到监管。确保企业每个环节都在合规框架内运行。</div>
+                    <div><div class="svc-name" data-zh="法律合规" data-zh-hant="法律合規" data-en="Legal Compliance" data-ms="Pematuhan Undang-undang" data-th="กฎหมายและการปฏิบัติตามข้อกำหนด" data-id="Kepatuhan Hukum" data-ja="法務コンプライアンス" data-ko="법률 컴플라이언스" data-ru="Юридический комплаенс">法律合规</div><div class="svc-name-en">LEGAL COMPLIANCE</div></div>
+                    <div class="svc-desc" data-zh="全链路法务支持，从合同到监管。确保企业每个环节都在合规框架内运行。" data-zh-hant="全鏈路法務支援，從合約到監管。確保企業每個環節都在合規框架內運行。" data-en="End-to-end legal support, from contracts to regulatory compliance." data-ms="Sokongan undang-undang hujung ke hujung, dari kontrak hingga pematuhan regulatori. Memastikan setiap pautan operasi mematuhi rangka kerja." data-th="สนับสนุนด้านกฎหมายครบวงจร ตั้งแต่สัญญาถึงการกำกับดูแล เพื่อให้ทุกขั้นตอนอยู่ภายใต้กรอบความสอดคล้อง" data-id="Dukungan hukum end-to-end, dari kontrak hingga kepatuhan regulasi. Memastikan setiap proses berjalan dalam kerangka kepatuhan." data-ja="契約から規制対応まで、法務をエンドツーエンドで支援。すべてのプロセスをコンプライアンスの枠内で運用します。" data-ko="계약부터 규제 대응까지 전 과정 법무 지원. 모든 단계가 컴플라이언스 프레임 안에서 운영되도록 보장합니다." data-ru="Полный юридический цикл: от договоров до регуляторного комплаенса. Обеспечиваем работу всех процессов в правовом поле.">全链路法务支持，从合同到监管。确保企业每个环节都在合规框架内运行。</div>
                 </div>
                 <div class="svc-item">
                     <div class="svc-num">04</div>
-                    <div><div class="svc-name" data-zh="融资并购" data-en="Financing & M&A Advisory">融资并购</div><div class="svc-name-en">FINANCING & M&A ADVISORY</div></div>
-                    <div class="svc-desc" data-zh="资本对接与并购策略，助力企业跨越式增长。连接全球资本网络与战略投资者。" data-en="Capital matching and M&A strategy for leapfrog growth, connecting global capital networks with strategic investors.">资本对接与并购策略，助力企业跨越式增长。连接全球资本网络与战略投资者。</div>
+                    <div><div class="svc-name" data-zh="融资并购" data-zh-hant="融資併購" data-en="Financing & M&A Advisory" data-ms="Pembiayaan & M&A" data-th="การระดมทุนและ M&A" data-id="Pendanaan & M&A" data-ja="資金調達・M&A" data-ko="자금조달·M&A" data-ru="Финансирование и M&A">融资并购</div><div class="svc-name-en">FINANCING & M&A ADVISORY</div></div>
+                    <div class="svc-desc" data-zh="资本对接与并购策略，助力企业跨越式增长。连接全球资本网络与战略投资者。" data-zh-hant="資本對接與併購策略，助力企業跨越式增長。連接全球資本網絡與戰略投資者。" data-en="Capital matching and M&A strategy for leapfrog growth, connecting global capital networks with strategic investors." data-ms="Padanan modal dan strategi M&A untuk pertumbuhan pesat. Menghubungkan rangkaian modal global dan pelabur strategik." data-th="เชื่อมต่อทุนและกลยุทธ์ M&A เพื่อการเติบโตแบบก้าวกระโดด เชื่อมโยงเครือข่ายทุนระดับโลกและนักลงทุนเชิงกลยุทธ์" data-id="Pencocokan modal dan strategi M&A untuk pertumbuhan lompatan. Menghubungkan jaringan modal global dan investor strategis." data-ja="資本マッチングとM&A戦略で飛躍的成長を支援。グローバルな資本ネットワークと戦略投資家をつなぎます。" data-ko="자본 매칭과 M&A 전략으로 도약 성장을 지원. 글로벌 자본 네트워크와 전략 투자자를 연결합니다." data-ru="Сопровождение финансирования и M&A: стратегия и соединение с глобальными инвесторами для рывкового роста.">资本对接与并购策略，助力企业跨越式增长。连接全球资本网络与战略投资者。</div>
                 </div>
                 <div class="svc-item">
                     <div class="svc-num">05</div>
-                    <div><div class="svc-name" data-zh="战略咨询" data-en="Strategic Consulting">战略咨询</div><div class="svc-name-en">STRATEGIC CONSULTING</div></div>
-                    <div class="svc-desc" data-zh="从商业模式到出海落地，提供可执行的战略蓝图。帮助企业找到增长的最优路径。" data-en="From business model to global expansion — actionable strategic blueprints for optimal growth.">从商业模式到出海落地，提供可执行的战略蓝图。帮助企业找到增长的最优路径。</div>
+                    <div><div class="svc-name" data-zh="战略咨询" data-zh-hant="戰略諮詢" data-en="Strategic Consulting" data-ms="Perundingan Strategik" data-th="ที่ปรึกษากลยุทธ์" data-id="Konsultasi Strategis" data-ja="戦略コンサルティング" data-ko="전략 컨설팅" data-ru="Стратегический консалтинг">战略咨询</div><div class="svc-name-en">STRATEGIC CONSULTING</div></div>
+                    <div class="svc-desc" data-zh="从商业模式到出海落地，提供可执行的战略蓝图。帮助企业找到增长的最优路径。" data-zh-hant="從商業模式到出海落地，提供可執行的戰略藍圖。幫助企業找到增長的最優路徑。" data-en="From business model to global expansion — actionable strategic blueprints for optimal growth." data-ms="Dari model perniagaan hingga pelaksanaan ke luar negara — pelan strategik yang boleh dilaksana. Membantu mencari laluan pertumbuhan yang optimum." data-th="ตั้งแต่โมเดลธุรกิจถึงการขยายสู่ต่างประเทศ ให้พิมพ์เขียวเชิงกลยุทธ์ที่ลงมือทำได้ ช่วยหาเส้นทางเติบโตที่เหมาะสมที่สุด" data-id="Dari model bisnis hingga ekspansi global — cetak biru strategi yang dapat dieksekusi. Membantu menemukan jalur pertumbuhan optimal." data-ja="ビジネスモデルから海外展開の実行まで、実践可能な戦略ブループリントを提供。最適な成長ルートを見つけます。" data-ko="비즈니스 모델부터 해외 진출 실행까지, 실행 가능한 전략 청사진 제공. 최적의 성장 경로를 찾도록 돕습니다." data-ru="От бизнес-модели до выхода на международные рынки — реализуемая стратегическая дорожная карта для оптимального роста.">从商业模式到出海落地，提供可执行的战略蓝图。帮助企业找到增长的最优路径。</div>
                 </div>
                 <div class="svc-item">
                     <div class="svc-num">06</div>
-                    <div><div class="svc-name" data-zh="技术赋能" data-en="Technology Enablement">技术赋能</div><div class="svc-name-en">TECHNOLOGY ENABLEMENT</div></div>
-                    <div class="svc-desc" data-zh="AI工具与数字化系统，显著降低运营成本，大幅提升业务效率。用技术重新定义企业服务的效率边界。" data-en="AI tools and digital systems — significantly reducing operational costs and substantially boosting business efficiency. Redefining the efficiency frontier.">AI工具与数字化系统，显著降低运营成本，大幅提升业务效率。用技术重新定义企业服务的效率边界。</div>
+                    <div><div class="svc-name" data-zh="技术赋能" data-zh-hant="技術賦能" data-en="Technology Enablement" data-ms="Pemerkasaan Teknologi" data-th="การเสริมศักยภาพด้วยเทคโนโลยี" data-id="Pemberdayaan Teknologi" data-ja="テクノロジー支援" data-ko="기술 지원" data-ru="Технологическое внедрение">技术赋能</div><div class="svc-name-en">TECHNOLOGY ENABLEMENT</div></div>
+                    <div class="svc-desc" data-zh="AI工具与数字化系统，显著降低运营成本，大幅提升业务效率。用技术重新定义企业服务的效率边界。" data-zh-hant="AI工具與數位化系統，顯著降低營運成本，大幅提升業務效率。用技術重新定義企業服務的效率邊界。" data-en="AI tools and digital systems — significantly reducing operational costs and substantially boosting business efficiency. Redefining the efficiency frontier." data-ms="Alat AI dan sistem digital — mengurangkan kos operasi secara ketara, meningkatkan kecekapan dengan besar. Mentakrif semula sempadan kecekapan." data-th="เครื่องมือ AI และระบบดิจิทัล ลดต้นทุนการดำเนินงานอย่างชัดเจน เพิ่มประสิทธิภาพอย่างมาก และนิยามขอบเขตประสิทธิภาพใหม่" data-id="Alat AI dan sistem digital — menurunkan biaya operasional secara signifikan, meningkatkan efisiensi secara besar. Mendefinisikan ulang batas efisiensi." data-ja="AIツールとデジタルシステムで運用コストを大幅に削減し、業務効率を飛躍的に向上。企業サービスの効率の境界を再定義します。" data-ko="AI 도구와 디지털 시스템으로 운영 비용을 크게 낮추고, 업무 효율을 대폭 향상. 기업 서비스 효율의 경계를 재정의합니다." data-ru="Инструменты ИИ и цифровые системы — заметное снижение операционных затрат и резкий рост эффективности. Переопределяем границы продуктивности.">AI工具与数字化系统，显著降低运营成本，大幅提升业务效率。用技术重新定义企业服务的效率边界。</div>
                 </div>
             </div>
         </div>
@@ -464,10 +505,10 @@
             <div class="hub-layout">
                 <div class="hub-sticky">
                     <div class="hub-tag">PLATFORM</div>
-                    <div class="hub-name" data-zh="HyperCore<br>OPC Hub" data-en="HyperCore<br>OPC Hub">HyperCore<br>OPC Hub</div>
+                    <div class="hub-name" data-zh="HyperCore<br>OPC Hub" data-zh-hant="HyperCore<br>OPC Hub" data-en="HyperCore<br>OPC Hub" data-ms="HyperCore<br>OPC Hub" data-th="HyperCore<br>OPC Hub" data-id="HyperCore<br>OPC Hub" data-ja="HyperCore<br>OPC Hub" data-ko="HyperCore<br>OPC Hub" data-ru="HyperCore<br>OPC Hub">HyperCore<br>OPC Hub</div>
                     <div class="hub-name-en">ONE-STOP TECHNOLOGY PLATFORM FOR OPC</div>
-                    <p class="hub-desc" data-zh="加禾自主研发的一站式OPC技术平台，专为一人公司创业者打造。" data-en="Jiahe's proprietary one-stop OPC technology platform, purpose-built for One Person Company entrepreneurs.">加禾自主研发的一站式OPC技术平台，专为一人公司创业者打造。</p>
-                    <p class="hub-desc-en" data-zh="无需编程、无需组建团队，即可拥有企业级运营系统。" data-en="No code. No team. Enterprise-grade systems from day one.">No code. No team. Enterprise-grade systems from day one.</p>
+                    <p class="hub-desc" data-zh="加禾自主研发的一站式OPC技术平台，专为一人公司创业者打造。" data-zh-hant="加禾自主研發的一站式OPC技術平台，專為一人公司創業者打造。" data-en="Jiahe's proprietary one-stop OPC technology platform, purpose-built for One Person Company entrepreneurs." data-ms="Platform teknologi OPC sehenti milik Jiahe, dibangunkan sendiri untuk usahawan syarikat satu orang." data-th="แพลตฟอร์มเทคโนโลยี OPC แบบครบวงจรที่ Jiahe พัฒนาขึ้นเอง สร้างมาเพื่อผู้ประกอบการบริษัทคนเดียว" data-id="Platform teknologi OPC one-stop milik Jiahe, dikembangkan sendiri untuk pengusaha perusahaan satu orang." data-ja="Jiaheが自社開発したワンストップOPC技術プラットフォーム。1人会社の起業家のために設計。" data-ko="Jiahe가 자체 개발한 원스톱 OPC 기술 플랫폼으로, 1인 회사 창업자를 위해 설계되었습니다." data-ru="Собственная one-stop технологическая платформа OPC от Jiahe, созданная для предпринимателей компаний одного человека.">加禾自主研发的一站式OPC技术平台，专为一人公司创业者打造。</p>
+                    <p class="hub-desc-en" data-zh="无需编程、无需组建团队，即可拥有企业级运营系统。" data-zh-hant="無需編程、無需組建團隊，即可擁有企業級營運系統。" data-en="No code. No team. Enterprise-grade systems from day one." data-ms="Tanpa kod. Tanpa pasukan. Sistem bertaraf perusahaan sejak hari pertama." data-th="ไม่ต้องเขียนโค้ด ไม่ต้องมีทีม ระบบระดับองค์กรตั้งแต่วันแรก" data-id="Tanpa kode. Tanpa tim. Sistem kelas perusahaan sejak hari pertama." data-ja="コード不要。チーム不要。初日から企業級システム。" data-ko="코드 없이. 팀 없이. 첫날부터 기업급 시스템." data-ru="Без кода. Без команды. Корпоративные системы с первого дня.">无需编程、无需组建团队，即可拥有企业级运营系统。</p>
                     <div class="hub-img">
                         <img src="https://s.coze.cn/image/uo5PQ5cBNTY/" alt="Global Network">
                     </div>
@@ -477,33 +518,33 @@
                         <div class="feat">
                             <div class="feat-ico"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6z"/></svg></div>
                             <div>
-                                <h4 data-zh="零代码模块组装" data-en="Zero-code Module Assembly">零代码模块组装</h4>
+                                <h4 data-zh="零代码模块组装" data-zh-hant="零代碼模組組裝" data-en="Zero-code Module Assembly" data-ms="Perakitan Modul Tanpa Kod" data-th="การประกอบโมดูลแบบไม่ต้องเขียนโค้ด" data-id="Perakitan Modul Tanpa Kode" data-ja="ノーコードモジュール組み立て" data-ko="노코드 모듈 조립" data-ru="Сборка модулей без кода">零代码模块组装</h4>
                                 <div class="h4-en">ZERO-CODE MODULE ASSEMBLY</div>
-                                <p data-zh="无需编程，拖拽式搭建业务系统" data-en="Build business systems without programming, drag-and-drop">无需编程，拖拽式搭建业务系统</p>
+                                <p data-zh="无需编程，拖拽式搭建业务系统" data-zh-hant="無需編程，拖拽式搭建業務系統" data-en="Build business systems without programming, drag-and-drop" data-ms="Bina sistem perniagaan tanpa pengaturcaraan — seret dan lepas" data-th="สร้างระบบธุรกิจแบบลากวาง โดยไม่ต้องเขียนโปรแกรม" data-id="Bangun sistem bisnis tanpa pemrograman — drag-and-drop" data-ja="プログラミング不要、ドラッグ&ドロップで業務システム構築" data-ko="코딩 없이 드래그앤드롭으로 업무 시스템 구축" data-ru="Без программирования: бизнес‑системы методом drag-and-drop">无需编程，拖拽式搭建业务系统</p>
                             </div>
                         </div>
                         <div class="feat">
                             <div class="feat-ico"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5m14.8.8"/></svg></div>
                             <div>
-                                <h4 data-zh="AI智能配置" data-en="AI-powered Configuration">AI智能配置</h4>
+                                <h4 data-zh="AI智能配置" data-zh-hant="AI智慧配置" data-en="AI-powered Configuration" data-ms="Konfigurasi Berkuasa AI" data-th="การกำหนดค่าด้วย AI" data-id="Konfigurasi Berbasis AI" data-ja="AIスマート設定" data-ko="AI 스마트 구성" data-ru="Настройка на базе ИИ">AI智能配置</h4>
                                 <div class="h4-en">AI-POWERED CONFIGURATION</div>
-                                <p data-zh="根据行业和地区自动推荐最优方案" data-en="Automatically recommending optimal solutions by industry and jurisdiction">根据行业和地区自动推荐最优方案</p>
+                                <p data-zh="根据行业和地区自动推荐最优方案" data-zh-hant="根據行業和地區自動推薦最優方案" data-en="Automatically recommending optimal solutions by industry and jurisdiction" data-ms="Mengesyorkan pelan optimum secara automatik mengikut industri dan bidang kuasa" data-th="แนะนำโซลูชันที่เหมาะสมที่สุดอัตโนมัติตามอุตสาหกรรมและพื้นที่" data-id="Merekomendasikan solusi optimal secara otomatis berdasarkan industri dan yurisdiksi" data-ja="業種と地域に基づき最適プランを自動提案" data-ko="산업·지역에 따라 최적 솔루션을 자동 추천" data-ru="Автоматический подбор оптимальных решений по отрасли и юрисдикции">根据行业和地区自动推荐最优方案</p>
                             </div>
                         </div>
                         <div class="feat">
                             <div class="feat-ico"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg></div>
                             <div>
-                                <h4 data-zh="全球园区网络" data-en="Global Hub Network">全球园区网络</h4>
+                                <h4 data-zh="全球园区网络" data-zh-hant="全球園區網絡" data-en="Global Hub Network" data-ms="Rangkaian Hab Global" data-th="เครือข่ายฮับทั่วโลก" data-id="Jaringan Hub Global" data-ja="グローバル拠点ネットワーク" data-ko="글로벌 허브 네트워크" data-ru="Глобальная сеть хабов">全球园区网络</h4>
                                 <div class="h4-en">GLOBAL HUB NETWORK</div>
-                                <p data-zh="连接中国大陆、香港、新加坡、马来西亚、BVI等注册地与产业园区" data-en="Connecting jurisdictions and business hubs across China, Hong Kong, Singapore, Malaysia, BVI and beyond">连接中国大陆、香港、新加坡、马来西亚、BVI等注册地与产业园区</p>
+                                <p data-zh="连接中国大陆、香港、新加坡、马来西亚、BVI等注册地与产业园区" data-zh-hant="連接中國大陸、香港、新加坡、馬來西亞、BVI等註冊地與產業園區" data-en="Connecting jurisdictions and business hubs across China, Hong Kong, Singapore, Malaysia, BVI and beyond" data-ms="Menghubungkan bidang kuasa dan hab perniagaan di China, Hong Kong, Singapura, Malaysia, BVI dan seterusnya" data-th="เชื่อมโยงเขตอำนาจและนิคมอุตสาหกรรมในจีนแผ่นดินใหญ่ ฮ่องกง สิงคโปร์ มาเลเซีย BVI และอื่นๆ" data-id="Menghubungkan yurisdiksi dan hub bisnis di Tiongkok, Hong Kong, Singapura, Malaysia, BVI, dan lainnya" data-ja="中国本土・香港・シンガポール・マレーシア・BVIなどの登記地と産業拠点を接続" data-ko="중국 본토·홍콩·싱가포르·말레이시아·BVI 등 관할지 및 산업 허브 연결" data-ru="Связь юрисдикций и индустриальных хабов: Китай, Гонконг, Сингапур, Малайзия, BVI и др.">连接中国大陆、香港、新加坡、马来西亚、BVI等注册地与产业园区</p>
                             </div>
                         </div>
                         <div class="feat">
                             <div class="feat-ico"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802"/></svg></div>
                             <div>
-                                <h4 data-zh="多语言翻译引擎" data-en="Multilingual Engine">多语言翻译引擎</h4>
+                                <h4 data-zh="多语言翻译引擎" data-zh-hant="多語言翻譯引擎" data-en="Multilingual Engine" data-ms="Enjin Berbilang Bahasa" data-th="เอนจินหลายภาษา" data-id="Mesin Multibahasa" data-ja="多言語翻訳エンジン" data-ko="다국어 번역 엔진" data-ru="Многоязычный движок">多语言翻译引擎</h4>
                                 <div class="h4-en">MULTILINGUAL ENGINE</div>
-                                <p data-zh="支持中文、英文、日语、韩语、马来语、泰语、越南语等" data-en="Chinese, English, Japanese, Korean, Malay, Thai, Vietnamese and more">支持中文、英文、日语、韩语、马来语、泰语、越南语等</p>
+                                <p data-zh="支持中文、英文、日语、韩语、马来语、泰语、印尼语、俄语等" data-zh-hant="支援中文、英文、日語、韓語、馬來語、泰語、印尼語、俄語等" data-en="Chinese, English, Japanese, Korean, Malay, Thai, Indonesian, Russian and more" data-ms="Menyokong Cina, Inggeris, Jepun, Korea, Melayu, Thai, Indonesia, Rusia dan banyak lagi" data-th="รองรับจีน อังกฤษ ญี่ปุ่น เกาหลี มาเลย์ ไทย อินโดนีเซีย รัสเซีย และอื่นๆ" data-id="Mendukung Mandarin, Inggris, Jepang, Korea, Melayu, Thai, Indonesia, Rusia, dan lainnya" data-ja="中国語・英語・日本語・韓国語・マレー語・タイ語・インドネシア語・ロシア語などに対応" data-ko="중국어, 영어, 일본어, 한국어, 말레이어, 태국어, 인도네시아어, 러시아어 등 지원" data-ru="Поддержка: китайский, английский, японский, корейский, малайский, тайский, индонезийский, русский и др.">支持中文、英文、日语、韩语、马来语、泰语、印尼语、俄语等</p>
                             </div>
                         </div>
                     </div>
@@ -516,8 +557,8 @@
     <section class="sec" id="why">
         <div class="sec-in" style="padding:0;max-width:1440px">
             <div class="why-head" style="padding:0 48px 64px">
-                <div class="sec-label" data-zh="核心优势" data-en="Why Jiahe">核心优势</div>
-                <div class="sec-title" data-zh="不只是服务，<br>是<em>战略级陪伴</em>" data-en="Not just services.<br><em>Strategic partnership.</em>">不只是服务，<br>是<em>战略级陪伴</em></div>
+                <div class="sec-label" data-zh="核心优势" data-zh-hant="核心優勢" data-en="Why Jiahe" data-ms="Kelebihan Utama" data-th="จุดแข็งหลัก" data-id="Keunggulan Utama" data-ja="主な強み" data-ko="핵심 강점" data-ru="Ключевые преимущества">核心优势</div>
+                <div class="sec-title" data-zh="不只是服务，<br>是<em>战略级陪伴</em>" data-zh-hant="不只是服務，<br>是<em>戰略級陪伴</em>" data-en="Not just services.<br><em>Strategic partnership.</em>" data-ms="Bukan sekadar perkhidmatan,<br>tetapi <em>pendampingan strategik</em>." data-th="ไม่ใช่แค่บริการ<br>แต่คือ <em>การร่วมเดินทางเชิงกลยุทธ์</em>" data-id="Bukan sekadar layanan,<br>melainkan <em>pendampingan strategis</em>." data-ja="単なるサービスではなく、<br><em>戦略的な伴走</em>。" data-ko="단순한 서비스가 아니라<br><em>전략적 동행</em>입니다." data-ru="Не просто услуги,<br><em>а стратегическое сопровождение.</em>">不只是服务，<br>是<em>战略级陪伴</em></div>
                 <div class="rule"></div>
             </div>
             <div class="why-layout">
@@ -527,27 +568,27 @@
                 <div class="why-content-col">
                     <div class="why-item">
                         <div class="why-num">01</div>
-                        <h3 data-zh="全周期覆盖" data-en="Full-Lifecycle Coverage">全周期覆盖</h3>
+                        <h3 data-zh="全周期覆盖" data-zh-hant="全週期覆蓋" data-en="Full-Lifecycle Coverage" data-ms="Liputan Sepanjang Kitar Hayat" data-th="ครอบคลุมทั้งวงจร" data-id="Cakupan Siklus Penuh" data-ja="全ライフサイクル対応" data-ko="전 생애주기 커버" data-ru="Полный жизненный цикл">全周期覆盖</h3>
                         <div class="h3-en">FULL-LIFECYCLE COVERAGE</div>
-                        <p data-zh="从初创期的基础搭建，到成长期的资本运作，再到成熟期的上市规划——贯穿始终的系统性支持，而非碎片化的单点服务。" data-en="From foundational setup at inception, to capital operations during growth, to IPO planning at maturity — systematic, end-to-end support, not fragmented services.">从初创期的基础搭建，到成长期的资本运作，再到成熟期的上市规划——贯穿始终的系统性支持，而非碎片化的单点服务。</p>
+                        <p data-zh="从初创期的基础搭建，到成长期的资本运作，再到成熟期的上市规划——贯穿始终的系统性支持，而非碎片化的单点服务。" data-zh-hant="從初創期的基礎搭建，到成長期的資本運作，再到成熟期的上市規劃——貫穿始終的系統性支援，而非碎片化的單點服務。" data-en="From foundational setup at inception, to capital operations during growth, to IPO planning at maturity — systematic, end-to-end support, not fragmented services." data-ms="Dari pembinaan asas ketika mula, operasi modal semasa pertumbuhan, hingga perancangan IPO ketika matang — sokongan sistematik hujung ke hujung, bukan perkhidmatan berpecah-pecah." data-th="ตั้งแต่การวางรากฐานช่วงเริ่มต้น การบริหารทุนช่วงเติบโต ไปจนถึงการวางแผนเข้าตลาดช่วงเติบโตเต็มที่—การสนับสนุนที่เป็นระบบตลอดทาง ไม่ใช่บริการแบบจุดเดียว" data-id="Dari pembangunan dasar pada tahap awal, operasi modal saat bertumbuh, hingga perencanaan IPO saat matang — dukungan sistematis end-to-end, bukan layanan terfragmentasi." data-ja="創業期の基盤構築から成長期の資本運用、成熟期の上場計画まで—断片的な単発ではなく、貫徹した体系的サポート。" data-ko="초기 기반 구축부터 성장기의 자본 운영, 성숙기의 상장 계획까지 — 단편적 단일 서비스가 아닌 전 과정 체계적 지원." data-ru="От построения основы на старте до работы с капиталом в росте и планирования IPO на зрелости — системная поддержка end-to-end, а не разрозненные услуги.">从初创期的基础搭建，到成长期的资本运作，再到成熟期的上市规划——贯穿始终的系统性支持，而非碎片化的单点服务。</p>
                     </div>
                     <div class="why-item">
                         <div class="why-num">02</div>
-                        <h3 data-zh="AI原生思维" data-en="AI-native Thinking">AI原生思维</h3>
+                        <h3 data-zh="AI原生思维" data-zh-hant="AI原生思維" data-en="AI-native Thinking" data-ms="Pemikiran AI-native" data-th="แนวคิด AI-native" data-id="Pola pikir AI-native" data-ja="AIネイティブ思考" data-ko="AI 네이티브 사고" data-ru="AI-native мышление">AI原生思维</h3>
                         <div class="h3-en">AI-NATIVE THINKING</div>
-                        <p data-zh="加禾不是在传统服务上“加一层AI”，而是以AI为起点重新设计服务流程。更快的响应、更精准的匹配、更低的试错成本。" data-en="Jiahe doesn't simply &quot;add AI&quot; on top of traditional services — we redesign workflows with AI as the starting point. Faster response, more precise matching, lower trial-and-error cost.">加禾不是在传统服务上“加一层AI”，而是以AI为起点重新设计服务流程。更快的响应、更精准的匹配、更低的试错成本。</p>
+                        <p data-zh="加禾不是在传统服务上“加一层AI”，而是以AI为起点重新设计服务流程。更快的响应、更精准的匹配、更低的试错成本。" data-zh-hant="加禾不是在傳統服務上「加一層AI」，而是以AI為起點重新設計服務流程。更快的回應、更精準的匹配、更低的試錯成本。" data-en="Jiahe doesn't simply &quot;add AI&quot; on top of traditional services — we redesign workflows with AI as the starting point. Faster response, more precise matching, lower trial-and-error cost." data-ms="Jiahe bukan sekadar &quot;menambah AI&quot; pada perkhidmatan tradisional — kami mereka bentuk semula aliran kerja dengan AI sebagai titik mula. Respons lebih pantas, padanan lebih tepat, kos cuba-jaya lebih rendah." data-th="Jiahe ไม่ได้แค่ “เติม AI” ให้บริการแบบเดิม แต่เริ่มออกแบบกระบวนการใหม่โดยใช้ AI เป็นจุดตั้งต้น ตอบสนองเร็วขึ้น จับคู่แม่นยำขึ้น และลดต้นทุนการลองผิดลองถูก" data-id="Jiahe bukan sekadar &quot;menambah AI&quot; pada layanan tradisional — kami merancang ulang alur kerja dengan AI sebagai titik awal. Respons lebih cepat, pencocokan lebih presisi, biaya trial-and-error lebih rendah." data-ja="Jiaheは従来サービスに「AIを足す」だけではありません。AIを起点にプロセスを再設計します。より速い応答、より精密なマッチング、より低い試行錯誤コスト。" data-ko="Jiahe는 전통 서비스에 'AI를 얹는' 것이 아니라, AI를 출발점으로 프로세스를 재설계합니다. 더 빠른 응답, 더 정밀한 매칭, 더 낮은 시행착오 비용." data-ru="Jiahe не просто «добавляет ИИ» к традиционным сервисам — мы переосмысливаем процессы, начиная с ИИ. Быстрее реакция, точнее подбор, ниже стоимость ошибок.">加禾不是在传统服务上“加一层AI”，而是以AI为起点重新设计服务流程。更快的响应、更精准的匹配、更低的试错成本。</p>
                     </div>
                     <div class="why-item">
                         <div class="why-num">03</div>
-                        <h3 data-zh="全球视野，本地深耕" data-en="Global Vision, Local Depth">全球视野，本地深耕</h3>
+                        <h3 data-zh="全球视野，本地深耕" data-zh-hant="全球視野，本地深耕" data-en="Global Vision, Local Depth" data-ms="Wawasan Global, Kedalaman Lokal" data-th="วิสัยทัศน์ระดับโลก ลงลึกในท้องถิ่น" data-id="Visi Global, Kedalaman Lokal" data-ja="グローバル視点、ローカル深化" data-ko="글로벌 비전, 로컬 깊이" data-ru="Глобальный взгляд, локальная глубина">全球视野，本地深耕</h3>
                         <div class="h3-en">GLOBAL VISION, LOCAL DEPTH</div>
-                        <p data-zh="服务网络覆盖5大注册地，同时在马来西亚槟城、中国粤港澳大湾区深度布局产业园区与AI算力中心。" data-en="Service network spanning 5 key jurisdictions, with deep operational presence in Penang and the Greater Bay Area — AI computing centers and industrial parks.">服务网络覆盖5大注册地，同时在马来西亚槟城、中国粤港澳大湾区深度布局产业园区与AI算力中心。</p>
+                        <p data-zh="服务网络覆盖5大注册地，同时在马来西亚槟城、中国粤港澳大湾区深度布局产业园区与AI算力中心。" data-zh-hant="服務網絡覆蓋5大註冊地，同時在馬來西亞檳城、中國粵港澳大灣區深度佈局產業園區與AI算力中心。" data-en="Service network spanning 5 key jurisdictions, with deep operational presence in Penang and the Greater Bay Area — AI computing centers and industrial parks." data-ms="Rangkaian perkhidmatan meliputi 5 bidang kuasa utama, dengan kehadiran operasi mendalam di Pulau Pinang dan Greater Bay Area — pusat pengkomputeran AI dan taman industri." data-th="เครือข่ายบริการครอบคลุม 5 เขตอำนาจหลัก พร้อมการดำเนินงานเชิงลึกที่ปีนังและเขตอ่าวใหญ่—ศูนย์คอมพิวติ้ง AI และนิคมอุตสาหกรรม" data-id="Jaringan layanan mencakup 5 yurisdiksi utama, dengan kehadiran operasional mendalam di Penang dan Greater Bay Area — pusat komputasi AI dan taman industri." data-ja="サービス網は主要5地域をカバーし、ペナンと粤港澳大湾区では産業団地とAI計算力センターを深く展開。" data-ko="서비스 네트워크는 5대 관할지를 커버하며, 말레이시아 페낭과 광둥-홍콩-마카오 대만구에 산업단지 및 AI 컴퓨팅 센터를 심층 구축." data-ru="Сервисная сеть охватывает 5 ключевых юрисдикций, а в Пенанге и Большом заливе развернуты индустриальные парки и AI‑центры вычислений.">服务网络覆盖5大注册地，同时在马来西亚槟城、中国粤港澳大湾区深度布局产业园区与AI算力中心。</p>
                     </div>
                     <div class="why-item">
                         <div class="why-num">04</div>
-                        <h3 data-zh="专注OPC赛道" data-en="OPC Ecosystem Leadership">专注OPC赛道</h3>
+                        <h3 data-zh="专注OPC赛道" data-zh-hant="專注OPC賽道" data-en="OPC Ecosystem Leadership" data-ms="Fokus pada OPC" data-th="โฟกัสเส้นทาง OPC" data-id="Fokus pada OPC" data-ja="OPCに特化" data-ko="OPC 집중" data-ru="Фокус на OPC">专注OPC赛道</h3>
                         <div class="h3-en">OPC ECOSYSTEM LEADERSHIP</div>
-                        <p data-zh="不只是帮助注册一人公司，更在构建整个OPC产业的基础设施——从教育培训到技术平台，从产业孵化到资本对接。" data-en="We don't just help register one-person companies — we are building the infrastructure for the entire OPC industry.">不只是帮助注册一人公司，更在构建整个OPC产业的基础设施——从教育培训到技术平台，从产业孵化到资本对接。</p>
+                        <p data-zh="不只是帮助注册一人公司，更在构建整个OPC产业的基础设施——从教育培训到技术平台，从产业孵化到资本对接。" data-zh-hant="不只是幫助註冊一人公司，更在構建整個OPC產業的基礎設施——從教育培訓到技術平台，從產業孵化到資本對接。" data-en="We don't just help register one-person companies — we are building the infrastructure for the entire OPC industry." data-ms="Kami bukan sekadar membantu mendaftar syarikat satu orang — kami sedang membina infrastruktur untuk keseluruhan industri OPC." data-th="เราไม่ได้แค่ช่วยจดทะเบียนบริษัทคนเดียว แต่กำลังสร้างโครงสร้างพื้นฐานให้ทั้งอุตสาหกรรม OPC" data-id="Kami tidak hanya membantu mendaftarkan perusahaan satu orang — kami membangun infrastruktur untuk seluruh industri OPC." data-ja="1人会社の登録支援だけでなく、OPC産業全体のインフラを構築—教育研修から技術プラットフォーム、インキュベーションから資本連携まで。" data-ko="1인 회사 등록을 돕는 것을 넘어, OPC 산업 전체의 인프라를 구축합니다 — 교육·훈련부터 기술 플랫폼, 인큐베이션부터 자본 연계까지." data-ru="Мы не только регистрируем компании одного человека — мы строим инфраструктуру всей отрасли OPC: от обучения до платформы, от инкубации до связи с капиталом.">不只是帮助注册一人公司，更在构建整个OPC产业的基础设施——从教育培训到技术平台，从产业孵化到资本对接。</p>
                     </div>
                 </div>
             </div>
@@ -561,45 +602,45 @@
         </div>
         <div class="global-content">
             <div class="sec-in">
-                <div class="sec-label" data-zh="全球布局" data-en="Global Footprint">全球布局</div>
-                <div class="sec-title" data-zh="立足香港，服务全球" data-en="Based in Hong Kong,<br>Serving the World">立足香港，服务全球</div>
+                <div class="sec-label" data-zh="全球布局" data-zh-hant="全球佈局" data-en="Global Footprint" data-ms="Jejak Global" data-th="เครือข่ายทั่วโลก" data-id="Jejak Global" data-ja="グローバル展開" data-ko="글로벌 네트워크" data-ru="Глобальная сеть">全球布局</div>
+                <div class="sec-title" data-zh="立足香港，服务全球" data-zh-hant="立足香港，服務全球" data-en="Based in Hong Kong,<br>Serving the World" data-ms="Berpangkalan di Hong Kong,<br>melayani dunia" data-th="ตั้งอยู่ที่ฮ่องกง<br>ให้บริการทั่วโลก" data-id="Berbasis di Hong Kong,<br>melayani dunia" data-ja="香港を拠点に、<br>世界へ" data-ko="홍콩을 기반으로<br>전 세계에 서비스" data-ru="Базируясь в Гонконге,<br>работаем для мира">立足香港，服务全球</div>
                 <div class="rule"></div>
-                <p class="global-intro" data-zh="加禾以香港为集团总部，辐射中国大陆、东南亚及全球主要离岸注册地，构建覆盖企业全生命周期的全球服务网络。" data-en="Headquartered in Hong Kong, Jiahe spans across Mainland China, Southeast Asia and major offshore jurisdictions, building a global service network covering the full business lifecycle.">加禾以香港为集团总部，辐射中国大陆、东南亚及全球主要离岸注册地，构建覆盖企业全生命周期的全球服务网络。</p>
+                <p class="global-intro" data-zh="加禾以香港为集团总部，辐射中国大陆、东南亚及全球主要离岸注册地，构建覆盖企业全生命周期的全球服务网络。" data-zh-hant="加禾以香港為集團總部，輻射中國大陸、東南亞及全球主要離岸註冊地，構建覆蓋企業全生命週期的全球服務網絡。" data-en="Headquartered in Hong Kong, Jiahe spans across Mainland China, Southeast Asia and major offshore jurisdictions, building a global service network covering the full business lifecycle." data-ms="Beribu pejabat di Hong Kong, Jiahe meliputi China, Asia Tenggara serta bidang kuasa luar pesisir utama, membina rangkaian perkhidmatan global merentasi kitar hayat perniagaan." data-th="Jiahe มีสำนักงานใหญ่ที่ฮ่องกง ครอบคลุมจีนแผ่นดินใหญ่ เอเชียตะวันออกเฉียงใต้ และเขตนอกชายฝั่งหลักทั่วโลก สร้างเครือข่ายบริการระดับโลกตลอดวงจรชีวิตธุรกิจ" data-id="Berpusat di Hong Kong, Jiahe menjangkau Tiongkok Daratan, Asia Tenggara, dan yurisdiksi offshore utama, membangun jaringan layanan global sepanjang siklus hidup bisnis." data-ja="香港を本社に、中国本土・東南アジア・主要オフショア登記地へ展開し、企業ライフサイクル全体を覆うグローバルサービス網を構築。" data-ko="홍콩을 그룹 본사로 중국 본토, 동남아 및 주요 오프쇼어 관할지까지 확장하여 기업 전 생애주기를 커버하는 글로벌 서비스 네트워크를 구축합니다." data-ru="Штаб-квартира в Гонконге: Jiahe охватывает материковый Китай, ЮВА и ключевые офшорные юрисдикции, формируя глобальную сеть сервисов на весь жизненный цикл бизнеса.">加禾以香港为集团总部，辐射中国大陆、东南亚及全球主要离岸注册地，构建覆盖企业全生命周期的全球服务网络。</p>
                 <div class="global-grid">
                     <div class="global-item">
                         <div class="global-code">HK</div>
                         <div class="global-line"></div>
-                        <h3 data-zh="中国香港" data-en="Hong Kong">中国香港</h3>
+                        <h3 data-zh="中国香港" data-zh-hant="中國香港" data-en="Hong Kong" data-ms="Hong Kong" data-th="ฮ่องกง" data-id="Hong Kong" data-ja="香港" data-ko="홍콩" data-ru="Гонконг">中国香港</h3>
                         <div class="h3-en">HONG KONG</div>
-                        <p data-zh="集团总部，全球运营中心" data-en="Group HQ, global operations center">集团总部，全球运营中心</p>
+                        <p data-zh="集团总部，全球运营中心" data-zh-hant="集團總部，全球營運中心" data-en="Group HQ, global operations center" data-ms="Ibu pejabat kumpulan, pusat operasi global" data-th="สำนักงานใหญ่กลุ่ม ศูนย์ปฏิบัติการระดับโลก" data-id="Kantor pusat grup, pusat operasi global" data-ja="グループ本社・グローバル運営拠点" data-ko="그룹 본사, 글로벌 운영 센터" data-ru="Штаб‑квартира группы, глобальный операционный центр">集团总部，全球运营中心</p>
                     </div>
                     <div class="global-item">
                         <div class="global-code">CN</div>
                         <div class="global-line"></div>
-                        <h3 data-zh="中国大陆" data-en="Mainland China">中国大陆</h3>
+                        <h3 data-zh="中国大陆" data-zh-hant="中國大陸" data-en="Mainland China" data-ms="China" data-th="จีนแผ่นดินใหญ่" data-id="Tiongkok Daratan" data-ja="中国本土" data-ko="중국 본토" data-ru="Материковый Китай">中国大陆</h3>
                         <div class="h3-en">MAINLAND CHINA</div>
-                        <p data-zh="粤港澳大湾区产业园区" data-en="Greater Bay Area industrial parks">粤港澳大湾区产业园区</p>
+                        <p data-zh="粤港澳大湾区产业园区" data-zh-hant="粵港澳大灣區產業園區" data-en="Greater Bay Area industrial parks" data-ms="Taman industri Greater Bay Area" data-th="นิคมอุตสาหกรรมเขตอ่าวใหญ่" data-id="Kawasan industri Greater Bay Area" data-ja="粤港澳大湾区の産業パーク" data-ko="대만구 산업 단지" data-ru="Индустриальные парки Большого залива">粤港澳大湾区产业园区</p>
                     </div>
                     <div class="global-item">
                         <div class="global-code">MY</div>
                         <div class="global-line"></div>
-                        <h3 data-zh="马来西亚" data-en="Malaysia">马来西亚</h3>
+                        <h3 data-zh="马来西亚" data-zh-hant="馬來西亞" data-en="Malaysia" data-ms="Malaysia" data-th="มาเลเซีย" data-id="Malaysia" data-ja="マレーシア" data-ko="말레이시아" data-ru="Малайзия">马来西亚</h3>
                         <div class="h3-en">MALAYSIA</div>
-                        <p data-zh="槟城AI算力中心、OPC孵化园区" data-en="Penang AI Computing Center, OPC incubation park">槟城AI算力中心、OPC孵化园区</p>
+                        <p data-zh="槟城AI算力中心、OPC孵化园区" data-zh-hant="檳城AI算力中心、OPC孵化園區" data-en="Penang AI Computing Center, OPC incubation park" data-ms="Pusat Pengkomputeran AI Pulau Pinang, taman inkubasi OPC" data-th="ศูนย์คอมพิวติ้ง AI ปีนัง, สวนบ่มเพาะ OPC" data-id="Pusat Komputasi AI Penang, taman inkubasi OPC" data-ja="ペナンAI計算センター、OPCインキュベーションパーク" data-ko="페낭 AI 컴퓨팅 센터, OPC 인큐베이션 파크" data-ru="AI‑центр вычислений Пенанга, инкубационный парк OPC">槟城AI算力中心、OPC孵化园区</p>
                     </div>
                     <div class="global-item">
                         <div class="global-code">SG</div>
                         <div class="global-line"></div>
-                        <h3 data-zh="新加坡" data-en="Singapore">新加坡</h3>
+                        <h3 data-zh="新加坡" data-zh-hant="新加坡" data-en="Singapore" data-ms="Singapura" data-th="สิงคโปร์" data-id="Singapura" data-ja="シンガポール" data-ko="싱가포르" data-ru="Сингапур">新加坡</h3>
                         <div class="h3-en">SINGAPORE</div>
-                        <p data-zh="东南亚金融枢纽节点" data-en="Southeast Asian financial hub node">东南亚金融枢纽节点</p>
+                        <p data-zh="东南亚金融枢纽节点" data-zh-hant="東南亞金融樞紐節點" data-en="Southeast Asian financial hub node" data-ms="Nod hab kewangan Asia Tenggara" data-th="จุดศูนย์กลางการเงินเอเชียตะวันออกเฉียงใต้" data-id="Node hub keuangan Asia Tenggara" data-ja="東南アジアの金融ハブ" data-ko="동남아 금융 허브 노드" data-ru="Финансовый хаб Юго‑Восточной Азии">东南亚金融枢纽节点</p>
                     </div>
                     <div class="global-item">
                         <div class="global-code">BVI</div>
                         <div class="global-line"></div>
-                        <h3 data-zh="BVI / 开曼" data-en="BVI / Cayman">BVI / 开曼</h3>
+                        <h3 data-zh="BVI / 开曼" data-zh-hant="BVI / 開曼" data-en="BVI / Cayman" data-ms="BVI / Cayman" data-th="BVI / เคย์แมน" data-id="BVI / Cayman" data-ja="BVI / ケイマン" data-ko="BVI / 케이맨" data-ru="BVI / Кайманы">BVI / 开曼</h3>
                         <div class="h3-en">BVI / CAYMAN</div>
-                        <p data-zh="离岸架构与注册服务" data-en="Offshore structure & incorporation">离岸架构与注册服务</p>
+                        <p data-zh="离岸架构与注册服务" data-zh-hant="離岸架構與註冊服務" data-en="Offshore structure & incorporation" data-ms="Struktur luar pesisir & penubuhan" data-th="โครงสร้างออฟชอร์และการจดทะเบียน" data-id="Struktur offshore & pendirian" data-ja="オフショア構造・設立支援" data-ko="오프쇼어 구조 및 설립" data-ru="Офшорная структура и регистрация">离岸架构与注册服务</p>
                     </div>
                 </div>
             </div>
@@ -611,17 +652,17 @@
         <div class="sec-in" style="padding:0;max-width:1440px">
             <div class="vision-layout">
                 <div class="vision-col">
-                    <div class="sec-label" data-zh="愿景" data-en="Vision">愿景</div>
-                    <h3 data-zh="成为全球OPC生态的<br>基础设施建设者" data-en="Infrastructure builder<br>of the global OPC ecosystem">成为全球OPC生态的<br>基础设施建设者</h3>
-                    <p data-zh="让每一个创业者都能借助AI的力量，以一人公司的轻盈姿态，拥有企业级的全球竞争力。" data-en="Empowering every entrepreneur, through AI, to wield enterprise-grade global competitiveness with one-person company agility.">让每一个创业者都能借助AI的力量，以一人公司的轻盈姿态，拥有企业级的全球竞争力。</p>
+                    <div class="sec-label" data-zh="愿景" data-zh-hant="願景" data-en="Vision" data-ms="Visi" data-th="วิสัยทัศน์" data-id="Visi" data-ja="ビジョン" data-ko="비전" data-ru="Видение">愿景</div>
+                    <h3 data-zh="成为全球OPC生态的<br>基础设施建设者" data-zh-hant="成為全球OPC生態的<br>基礎設施建設者" data-en="Infrastructure builder<br>of the global OPC ecosystem" data-ms="Pembina infrastruktur<br>ekosistem OPC global" data-th="ผู้สร้างโครงสร้างพื้นฐาน<br>ของระบบนิเวศ OPC โลก" data-id="Pembangun infrastruktur<br>ekosistem OPC global" data-ja="世界OPCエコシステムの<br>インフラビルダーへ" data-ko="글로벌 OPC 생태계의<br>인프라 구축자" data-ru="Строитель инфраструктуры<br>глобальной экосистемы OPC">成为全球OPC生态的<br>基础设施建设者</h3>
+                    <p data-zh="让每一个创业者都能借助AI的力量，以一人公司的轻盈姿态，拥有企业级的全球竞争力。" data-zh-hant="讓每一個創業者都能借助AI的力量，以一人公司的輕盈姿態，擁有企業級的全球競爭力。" data-en="Empowering every entrepreneur, through AI, to wield enterprise-grade global competitiveness with one-person company agility." data-ms="Memperkasakan setiap usahawan dengan AI — menampilkan daya saing global bertaraf perusahaan dengan kelincahan syarikat satu orang." data-th="เสริมพลังให้ผู้ประกอบการทุกคนด้วย AI—มีความสามารถแข่งขันระดับโลกแบบองค์กร ด้วยความคล่องตัวของบริษัทคนเดียว" data-id="Memberdayakan setiap wirausaha melalui AI — daya saing global kelas perusahaan dengan kelincahan perusahaan satu orang." data-ja="すべての起業家がAIの力を借り、一人会社の軽やかさで企業級のグローバル競争力を持てるように。" data-ko="모든 창업자가 AI의 힘으로 1인 회사의 민첩함으로도 기업급 글로벌 경쟁력을 갖추도록." data-ru="Дать каждому предпринимателю силу ИИ — корпоративную глобальную конкурентоспособность с легкостью компании одного человека.">让每一个创业者都能借助AI的力量，以一人公司的轻盈姿态，拥有企业级的全球竞争力。</p>
                     <div class="vision-img">
                         <img src="https://s.coze.cn/image/8vVSN0nAhR0/" alt="Strategy Meeting">
                     </div>
                 </div>
                 <div class="vision-col">
-                    <div class="sec-label" data-zh="使命" data-en="Mission">使命</div>
-                    <h3 data-zh="用AI+专业智囊团<br>赋能创业者" data-en="Empowering entrepreneurs with<br>AI and expert advisory">用AI+专业智囊团<br>赋能创业者</h3>
-                    <p data-zh="消除信息差和资源壁垒，让“一个人也是一支队伍”从口号变成现实。" data-en="Eliminating information asymmetry and resource barriers — making &quot;one person is a team&quot; a reality.">消除信息差和资源壁垒，让“一个人也是一支队伍”从口号变成现实。</p>
+                    <div class="sec-label" data-zh="使命" data-zh-hant="使命" data-en="Mission" data-ms="Misi" data-th="พันธกิจ" data-id="Misi" data-ja="ミッション" data-ko="미션" data-ru="Миссия">使命</div>
+                    <h3 data-zh="用AI+专业智囊团<br>赋能创业者" data-zh-hant="用AI+專業智囊團<br>賦能創業者" data-en="Empowering entrepreneurs with<br>AI and expert advisory" data-ms="Memperkasakan usahawan dengan<br>AI dan penasihat pakar" data-th="เสริมพลังผู้ประกอบการด้วย<br>AI และที่ปรึกษาผู้เชี่ยวชาญ" data-id="Memberdayakan wirausaha dengan<br>AI dan penasihat ahli" data-ja="AI＋専門アドバイザリーで<br>起業家を支援" data-ko="AI+전문 자문단으로<br>창업자를 지원" data-ru="Усиление предпринимателей с помощью<br>ИИ и экспертного консалтинга">用AI+专业智囊团<br>赋能创业者</h3>
+                    <p data-zh="消除信息差和资源壁垒，让“一个人也是一支队伍”从口号变成现实。" data-zh-hant="消除資訊差和資源壁壘，讓「一個人也是一支隊伍」從口號變成現實。" data-en="Eliminating information asymmetry and resource barriers — making &quot;one person is a team&quot; a reality." data-ms="Menghapus jurang maklumat dan halangan sumber — menjadikan &quot;seorang juga sebuah pasukan&quot; kenyataan." data-th="ขจัดความเหลื่อมล้ำด้านข้อมูลและกำแพงทรัพยากร ทำให้ “คนเดียวก็เป็นทีมได้” เป็นจริง" data-id="Menghapus kesenjangan informasi dan hambatan sumber daya — mewujudkan &quot;satu orang pun adalah tim&quot;." data-ja="情報格差と資源の壁をなくし、「一人でもチームになれる」を現実に。" data-ko="정보 격차와 자원 장벽을 없애 ‘한 사람도 하나의 팀’이 현실이 되게 합니다." data-ru="Убираем информационные разрывы и ресурсные барьеры — превращаем «один человек — команда» в реальность.">消除信息差和资源壁垒，让“一个人也是一支队伍”从口号变成现实。</p>
                     <div class="vision-img">
                         <img src="https://s.coze.cn/image/hkRjdElQXVo/" alt="Hong Kong Cityscape">
                     </div>
@@ -633,9 +674,9 @@
     <!-- CTA -->
     <section class="cta">
         <div class="sec-in" style="text-align:center">
-            <h2 data-zh="准备好与<em>加禾</em><br>并肩了吗？" data-en="Ready to partner<br>with <em>Jiahe</em>?">准备好与<em>加禾</em><br>并肩了吗？</h2>
-            <p data-zh="从零到IPO，每一步都有加禾在场。" data-en="From zero to IPO, Jiahe is there at every step.">从零到IPO，每一步都有加禾在场。</p>
-            <a href="mailto:teohyeeloon@gmail.com" class="btn btn-fill" data-zh="联系我们 →" data-en="GET IN TOUCH →">联系我们 →</a>
+            <h2 data-zh="准备好与<em>加禾</em><br>并肩了吗？" data-zh-hant="準備好與<em>加禾</em><br>並肩了嗎？" data-en="Ready to partner<br>with <em>Jiahe</em>?" data-ms="Bersedia berganding bahu<br>dengan <em>Jiahe</em>?" data-th="พร้อมร่วมมือ<br>กับ <em>Jiahe</em> แล้วหรือยัง?" data-id="Siap bermitra<br>dengan <em>Jiahe</em>?" data-ja="<em>Jiahe</em>と共に<br>歩みませんか？" data-ko="<em>Jiahe</em>와 함께<br>하실 준비가 되셨나요?" data-ru="Готовы идти вместе<br>с <em>Jiahe</em>?">准备好与<em>加禾</em><br>并肩了吗？</h2>
+            <p data-zh="从零到IPO，每一步都有加禾在场。" data-zh-hant="從零到IPO，每一步都有加禾在場。" data-en="From zero to IPO, Jiahe is there at every step." data-ms="Dari sifar ke IPO — Jiahe ada di setiap langkah." data-th="จากศูนย์สู่ IPO — Jiahe อยู่ในทุกก้าว" data-id="Dari nol hingga IPO — Jiahe ada di setiap langkah." data-ja="ゼロからIPOまで、すべてのステップにJiaheがいます。" data-ko="제로에서 IPO까지, 모든 단계에 Jiahe가 함께합니다." data-ru="От нуля до IPO — Jiahe рядом на каждом шаге.">从零到IPO，每一步都有加禾在场。</p>
+            <a href="mailto:admin@jiahe-ai.cc" class="btn btn-fill" data-zh="联系我们 →" data-zh-hant="聯絡我們 →" data-en="GET IN TOUCH →" data-ms="HUBUNGI KAMI →" data-th="ติดต่อเรา →" data-id="HUBUNGI KAMI →" data-ja="お問い合わせ →" data-ko="문의하기 →" data-ru="СВЯЗАТЬСЯ →">联系我们 →</a>
         </div>
     </section>
 
@@ -647,33 +688,33 @@
                     <img src="assets/logo.png" alt="Jiahe" class="footer-logo" loading="lazy" decoding="async">
                     <div class="footer-brand">加禾文化科技</div>
                     <div class="footer-brand-en">JIAHE CULTURE TECHNOLOGY</div>
-                    <p data-zh="从零到IPO，企业全生命周期战略合伙人。" data-en="From zero to IPO — your strategic partner across the full business lifecycle.">从零到IPO，企业全生命周期战略合伙人。</p>
+                    <p data-zh="从零到IPO，企业全生命周期战略合伙人。" data-zh-hant="從零到IPO，企業全生命週期戰略合夥人。" data-en="From zero to IPO — your strategic partner across the full business lifecycle." data-ms="Dari sifar ke IPO — rakan strategik anda merentasi seluruh kitar hayat perniagaan." data-th="จากศูนย์สู่ IPO — พันธมิตรเชิงกลยุทธ์ตลอดวงจรชีวิตธุรกิจ" data-id="Dari nol hingga IPO — mitra strategis Anda sepanjang siklus hidup bisnis." data-ja="ゼロからIPOまで—企業ライフサイクル全体の戦略パートナー。" data-ko="제로에서 IPO까지 — 기업 전 생애주기 전략 파트너." data-ru="От нуля до IPO — ваш стратегический партнер на всем жизненном цикле бизнеса.">从零到IPO，企业全生命周期战略合伙人。</p>
                 </div>
                 <div>
-                    <h4 data-zh="服务" data-en="Services">服务</h4>
+                    <h4 data-zh="服务" data-zh-hant="服務" data-en="Services" data-ms="Perkhidmatan" data-th="บริการ" data-id="Layanan" data-ja="サービス" data-ko="서비스" data-ru="Услуги">服务</h4>
                     <div class="footer-links">
-                        <a href="#services" data-zh="工商注册" data-en="Company Incorporation">工商注册</a>
-                        <a href="#services" data-zh="财税规划" data-en="Tax & Financial Planning">财税规划</a>
-                        <a href="#services" data-zh="法律合规" data-en="Legal Compliance">法律合规</a>
-                        <a href="#services" data-zh="融资并购" data-en="Financing & M&A">融资并购</a>
-                        <a href="#services" data-zh="战略咨询" data-en="Strategic Consulting">战略咨询</a>
-                        <a href="#services" data-zh="技术赋能" data-en="Technology Enablement">技术赋能</a>
+                        <a href="#services" data-zh="工商注册" data-zh-hant="工商註冊" data-en="Company Incorporation" data-ms="Pemerbadanan Syarikat" data-th="จดทะเบียนบริษัท" data-id="Pendirian Perusahaan" data-ja="会社設立" data-ko="회사 설립" data-ru="Регистрация компании">工商注册</a>
+                        <a href="#services" data-zh="财税规划" data-zh-hant="財稅規劃" data-en="Tax & Financial Planning" data-ms="Perancangan Cukai & Kewangan" data-th="วางแผนภาษีและการเงิน" data-id="Perencanaan Pajak & Keuangan" data-ja="税務・財務計画" data-ko="세무·재무 기획" data-ru="Налоговое и финансовое планирование">财税规划</a>
+                        <a href="#services" data-zh="法律合规" data-zh-hant="法律合規" data-en="Legal Compliance" data-ms="Pematuhan Undang-undang" data-th="กฎหมายและการปฏิบัติตามข้อกำหนด" data-id="Kepatuhan Hukum" data-ja="法務コンプライアンス" data-ko="법률 컴플라이언스" data-ru="Юридический комплаенс">法律合规</a>
+                        <a href="#services" data-zh="融资并购" data-zh-hant="融資併購" data-en="Financing & M&A" data-ms="Pembiayaan & M&A" data-th="การระดมทุนและ M&A" data-id="Pendanaan & M&A" data-ja="資金調達・M&A" data-ko="자금조달·M&A" data-ru="Финансирование и M&A">融资并购</a>
+                        <a href="#services" data-zh="战略咨询" data-zh-hant="戰略諮詢" data-en="Strategic Consulting" data-ms="Perundingan Strategik" data-th="ที่ปรึกษากลยุทธ์" data-id="Konsultasi Strategis" data-ja="戦略コンサルティング" data-ko="전략 컨설팅" data-ru="Стратегический консалтинг">战略咨询</a>
+                        <a href="#services" data-zh="技术赋能" data-zh-hant="技術賦能" data-en="Technology Enablement" data-ms="Pemerkasaan Teknologi" data-th="การเสริมศักยภาพด้วยเทคโนโลยี" data-id="Pemberdayaan Teknologi" data-ja="テクノロジー支援" data-ko="기술 지원" data-ru="Технологическое внедрение">技术赋能</a>
                     </div>
                 </div>
                 <div>
-                    <h4 data-zh="关于" data-en="About">关于</h4>
+                    <h4 data-zh="关于" data-zh-hant="關於" data-en="About" data-ms="Mengenai" data-th="เกี่ยวกับ" data-id="Tentang" data-ja="概要" data-ko="소개" data-ru="О нас">关于</h4>
                     <div class="footer-links">
-                        <a href="#about" data-zh="公司介绍" data-en="Company">公司介绍</a>
+                        <a href="#about" data-zh="公司介绍" data-zh-hant="公司介紹" data-en="Company" data-ms="Syarikat" data-th="บริษัท" data-id="Perusahaan" data-ja="会社" data-ko="회사" data-ru="Компания">公司介绍</a>
                         <a href="#hub">HyperCore</a>
-                        <a href="#global" data-zh="全球布局" data-en="Global Footprint">全球布局</a>
-                        <a href="#vision" data-zh="愿景使命" data-en="Vision & Mission">愿景使命</a>
+                        <a href="#global" data-zh="全球布局" data-zh-hant="全球佈局" data-en="Global Footprint" data-ms="Jejak Global" data-th="เครือข่ายทั่วโลก" data-id="Jejak Global" data-ja="グローバル展開" data-ko="글로벌 네트워크" data-ru="Глобальная сеть">全球布局</a>
+                        <a href="#vision" data-zh="愿景使命" data-zh-hant="願景使命" data-en="Vision & Mission" data-ms="Visi & Misi" data-th="วิสัยทัศน์และพันธกิจ" data-id="Visi & Misi" data-ja="ビジョンとミッション" data-ko="비전과 미션" data-ru="Видение и миссия">愿景使命</a>
                     </div>
                 </div>
                 <div>
-                    <h4 data-zh="联系" data-en="Contact">联系</h4>
+                    <h4 data-zh="联系" data-zh-hant="聯絡" data-en="Contact" data-ms="Hubungi" data-th="ติดต่อ" data-id="Kontak" data-ja="連絡先" data-ko="연락" data-ru="Контакты">联系</h4>
                     <div class="footer-links">
                         <a href="https://www.jiahe-ai.cc" target="_blank" rel="noopener noreferrer">www.jiahe-ai.cc</a>
-                        <a href="mailto:teohyeeloon@gmail.com">teohyeeloon@gmail.com</a>
+                        <a href="mailto:admin@jiahe-ai.cc">admin@jiahe-ai.cc</a>
                         <span>WeChat: HKDoubleA</span>
                     </div>
                 </div>
@@ -686,20 +727,120 @@
     </footer>
 
     <script>
-        // Language toggle
-        let lang='zh';
-        function toggleLang(){
-            lang=lang==='zh'?'en':'zh';
-            document.querySelectorAll('[data-zh][data-en]').forEach(el=>{
-                const t=el.getAttribute('data-'+lang);
-                if(!t) return;
-                // Always use innerHTML to preserve HTML tags like <br>, <em>
-                // and HTML entities like &quot;
-                el.innerHTML=t;
-            });
-            document.querySelector('.nav-lang').textContent=lang==='zh'?'EN':'中文';
-            document.documentElement.lang=lang==='zh'?'zh-CN':'en';
+        // i18n: auto detect (GeoIP + browser) + manual selection (localStorage)
+        const LANG_STORAGE_KEY = 'jh_lang';
+        const SUPPORTED_LANGS = ['zh','zh-hant','en','ms','th','id','ja','ko','ru'];
+        let currentLang = 'en';
+
+        function htmlLangTag(lang){
+            switch(lang){
+                case 'zh': return 'zh-CN';
+                case 'zh-hant': return 'zh-Hant';
+                default: return lang;
+            }
         }
+        function normalizeBrowserLang(raw){
+            const v = (raw || '').toLowerCase();
+            if(v.startsWith('zh')){
+                if(v.includes('hant') || v.includes('tw') || v.includes('hk') || v.includes('mo')) return 'zh-hant';
+                return 'zh';
+            }
+            if(v.startsWith('ms')) return 'ms';
+            if(v.startsWith('th')) return 'th';
+            if(v.startsWith('id')) return 'id';
+            if(v.startsWith('ja')) return 'ja';
+            if(v.startsWith('ko')) return 'ko';
+            if(v.startsWith('ru')) return 'ru';
+            return 'en';
+        }
+        function mapCountryToLang(countryCode){
+            const c = (countryCode || '').toUpperCase();
+            if(c === 'MY') return 'ms';
+            if(c === 'TH') return 'th';
+            if(c === 'ID') return 'id';
+            if(c === 'JP') return 'ja';
+            if(c === 'KR') return 'ko';
+            if(c === 'RU') return 'ru';
+            if(c === 'TW' || c === 'HK' || c === 'MO') return 'zh-hant';
+            if(c === 'CN') return 'zh';
+            return 'en';
+        }
+        function getTextForEl(el, lang){
+            const chain = [];
+            if(lang === 'zh-hant') chain.push('zh-hant','zh','en');
+            else if(lang === 'zh') chain.push('zh','en');
+            else chain.push(lang,'en','zh');
+            for(const l of chain){
+                const attr = 'data-' + l;
+                if(el.hasAttribute(attr)) return el.getAttribute(attr);
+            }
+            return null;
+        }
+        function applyLang(lang, {persist=false} = {}){
+            if(!SUPPORTED_LANGS.includes(lang)) lang = 'en';
+            currentLang = lang;
+            document.querySelectorAll('[data-zh][data-en]').forEach(el=>{
+                const t = getTextForEl(el, lang);
+                if(t == null) return;
+                el.innerHTML = t;
+            });
+            document.documentElement.lang = htmlLangTag(lang);
+            const sel = document.getElementById('langSelect');
+            const msel = document.getElementById('mobileLangSelect');
+            if(sel) sel.value = lang;
+            if(msel) msel.value = lang;
+            if(persist){
+                try{ localStorage.setItem(LANG_STORAGE_KEY, lang); }catch(_e){}
+            }
+        }
+
+        async function fetchWithTimeout(url, timeoutMs){
+            const ctl = new AbortController();
+            const t = setTimeout(()=>ctl.abort(), timeoutMs);
+            try{
+                const r = await fetch(url, {signal: ctl.signal, cache: 'no-store'});
+                if(!r.ok) throw new Error('http ' + r.status);
+                return await r.json();
+            } finally {
+                clearTimeout(t);
+            }
+        }
+        async function detectLang(){
+            // 1) user preference
+            try{
+                const saved = localStorage.getItem(LANG_STORAGE_KEY);
+                if(saved && SUPPORTED_LANGS.includes(saved)) return saved;
+            }catch(_e){}
+
+            // 2) GeoIP (no key)
+            try{
+                const j = await fetchWithTimeout('https://ipwho.is/?fields=success,country_code', 1800);
+                if(j && j.success && j.country_code) return mapCountryToLang(j.country_code);
+            }catch(_e){}
+            // optional backup API
+            try{
+                const j = await fetchWithTimeout('https://ipapi.co/json/', 1800);
+                if(j && j.country) return mapCountryToLang(j.country);
+            }catch(_e){}
+
+            // 3) browser language
+            const bl = (navigator.languages && navigator.languages[0]) ? navigator.languages[0] : navigator.language;
+            return normalizeBrowserLang(bl);
+        }
+
+        document.addEventListener('DOMContentLoaded', async ()=>{
+            // bind selectors
+            const sel = document.getElementById('langSelect');
+            const msel = document.getElementById('mobileLangSelect');
+            if(sel){
+                sel.addEventListener('change', ()=>applyLang(sel.value, {persist:true}));
+            }
+            if(msel){
+                msel.addEventListener('change', ()=>applyLang(msel.value, {persist:true}));
+            }
+            const initLang = await detectLang();
+            applyLang(initLang);
+        });
 
         // Smooth scroll (ignore href="#")
         document.querySelectorAll('a[href^="#"]').forEach(a=>{
