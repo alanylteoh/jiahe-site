@@ -36,8 +36,9 @@
         .nav{position:fixed;top:0;left:0;right:0;z-index:200;height:88px;transition:all .4s}
         .nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,.06)}
         .nav-in{max-width:1440px;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:100%}
-        .nav-logo{display:flex;align-items:center;gap:12px}
-        .nav-logo img{height:65px}
+        .nav-logo{display:flex;align-items:center;gap:12px;min-width:0}
+        /* 防止窄屏被挤压导致 Logo 只显示一半 */
+        .nav-logo img{height:65px;width:auto;max-width:190px;object-fit:contain;flex:0 0 auto}
         .nav-brand{font-family:var(--serif);font-weight:700;font-size:19px;letter-spacing:.5px;color:#fff;transition:color .4s}
         .nav.scrolled .nav-brand{color:var(--black)}
         .nav-right{display:flex;align-items:center;gap:32px}
@@ -75,7 +76,8 @@
         }
         @media(max-width:480px){
             .nav{height:72px}
-            .nav-logo img{height:52px}
+            .nav-logo img{height:52px;max-width:150px}
+            .nav-brand{display:none}
             .nav-right{gap:16px}
             .nav-lang{padding:6px 30px 6px 10px;font-size:14px}
         }
@@ -162,7 +164,7 @@
         .about-img-overlay{position:absolute;bottom:0;left:0;right:0;padding:32px;z-index:1}
         .about-card{background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border:1px solid var(--g200);max-width:320px}
         .about-card-top{padding:20px 24px 16px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--g200)}
-        .about-card-top img{height:48px}
+        .about-card-top img{height:48px;width:auto;max-width:140px;object-fit:contain;flex:0 0 auto}
         .about-card-name{font-family:var(--serif);font-weight:700;font-size:14px}
         .about-card-name-en{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--g400)}
         .about-card-row{display:flex;justify-content:space-between;align-items:center;padding:11px 24px;font-size:12px;border-bottom:1px solid rgba(0,0,0,.04)}
@@ -295,7 +297,7 @@
         .footer{background:var(--black);color:rgba(255,255,255,.4);padding:64px 0 0}
         .footer-in{max-width:1440px;margin:0 auto;padding:0 48px}
         .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
-        .footer-logo{height:85px;margin-bottom:14px}
+        .footer-logo{height:85px;width:auto;max-width:240px;object-fit:contain;margin-bottom:14px}
         .footer-brand{font-family:var(--serif);font-size:16px;font-weight:700;color:rgba(255,255,255,.8);margin-bottom:2px}
         .footer-brand-en{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:12px}
         .footer-top>p{font-size:15px;line-height:1.7;color:rgba(255,255,255,.45);max-width:260px}
@@ -329,7 +331,7 @@
     <nav class="nav" id="mainNav">
         <div class="nav-in">
             <a href="#top" class="nav-logo" aria-label="返回顶部">
-                <img src="assets/logo.png" alt="Jiahe">
+                <img src="assets/logo.png" alt="Jiahe" decoding="async" fetchpriority="high">
                 <span class="nav-brand">加禾文化科技</span>
             </a>
             <div class="nav-right">
